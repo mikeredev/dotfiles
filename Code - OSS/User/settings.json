@@ -29,5 +29,4 @@
     "workbench.colorTheme": "Visual Studio Dark",
     "workbench.activityBar.visible": true,
     "security.workspace.trust.untrustedFiles": "open",
-    "http.proxyAuthorization": null,
 }
