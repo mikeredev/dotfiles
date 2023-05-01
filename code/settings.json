@@ -1,0 +1,33 @@
+{
+    "[python]": {
+        "editor.formatOnType": true
+    },
+    "editor.quickSuggestions": {
+        "other": true,
+        "comments": false,
+        "strings": false
+    },
+    "python.formatting.provider": "black",
+    "editor.formatOnSave": true,
+    "editor.formatOnType": true,
+    "editor.insertSpaces": true,
+    "editor.indentSize": "tabSize",
+    "editor.tabSize": 4,
+    "editor.comments.insertSpace": true,
+    "editor.detectIndentation": false,
+    "editor.tabCompletion": "on",
+    "editor.wordSeparators": "`~!@#$%^&*()-=+[{]}\\|;:'\",.<>/?",
+    "terminal.integrated.fontFamily": "'JetBrains Mono', monospace",
+    "terminal.integrated.fontSize": 14,
+    "editor.fontFamily": "'JetBrains Mono', monospace",
+    "editor.fontSize": 13,
+    "editor.fontWeight": "normal",
+    "editor.fontLigatures": true,
+    "editor.letterSpacing": 0.2,
+    "editor.lineHeight": 1.2,
+    "editor.smoothScrolling": true,
+    "workbench.colorTheme": "Visual Studio Dark",
+    "workbench.activityBar.visible": true,
+    "security.workspace.trust.untrustedFiles": "open",
+    "http.proxyAuthorization": null,
+}
