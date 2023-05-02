@@ -26,7 +26,7 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && exec pkill -RTMIN+10 i3blocks
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && exec pkill -RTMIN+10 i3blocks
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && exec pkill -RTMIN+10 i3blocks
-exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ 80%
+exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ 40%
 
 # screen brightness (i3 blocks signal 11)
 bindsym $mod+o exec sh -c 'python ~/data/scripts/system-mgmt/manage_brightness.py --monitor $monitor --adjust down && exec pkill -RTMIN+11 i3blocks'
