@@ -29,8 +29,8 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ to
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status_sig10
 
 # screen brightness (i3 blocks signal 11)
-bindsym $mod+o exec sh -c 'python ~/scripts/system-tools/manage_brightness.py --monitor $monitor --adjust down && exec pkill -RTMIN+11 i3blocks'
-bindsym $mod+p exec sh -c 'python ~/scripts/system-tools/manage_brightness.py --monitor $monitor --adjust up && exec pkill -RTMIN+11 i3blocks'
+bindsym $mod+o exec sh -c 'python ~/data/scripts/system-mgmt/manage_brightness.py --monitor $monitor --adjust down && exec pkill -RTMIN+11 i3blocks'
+bindsym $mod+p exec sh -c 'python ~/data/scripts/system-mgmt/manage_brightness.py --monitor $monitor --adjust up && exec pkill -RTMIN+11 i3blocks'
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
