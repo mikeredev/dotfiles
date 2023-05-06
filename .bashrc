@@ -5,7 +5,7 @@
 # aliases
 alias ai='python ~/data/scripts/openai/console-helper/console-helper.py'
 alias grep='grep --color=auto'
-alias ls='ls -lA --color=auto'
+alias ls='ls -lA --color=auto --block-size=M'
 alias rr='ranger'
 
 # api keys

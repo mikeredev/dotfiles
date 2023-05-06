@@ -6,9 +6,9 @@
 
 * {
     background-color:   #1E1E1E;
-    border-color:       #FFFFFF;
-    text-color:         #FFFFFF;
-    font:               "Source Code Pro 11";
+    border-color:       #282c34;
+    text-color:         #DDDDDD;
+    font:               "Inconsolata Bold 11";
 }
 window {
     anchor:             north;

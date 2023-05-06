@@ -18,7 +18,7 @@
     "editor.tabCompletion": "on",
     "editor.wordSeparators": "`~!@#$%^&*()-=+[{]}\\|;:'\",.<>/?",
     "terminal.integrated.fontFamily": "'JetBrains Mono', monospace",
-    "terminal.integrated.fontSize": 14,
+    "terminal.integrated.fontSize": 12,
     "editor.fontFamily": "'JetBrains Mono', monospace",
     "editor.fontSize": 13,
     "editor.fontWeight": "normal",
@@ -29,4 +29,6 @@
     "workbench.colorTheme": "Visual Studio Dark",
     "workbench.activityBar.visible": true,
     "security.workspace.trust.untrustedFiles": "open",
+    "terminal.integrated.automationProfile.linux": {},
+    "git.confirmSync": false,
 }
