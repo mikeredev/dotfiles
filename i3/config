@@ -47,7 +47,7 @@ bindsym $mod+Shift+q kill
 
 # rofi
 bindsym $mod+d exec --no-startup-id rofi -show drun
-bindsym $mod+Shift+l exec --no-startup-id ~/data/scripts/system-mgmt/manage-session-rofi.sh
+bindsym $mod+Shift+l exec --no-startup-id sh -c 'python ~/data/scripts/system-mgmt/manage-session-rofi.py'
 
 # shift window focus
 bindsym $mod+Left focus left
