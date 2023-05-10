@@ -4,7 +4,7 @@
 
 # aliases
 alias ai='python ~/data/scripts/openai/console-helper/console-helper.py'
-alias backup='python ~/data/scripts/system-mgmt/backup_dotfiles.py'
+alias backup='python ~/data/scripts/system-mgmt/backup-dotfiles.py'
 alias grep='grep --color=auto'
 alias ls='ls -lA --color=auto --block-size=M'
 alias rr='ranger'
@@ -22,7 +22,7 @@ shopt -s histappend
 # prompt
 PS1='[\W]\$ > '
 
-# powerline shell prompt
+# powerline
 function _update_ps1() {
     PS1=$(powerline-shell $?)
 }

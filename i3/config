@@ -29,8 +29,8 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ 40%
 
 # screen brightness (i3 blocks signal 11)
-bindsym $mod+o exec sh -c 'python ~/data/scripts/system-mgmt/manage_brightness.py --monitor $monitor --adjust down && exec pkill -RTMIN+11 i3blocks'
-bindsym $mod+p exec sh -c 'python ~/data/scripts/system-mgmt/manage_brightness.py --monitor $monitor --adjust up && exec pkill -RTMIN+11 i3blocks'
+bindsym $mod+o exec sh -c 'python ~/data/scripts/system-mgmt/manage-brightness.py --monitor $monitor --adjust down && exec pkill -RTMIN+11 i3blocks'
+bindsym $mod+p exec sh -c 'python ~/data/scripts/system-mgmt/manage-brightness.py --monitor $monitor --adjust up && exec pkill -RTMIN+11 i3blocks'
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -151,8 +151,8 @@ bindsym XF86ScreenSaver exec --no-startup-id i3lock
 exec_always picom -f
 
 # screenshots
-bindsym $mod+Print exec --no-startup-id sh -c "python ~/data/scripts/system-mgmt/manage_screenshot.py --type full"
-bindsym $mod+Shift+Print exec --no-startup-id sh -c "sleep 0.2s && python ~/data/scripts/system-mgmt/manage_screenshot.py --type area"
+bindsym $mod+Print exec --no-startup-id sh -c "python ~/data/scripts/system-mgmt/manage-screenshot.py --type full"
+bindsym $mod+Shift+Print exec --no-startup-id sh -c "sleep 0.2s && python ~/data/scripts/system-mgmt/manage-screenshot.py --type area"
 
 # statusbar
 bar {
