@@ -47,6 +47,7 @@ bindsym $mod+Shift+q kill
 
 # rofi
 bindsym $mod+d exec --no-startup-id rofi -show drun
+bindsym $mod+Shift+l exec --no-startup-id ~/data/scripts/system-mgmt/manage-session-rofi.sh
 
 # shift window focus
 bindsym $mod+Left focus left
