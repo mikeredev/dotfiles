@@ -1,7 +1,4 @@
 {
-    "[python]": {
-        "editor.formatOnType": true
-    },
     "editor.quickSuggestions": {
         "other": true,
         "comments": false,
@@ -20,15 +17,27 @@
     "terminal.integrated.fontFamily": "'JetBrains Mono', monospace",
     "terminal.integrated.fontSize": 12,
     "editor.fontFamily": "'JetBrains Mono', monospace",
-    "editor.fontSize": 13,
+    "editor.fontSize": 12,
     "editor.fontWeight": "normal",
     "editor.fontLigatures": true,
     "editor.letterSpacing": 0.2,
-    "editor.lineHeight": 1.2,
+    "editor.lineHeight": 1.6,
     "editor.smoothScrolling": true,
-    "workbench.colorTheme": "Visual Studio Dark",
-    "workbench.activityBar.visible": true,
     "security.workspace.trust.untrustedFiles": "open",
-    "terminal.integrated.automationProfile.linux": {},
     "git.confirmSync": false,
+    "workbench.colorTheme": "Monokai Dimmed",
+    "editor.minimap.enabled": false,
+    "window.menuBarVisibility": "toggle",
+    "files.associations": {
+        "*.py": "python"
+    },
+    "[jsonc]": {
+        "editor.quickSuggestions": {
+            "strings": true
+        },
+        "editor.suggest.insertMode": "replace"
+    },
+    "workbench.activityBar.visible": false,
+    "workbench.statusBar.visible": false,
+    "breadcrumbs.enabled": false,
 }
