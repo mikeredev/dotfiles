@@ -37,5 +37,6 @@ shopt -s checkwinsize
 export GTK_THEME='Arc-Dark'
 
 # variables
+export OPENAI_MODEL='gpt-3.5-turbo'
 export PATH=$PATH:~/.local/bin
 export VISUAL=vim
