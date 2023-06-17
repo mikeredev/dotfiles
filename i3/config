@@ -4,16 +4,17 @@
 # set modkey
 set $mod Mod4
 
-# set default monitor (eDP-1/HDMI-0/etc)
+# set default monitor (xrandr: eDP-1 | HDMI-0)
 set $monitor HDMI-0
 
 # set resolution
 exec_always xrandr --output:$monitor --mode 1920x1080
 
-# title bar font
-font pango:JetBrains Mono 10
+# title bar
+font pango:Inconsolata Bold 11
+for_window [class=".*"] title_format " %title"
 
-# hide title bars
+# tile padding
 for_window [class=".*"] border pixel 0
 
 # start some stuff
@@ -47,7 +48,7 @@ bindsym $mod+Shift+q kill
 
 # rofi
 bindsym $mod+d exec --no-startup-id rofi -show drun
-bindsym $mod+Shift+l exec --no-startup-id sh -c 'python ~/data/scripts/system-mgmt/manage-session-rofi.py'
+bindsym $mod+l exec --no-startup-id sh -c 'python ~/data/scripts/system-mgmt/manage-session-rofi.py'
 bindsym $mod+x exec --no-startup-id sh -c 'python ~/data/scripts/openai/console-helper/console-helper-rofi.py'
 
 # shift window focus
@@ -56,7 +57,7 @@ bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
-# shift window position
+# shift window positionL
 bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
@@ -120,7 +121,6 @@ bindsym $mod+Shift+4 move container to workspace number $ws4
 bindsym $mod+Shift+5 move container to workspace number $ws5
 bindsym $mod+Shift+6 move container to workspace number $ws6
 bindsym $mod+Shift+7 move container to workspace number $ws7
-bindsym $mod+Shift+8 move container to workspace number $ws8
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -145,7 +145,6 @@ exec_always setxkbmap ie
 exec_always feh --bg-fill --randomize ~/Pictures/wallpapers/*
 
 # i3lock
-bindsym $mod+l exec i3lock
 bindsym XF86ScreenSaver exec --no-startup-id i3lock
 
 # picom
@@ -184,8 +183,8 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Do you want to exit?' -B 'Yes, exit i3' 'i3-msg exit'"
 
 # start with gaps
-gaps inner 1
-gaps outer 1
+gaps inner 2
+gaps outer 2
 
 # gaps
 set $mode_gaps Gaps: (o)uter, (i)nner, (h)orizontal, (v)ertical, (t)op, (r)ight, (b)ottom, (l)eft
