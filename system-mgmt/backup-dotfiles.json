@@ -1,0 +1,56 @@
+{
+    "backup-dotfiles": [
+        {
+            "source": ".config/alacritty/alacritty.yml",
+            "destination": "alacritty/alacritty.yml"
+        },
+        {
+            "source": ".bashrc",
+            "destination": ".bashrc"
+        },
+        {
+            "source": ".config/system-mgmt/backup-dotfiles.json",
+            "destination": "system-mgmt/backup-dotfiles.json"
+        },
+        {
+            "source": ".config/Code - OSS/User/settings.json",
+            "destination": "Code - OSS/User/settings.json"
+        },
+        {
+            "source": ".config/gtk-3.0/settings.ini",
+            "destination": "gtk-3.0/settings.ini"
+        },
+        {
+            "source": ".config/i3/config",
+            "destination": "i3/config"
+        },
+        {
+            "source": ".config/i3blocks/i3blocks.conf",
+            "destination": "i3blocks/i3blocks.conf"
+        },
+        {
+            "source": ".config/i3blocks/i3blocks.py.conf",
+            "destination": "i3blocks/i3blocks.py.conf"
+        },
+        {
+            "source": ".config/i3status/i3status.conf",
+            "destination": "i3status/i3status.conf"
+        },
+        {
+            "source": ".config/picom/picom.conf",
+            "destination": "picom/picom.conf"
+        },
+        {
+            "source": ".config/rofi/themes/rofi.rasi",
+            "destination": "rofi/themes/rofi.rasi"
+        },
+        {
+            "source": ".config/rofi/themes/console-helper.rasi",
+            "destination": "rofi/themes/console-helper.rasi"
+        },
+        {
+            "source": ".vimrc",
+            "destination": ".vimrc"
+        }
+    ]
+}
