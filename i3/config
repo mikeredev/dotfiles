@@ -29,7 +29,7 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ to
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && exec pkill -RTMIN+10 i3blocks
 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ 40%
 
-# screen brightness (i3 blocks signal 11)
+# screen brightness (i3blocks signal 11)
 bindsym $mod+o exec sh -c 'python ~/data/scripts/system-mgmt/manage-brightness.py --monitor $monitor --adjust down && exec pkill -RTMIN+11 i3blocks'
 bindsym $mod+p exec sh -c 'python ~/data/scripts/system-mgmt/manage-brightness.py --monitor $monitor --adjust up && exec pkill -RTMIN+11 i3blocks'
 

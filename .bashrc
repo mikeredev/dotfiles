@@ -39,4 +39,5 @@ export GTK_THEME='Arc-Dark'
 # variables
 export OPENAI_MODEL='gpt-3.5-turbo'
 export PATH=$PATH:~/.local/bin
+export PYTHONPATH=$PYTHONPATH:~/data/scripts/modules
 export VISUAL=vim
