@@ -59,7 +59,7 @@ bindsym $mod+Shift+Print exec --no-startup-id sh -c "sleep 0.2s && python ~/data
 
 # statusbar
 bar {
-        status_command i3blocks -c ~/data/scripts/test/i3blocks/config/i3blocks.conf
+        status_command i3blocks -c ~/data/scripts/i3blocks/config/i3blocks.conf
         position top
         height 35
         font pango:Inconsolata Bold 12

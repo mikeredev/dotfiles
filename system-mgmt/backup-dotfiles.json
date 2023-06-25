@@ -29,8 +29,8 @@
             "destination": "i3blocks/i3blocks.conf"
         },
         {
-            "source": ".config/i3blocks/i3blocks.py.conf",
-            "destination": "i3blocks/i3blocks.py.conf"
+            "source": ".config/i3blocks/i3blocks.conf.json",
+            "destination": "i3blocks/i3blocks.conf.json"
         },
         {
             "source": ".config/i3status/i3status.conf",
