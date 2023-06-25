@@ -41,8 +41,8 @@
             "destination": "picom/picom.conf"
         },
         {
-            "source": ".config/rofi/themes/rofi.rasi",
-            "destination": "rofi/themes/rofi.rasi"
+            "source": ".config/rofi/themes/dmenu.rasi",
+            "destination": "rofi/themes/dmenu.rasi"
         },
         {
             "source": ".config/rofi/themes/console-helper.rasi",
