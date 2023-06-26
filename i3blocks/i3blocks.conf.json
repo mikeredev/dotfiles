@@ -29,7 +29,8 @@
             "time": [
                 {
                     "day": 6,
-                    "night": 20,
+                    "night": 24,
+                    "time_format": "%d/%m %H:%M",
                     "adjust_glare": true,
                     "day_brightness": 1.0,
                     "day_gamma": 1.0,

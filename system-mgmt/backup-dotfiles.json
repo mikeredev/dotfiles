@@ -49,6 +49,10 @@
             "destination": "rofi/themes/console-helper.rasi"
         },
         {
+            "source": ".config/rofi/themes/sidebar.rasi",
+            "destination": "rofi/themes/sidebar.rasi"
+        },
+        {
             "source": ".vimrc",
             "destination": ".vimrc"
         }
