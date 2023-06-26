@@ -41,7 +41,7 @@ bindsym $mod+Return exec i3-sensible-terminal
 # rofi - menu, session manager, chatbot, etc
 bindsym $mod+d exec --no-startup-id rofi -show drun
 bindsym $mod+l exec --no-startup-id sh -c 'python ~/data/scripts/system-mgmt/rofi-session-manager.py --rofi'
-bindsym $mod+x exec --no-startup-id sh -c 'python ~/data/scripts/openai/console-helper/console-helper-rofi.py'
+bindsym $mod+x exec --no-startup-id sh -c 'python ~/data/scripts/system-mgmt/rofi-gpt-chatbot.py'
 bindsym $mod+m exec --no-startup-id sh -c 'python ~/data/scripts/system-mgmt/rofi-wifi-manager.py'
 bindsym XF86ScreenSaver exec --no-startup-id sh -c 'python rofi-session-manager.py --session lock'
 

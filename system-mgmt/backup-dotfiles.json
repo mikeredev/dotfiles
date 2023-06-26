@@ -45,8 +45,8 @@
             "destination": "rofi/themes/dmenu.rasi"
         },
         {
-            "source": ".config/rofi/themes/console-helper.rasi",
-            "destination": "rofi/themes/console-helper.rasi"
+            "source": ".config/rofi/themes/chatbot.rasi",
+            "destination": "rofi/themes/chatbot.rasi"
         },
         {
             "source": ".config/rofi/themes/sidebar.rasi",
