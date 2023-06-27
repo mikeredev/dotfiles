@@ -3,7 +3,7 @@
 [[ $- != *i* ]] && return
 
 # aliases
-alias ai='python ~/data/scripts/openai/gpt-console.py'
+alias ai='python ~/data/scripts/system-mgmt/gpt-chatbot-console.py'
 alias backup='python ~/data/scripts/system-mgmt/backup-dotfiles.py'
 alias grep='grep --color=auto'
 alias ls='ls -lA --color=auto --block-size=M'
