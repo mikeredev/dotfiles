@@ -17,6 +17,10 @@
             "destination": "Code - OSS/User/settings.json"
         },
         {
+            "source": ".config/dunst/dunstrc",
+            "destination": "dunst/dunstrc"
+        },
+        {
             "source": ".config/gtk-3.0/settings.ini",
             "destination": "gtk-3.0/settings.ini"
         },
