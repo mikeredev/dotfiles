@@ -40,10 +40,10 @@ bindsym $mod+Return exec i3-sensible-terminal
 
 # rofi - menu, session manager, chatbot, etc
 bindsym $mod+d exec --no-startup-id rofi -show drun
-bindsym $mod+l exec --no-startup-id sh -c 'python ~/data/scripts/system-mgmt/session-manager-rofi.py --rofi'
-bindsym $mod+x exec --no-startup-id sh -c 'python ~/data/scripts/system-mgmt/gpt-chatbot-rofi.py'
-bindsym $mod+m exec --no-startup-id sh -c 'python ~/data/scripts/system-mgmt/wifi-manager-rofi.py'
-bindsym XF86ScreenSaver exec --no-startup-id sh -c 'python session-manager-rofi.py --session lock'
+bindsym $mod+l exec --no-startup-id sh -c 'python ~/data/scripts/system-tools/session-manager-rofi.py --rofi'
+bindsym $mod+x exec --no-startup-id sh -c 'python ~/data/scripts/system-tools/gpt-chatbot-rofi.py'
+bindsym $mod+m exec --no-startup-id sh -c 'python ~/data/scripts/system-tools/wifi-manager-rofi.py'
+bindsym XF86ScreenSaver exec --no-startup-id sh -c 'python ~/data/scripts/system-tools/session-manager-rofi.py --session lock'
 
 # application shortcuts
 bindsym $mod+F1 exec --no-startup-id brave
@@ -61,8 +61,8 @@ exec_always feh --bg-fill --randomize ~/Pictures/wallpapers/*
 exec_always picom -f
 
 # screenshots
-bindsym $mod+Print exec --no-startup-id sh -c "python ~/data/scripts/system-mgmt/manage-screenshot.py --type full"
-bindsym $mod+Shift+Print exec --no-startup-id sh -c "sleep 0.2s && python ~/data/scripts/system-mgmt/manage-screenshot.py --type area"
+bindsym $mod+Print exec --no-startup-id sh -c "python ~/data/scripts/system-tools/manage-screenshot.py --type full"
+bindsym $mod+Shift+Print exec --no-startup-id sh -c "sleep 0.2s && python ~/data/scripts/system-tools/manage-screenshot.py --type area"
 
 # statusbar
 bar {
