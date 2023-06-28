@@ -3,8 +3,8 @@
 [[ $- != *i* ]] && return
 
 # aliases
-alias ai='python ~/data/scripts/system-mgmt/gpt-chatbot-console.py'
-alias backup='python ~/data/scripts/system-mgmt/backup-dotfiles.py'
+alias ai='python ~/data/scripts/system-tools/gpt-chatbot-console.py'
+alias backup='python ~/data/scripts/system-tools/backup-dotfiles.py'
 alias grep='grep --color=auto'
 alias gs='git status'
 alias gac='git add . && git commit -m'
