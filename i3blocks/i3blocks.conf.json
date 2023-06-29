@@ -30,7 +30,7 @@
                 {
                     "day": 6,
                     "night": 24,
-                    "time_format": "%d/%m %H:%M",
+                    "time_format": "%a%d %H:%M",
                     "adjust_glare": true,
                     "day_brightness": 1.0,
                     "day_gamma": 1.0,

@@ -61,8 +61,8 @@ exec_always feh --bg-fill --randomize ~/Pictures/wallpapers/*
 exec_always picom -f
 
 # screenshots
-bindsym $mod+Print exec --no-startup-id sh -c "python ~/data/scripts/system-tools/manage-screenshot.py --type full"
-bindsym $mod+Shift+Print exec --no-startup-id sh -c "sleep 0.2s && python ~/data/scripts/system-tools/manage-screenshot.py --type area"
+bindsym $mod+Print exec --no-startup-id sh -c 'python ~/data/scripts/system-tools/manage-screenshot.py --type full'
+bindsym --release $mod+Shift+Print exec --no-startup-id sh -c 'python ~/data/scripts/system-tools/manage-screenshot.py --type area'
 
 # statusbar
 bar {
