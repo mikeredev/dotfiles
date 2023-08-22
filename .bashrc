@@ -15,6 +15,10 @@ alias rr='ranger'
 export OPENAI_API_KEY=$(cat ~/data/auth/openai/openai_api_key.txt)
 export PINECONE_API_KEY=$(cat ~/data/auth/pinecone/pinecone_api_key.txt)
 
+# backup
+export BACKUP_CONFIG=~/.config/system-mgmt/backup-dotfiles.json
+export BACKUP_LOCATION=~/data/backup/dotfiles
+
 # environment variables
 export OPENAI_MODEL='gpt-3.5-turbo'
 export PATH=$PATH:~/.local/bin
