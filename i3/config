@@ -16,6 +16,7 @@ exec_always xrandr --output:$monitor --mode 1920x1080
 
 # title bar
 font pango:Inconsolata Bold 11
+for_window [class="Sxiv"] floating enable
 for_window [class=".*"] title_format " %title"
 
 # tile padding
@@ -68,11 +69,11 @@ bindsym --release $mod+Shift+Print exec --no-startup-id sh -c 'python ~/data/scr
 bar {
         status_command i3blocks -c ~/.config/i3blocks/i3blocks.conf
         position top
-        height 35
+        height 30
         font pango:Inconsolata Bold 11
         separator_symbol " « "
         workspace_buttons yes
-        workspace_min_width 100
+        workspace_min_width 75
         strip_workspace_numbers yes
         colors {
                 background #282c34
@@ -105,7 +106,7 @@ set $ws6 "6:"
 
 # assigned workspaces
 for_window [class="Brave-browser"] move to workspace $ws1
-for_window [class="code-oss"] move to workspace $ws2
+for_window [class="VSCodium"] move to workspace $ws2
 for_window [class="discord"] move to workspace $ws4
 for_window [class="TelegramDesktop"] move to workspace $ws4
 for_window [class="Slack"] move to workspace $ws3

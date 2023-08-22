@@ -13,8 +13,8 @@
             "destination": "system-mgmt/backup-dotfiles.json"
         },
         {
-            "source": ".config/Code - OSS/User/settings.json",
-            "destination": "Code - OSS/User/settings.json"
+            "source": ".config/VSCodium/User/settings.json",
+            "destination": "VSCodium/User/settings.json"
         },
         {
             "source": ".config/dunst/dunstrc",
