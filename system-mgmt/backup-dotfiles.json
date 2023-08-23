@@ -45,6 +45,14 @@
             "destination": "picom/picom.conf"
         },
         {
+            "source": ".config/pymodules/openai_chat.py",
+            "destination": "pymodules/openai_chat.py"
+        },
+        {
+            "source": ".config/pymodules/run_function.py",
+            "destination": "pymodules/run_function.py"
+        },
+        {
             "source": ".config/rofi/themes/dmenu.rasi",
             "destination": "rofi/themes/dmenu.rasi"
         },

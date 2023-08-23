@@ -3,12 +3,12 @@
 [[ $- != *i* ]] && return
 
 # aliases
-alias ai='python ~/data/scripts/system-tools/gpt-chatbot-console.py'
+alias ai='python ~/data/scripts/openai/gpt-chatbot-console.py'
 alias backup='python ~/data/scripts/system-tools/backup-dotfiles.py'
 alias grep='grep --color=auto'
 alias gs='git status'
 alias gac='git add . && git commit -m'
-alias gp='git push -u origin1'
+alias gp='git push -u origin'
 alias ls='ls -lA --color=auto --block-size=M'
 alias rr='ranger'
 
@@ -23,7 +23,7 @@ export BACKUP_LOCATION=~/data/backup/dotfiles
 # environment variables
 export OPENAI_MODEL='gpt-3.5-turbo'
 export PATH=$PATH:~/.local/bin
-export PYTHONPATH=$PYTHONPATH:~/data/scripts/modules
+export PYTHONPATH=$PYTHONPATH:~/.config/pymodules
 export VISUAL=vim
 
 # history
