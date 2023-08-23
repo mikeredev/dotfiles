@@ -8,6 +8,7 @@ alias backup='python ~/data/scripts/system-tools/backup-dotfiles.py'
 alias grep='grep --color=auto'
 alias gs='git status'
 alias gac='git add . && git commit -m'
+alias gp='git push -u origin1'
 alias ls='ls -lA --color=auto --block-size=M'
 alias rr='ranger'
 
