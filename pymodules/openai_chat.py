@@ -38,4 +38,5 @@ def response(
     )
 
     output = response.choices[0].message.content
-    return {"output": output}
+    total_tokens = response.usage.total_tokens
+    return {"output": output, "total_tokens": total_tokens}
