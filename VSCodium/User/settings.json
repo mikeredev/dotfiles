@@ -4,8 +4,10 @@
         "comments": false,
         "strings": false
     },
-    "python.formatting.provider": "autopep8",
-    "editor.formatOnSave": true,
+    "editor.formatOnSave": false,
+    "[python]": {
+        "editor.formatOnSave": true,
+    },
     "editor.formatOnType": true,
     "editor.insertSpaces": true,
     "editor.indentSize": 4,
@@ -27,15 +29,6 @@
     "git.confirmSync": false,
     "workbench.colorTheme": "Monokai Dimmed",
     "window.menuBarVisibility": "toggle",
-    "files.associations": {
-        "*.py": "python"
-    },
-    "[jsonc]": {
-        "editor.quickSuggestions": {
-            "strings": true
-        },
-        "editor.suggest.insertMode": "replace"
-    },
     "workbench.statusBar.visible": false,
     "breadcrumbs.enabled": false,
     "editor.codeActionsOnSave": {},
