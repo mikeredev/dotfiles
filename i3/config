@@ -15,12 +15,13 @@ set $monitor HDMI-0
 exec_always xrandr --output:$monitor --mode 1920x1080
 
 # title bar
-font pango:Inconsolata Bold 11
-for_window [class="Sxiv"] floating enable
-for_window [class=".*"] title_format " %title"
-
-# tile padding
 for_window [class=".*"] border pixel 0
+for_window [class=".*"] title_format "%title"
+font pango:Inconsolata Bold 11
+
+# default overrides
+for_window [class="Alacritty"] title_format " %title"
+for_window [class="Sxiv"] floating enable
 
 # start some stuff
 exec_always --no-startup-id dex --autostart --environment i3
@@ -28,18 +29,19 @@ exec_always --no-startup-id dex --autostart --environment i3
 exec_always --no-startup-id /usr/bin/dunst
 exec_always --no-startup-id "gsettings set org.gnome.desktop.interface gtk-theme 'Arc-Dark'"
 
-# XF86 volume control (i3blocks signal 1)
+# volume control (i3blocks signal 1)
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && exec pkill -RTMIN+1 i3blocks
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && exec pkill -RTMIN+1 i3blocks
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && exec pkill -RTMIN+1 i3blocks
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && exec pkill -RTMIN+1 i3blocks
+
 # set startup volume
 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ 40%
 
 # terminal
 bindsym $mod+Return exec i3-sensible-terminal
 
-# rofi - menu, session manager, chatbot, etc
+# rofi menus
 bindsym $mod+d exec --no-startup-id rofi -show drun
 bindsym $mod+l exec --no-startup-id sh -c 'python ~/data/scripts/system-tools/session-manager-rofi.py --rofi'
 bindsym $mod+k exec --no-startup-id sh -c 'python ~/data/scripts/openai/gpt-chatbot-rofi.py'
@@ -97,19 +99,14 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Do you want to exit?' -B 'Ye
 set $ws0 "0:"
 set $ws1 "1:"
 set $ws2 "2:"
-set $ws3 "3:"
-set $ws4 "4:"
-set $ws5 "5:"
-set $ws6 "6:"
+set $ws3 "3:"
+set $ws4 "4:"
 
 # assigned workspaces
 for_window [class="Brave-browser"] move to workspace $ws1
 for_window [class="VSCodium"] move to workspace $ws2
-for_window [class="discord"] move to workspace $ws4
 for_window [class="TelegramDesktop"] move to workspace $ws4
-for_window [class="Slack"] move to workspace $ws3
-for_window [class="steam"] move to workspace $ws5
-for_window [class="VirtualBox Manager"] move to workspace $ws6
+for_window [class="steam"] move to workspace $ws3
 
 # switch to workspace
 bindsym $mod+0 workspace number $ws0
@@ -117,8 +114,6 @@ bindsym $mod+1 workspace number $ws1
 bindsym $mod+2 workspace number $ws2
 bindsym $mod+3 workspace number $ws3
 bindsym $mod+4 workspace number $ws4
-bindsym $mod+5 workspace number $ws5
-bindsym $mod+6 workspace number $ws6
 
 # move focused container to workspace
 bindsym $mod+Shift+0 move container to workspace number $ws0
@@ -126,8 +121,6 @@ bindsym $mod+Shift+1 move container to workspace number $ws1
 bindsym $mod+Shift+2 move container to workspace number $ws2
 bindsym $mod+Shift+3 move container to workspace number $ws3
 bindsym $mod+Shift+4 move container to workspace number $ws4
-bindsym $mod+Shift+5 move container to workspace number $ws5
-bindsym $mod+Shift+6 move container to workspace number $ws6
 
 # shift window focus
 bindsym $mod+Left focus left
@@ -210,7 +203,6 @@ mode "$mode_gaps" {
         bindsym Return mode "$mode_gaps"
         bindsym Escape mode "default"
 }
-
 mode "$mode_gaps_outer" {
         bindsym plus  gaps outer current plus 5
         bindsym minus gaps outer current minus 5

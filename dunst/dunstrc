@@ -27,7 +27,7 @@
     width = 500
 
     # The maximum height of a single notification, excluding the frame.
-    height = 300
+    height = 600
 
     # Position the notification in the top right corner
     origin = top-right
@@ -127,7 +127,7 @@
 
     # The spacing between lines.  If the height is smaller than the
     # font height, it will get raised to the font height.
-    line_height = 3
+    line_height = 2.5
 
     # Possible values are:
     # full: Allow a small subset of html markup in notifications:
@@ -171,7 +171,7 @@
 
     # Vertical alignment of message text and icon.
     # Possible values are "top", "center" and "bottom".
-    vertical_alignment = center
+    vertical_alignment = top
 
     # Show age of message if message is older than show_age_threshold
     # seconds.
