@@ -53,6 +53,10 @@
             "destination": "pymodules/run_function.py"
         },
         {
+            "source": ".config/redshift.conf",
+            "destination": "redshift.conf"
+        },
+        {
             "source": ".config/rofi/themes/dmenu.rasi",
             "destination": "rofi/themes/dmenu.rasi"
         },
