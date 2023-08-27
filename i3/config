@@ -29,14 +29,14 @@ exec_always --no-startup-id dex --autostart --environment i3
 exec_always --no-startup-id /usr/bin/dunst
 exec_always --no-startup-id "gsettings set org.gnome.desktop.interface gtk-theme 'Arc-Dark'"
 
+# set startup volume
+exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ 40%
+
 # volume control (i3blocks signal 1)
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && exec pkill -RTMIN+1 i3blocks
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && exec pkill -RTMIN+1 i3blocks
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && exec pkill -RTMIN+1 i3blocks
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && exec pkill -RTMIN+1 i3blocks
-
-# set startup volume
-exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ 40%
 
 # terminal
 bindsym $mod+Return exec i3-sensible-terminal
@@ -67,23 +67,23 @@ bindsym --release $mod+Shift+Print exec --no-startup-id sh -c 'python ~/data/scr
 
 # statusbar
 bar {
-        status_command i3blocks -c ~/.config/i3blocks/i3blocks.conf
-        position top
-        height 30
-        font pango:Inconsolata Bold 11
-        separator_symbol " « "
-        workspace_buttons yes
-        workspace_min_width 75
-        strip_workspace_numbers yes
-        colors {
-                background #282c34
-                statusline #a9a9a9
-                separator #666666
-                focused_workspace #ffffff #4c566a #ffffff
-                active_workspace #ffffff #282c34 #ffffff
-                inactive_workspace #4c566a #282c34 #a9a9a9
-                urgent_workspace #ffffff #c678dd #ffffff
-        }
+    status_command i3blocks -c ~/.config/i3blocks/i3blocks.conf
+    position top
+    height 30
+    font pango:Inconsolata Bold 11
+    separator_symbol " « "
+    workspace_buttons yes
+    workspace_min_width 75
+    strip_workspace_numbers yes
+    colors {
+        background #282c34
+        statusline #a9a9a9
+        separator #666666
+        focused_workspace #ffffff #4c566a #ffffff
+        active_workspace #ffffff #282c34 #ffffff
+        inactive_workspace #4c566a #282c34 #a9a9a9
+        urgent_workspace #ffffff #c678dd #ffffff
+    }
 }
 
 # kill focused window
@@ -128,7 +128,7 @@ bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
-# shift window positionL
+# shift window position
 bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
@@ -161,23 +161,23 @@ tiling_drag modifier titlebar
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
+    # These bindings trigger as soon as you enter the resize mode
 
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
+    bindsym Left resize shrink width 10 px or 10 ppt
+    bindsym Down resize grow height 10 px or 10 ppt
+    bindsym Up resize shrink height 10 px or 10 ppt
+    bindsym Right resize grow width 10 px or 10 ppt
 
-        # back to normal: Enter or Escape or $mod+r
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-        bindsym $mod+r mode "default"
+    # back to normal: Enter or Escape or $mod+r
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym $mod+r mode "default"
 }
 bindsym $mod+r mode "resize"
 
 # start with gaps
 gaps inner 2
-gaps outer 2
+gaps outer 1
 
 # gaps
 set $mode_gaps Gaps: (o)uter, (i)nner, (h)orizontal, (v)ertical, (t)op, (r)ight, (b)ottom, (l)eft
@@ -192,110 +192,110 @@ set $mode_gaps_left Left Gaps: +|-|0 (local), Shift + +|-|0 (global)
 bindsym $mod+Shift+g mode "$mode_gaps"
 
 mode "$mode_gaps" {
-        bindsym o      mode "$mode_gaps_outer"
-        bindsym i      mode "$mode_gaps_inner"
-        bindsym h      mode "$mode_gaps_horiz"
-        bindsym v      mode "$mode_gaps_verti"
-        bindsym t      mode "$mode_gaps_top"
-        bindsym r      mode "$mode_gaps_right"
-        bindsym b      mode "$mode_gaps_bottom"
-        bindsym l      mode "$mode_gaps_left"
-        bindsym Return mode "$mode_gaps"
-        bindsym Escape mode "default"
+    bindsym o      mode "$mode_gaps_outer"
+    bindsym i      mode "$mode_gaps_inner"
+    bindsym h      mode "$mode_gaps_horiz"
+    bindsym v      mode "$mode_gaps_verti"
+    bindsym t      mode "$mode_gaps_top"
+    bindsym r      mode "$mode_gaps_right"
+    bindsym b      mode "$mode_gaps_bottom"
+    bindsym l      mode "$mode_gaps_left"
+    bindsym Return mode "$mode_gaps"
+    bindsym Escape mode "default"
 }
 mode "$mode_gaps_outer" {
-        bindsym plus  gaps outer current plus 5
-        bindsym minus gaps outer current minus 5
-        bindsym 0     gaps outer current set 0
+    bindsym plus  gaps outer current plus 5
+    bindsym minus gaps outer current minus 5
+    bindsym 0     gaps outer current set 0
 
-        bindsym Shift+plus  gaps outer all plus 5
-        bindsym Shift+minus gaps outer all minus 5
-        bindsym Shift+0     gaps outer all set 0
+    bindsym Shift+plus  gaps outer all plus 5
+    bindsym Shift+minus gaps outer all minus 5
+    bindsym Shift+0     gaps outer all set 0
 
-        bindsym Return mode "$mode_gaps"
-        bindsym Escape mode "default"
+    bindsym Return mode "$mode_gaps"
+    bindsym Escape mode "default"
 }
 mode "$mode_gaps_inner" {
-        bindsym plus  gaps inner current plus 5
-        bindsym minus gaps inner current minus 5
-        bindsym 0     gaps inner current set 0
+    bindsym plus  gaps inner current plus 5
+    bindsym minus gaps inner current minus 5
+    bindsym 0     gaps inner current set 0
 
-        bindsym Shift+plus  gaps inner all plus 5
-        bindsym Shift+minus gaps inner all minus 5
-        bindsym Shift+0     gaps inner all set 0
+    bindsym Shift+plus  gaps inner all plus 5
+    bindsym Shift+minus gaps inner all minus 5
+    bindsym Shift+0     gaps inner all set 0
 
-        bindsym Return mode "$mode_gaps"
-        bindsym Escape mode "default"
+    bindsym Return mode "$mode_gaps"
+    bindsym Escape mode "default"
 }
 mode "$mode_gaps_horiz" {
-        bindsym plus  gaps horizontal current plus 5
-        bindsym minus gaps horizontal current minus 5
-        bindsym 0     gaps horizontal current set 0
+    bindsym plus  gaps horizontal current plus 5
+    bindsym minus gaps horizontal current minus 5
+    bindsym 0     gaps horizontal current set 0
 
-        bindsym Shift+plus  gaps horizontal all plus 5
-        bindsym Shift+minus gaps horizontal all minus 5
-        bindsym Shift+0     gaps horizontal all set 0
+    bindsym Shift+plus  gaps horizontal all plus 5
+    bindsym Shift+minus gaps horizontal all minus 5
+    bindsym Shift+0     gaps horizontal all set 0
 
-        bindsym Return mode "$mode_gaps"
-        bindsym Escape mode "default"
+    bindsym Return mode "$mode_gaps"
+    bindsym Escape mode "default"
 }
 mode "$mode_gaps_verti" {
-        bindsym plus  gaps vertical current plus 5
-        bindsym minus gaps vertical current minus 5
-        bindsym 0     gaps vertical current set 0
+    bindsym plus  gaps vertical current plus 5
+    bindsym minus gaps vertical current minus 5
+    bindsym 0     gaps vertical current set 0
 
-        bindsym Shift+plus  gaps vertical all plus 5
-        bindsym Shift+minus gaps vertical all minus 5
-        bindsym Shift+0     gaps vertical all set 0
+    bindsym Shift+plus  gaps vertical all plus 5
+    bindsym Shift+minus gaps vertical all minus 5
+    bindsym Shift+0     gaps vertical all set 0
 
-        bindsym Return mode "$mode_gaps"
-        bindsym Escape mode "default"
+    bindsym Return mode "$mode_gaps"
+    bindsym Escape mode "default"
 }
 mode "$mode_gaps_top" {
-        bindsym plus  gaps top current plus 5
-        bindsym minus gaps top current minus 5
-        bindsym 0     gaps top current set 0
+    bindsym plus  gaps top current plus 5
+    bindsym minus gaps top current minus 5
+    bindsym 0     gaps top current set 0
 
-        bindsym Shift+plus  gaps top all plus 5
-        bindsym Shift+minus gaps top all minus 5
-        bindsym Shift+0     gaps top all set 0
+    bindsym Shift+plus  gaps top all plus 5
+    bindsym Shift+minus gaps top all minus 5
+    bindsym Shift+0     gaps top all set 0
 
-        bindsym Return mode "$mode_gaps"
-        bindsym Escape mode "default"
+    bindsym Return mode "$mode_gaps"
+    bindsym Escape mode "default"
 }
 mode "$mode_gaps_right" {
-        bindsym plus  gaps right current plus 5
-        bindsym minus gaps right current minus 5
-        bindsym 0     gaps right current set 0
+    bindsym plus  gaps right current plus 5
+    bindsym minus gaps right current minus 5
+    bindsym 0     gaps right current set 0
 
-        bindsym Shift+plus  gaps right all plus 5
-        bindsym Shift+minus gaps right all minus 5
-        bindsym Shift+0     gaps right all set 0
+    bindsym Shift+plus  gaps right all plus 5
+    bindsym Shift+minus gaps right all minus 5
+    bindsym Shift+0     gaps right all set 0
 
-        bindsym Return mode "$mode_gaps"
-        bindsym Escape mode "default"
+    bindsym Return mode "$mode_gaps"
+    bindsym Escape mode "default"
 }
 mode "$mode_gaps_bottom" {
-        bindsym plus  gaps bottom current plus 5
-        bindsym minus gaps bottom current minus 5
-        bindsym 0     gaps bottom current set 0
+    bindsym plus  gaps bottom current plus 5
+    bindsym minus gaps bottom current minus 5
+    bindsym 0     gaps bottom current set 0
 
-        bindsym Shift+plus  gaps bottom all plus 5
-        bindsym Shift+minus gaps bottom all minus 5
-        bindsym Shift+0     gaps bottom all set 0
+    bindsym Shift+plus  gaps bottom all plus 5
+    bindsym Shift+minus gaps bottom all minus 5
+    bindsym Shift+0     gaps bottom all set 0
 
-        bindsym Return mode "$mode_gaps"
-        bindsym Escape mode "default"
+    bindsym Return mode "$mode_gaps"
+    bindsym Escape mode "default"
 }
 mode "$mode_gaps_left" {
-        bindsym plus  gaps left current plus 5
-        bindsym minus gaps left current minus 5
-        bindsym 0     gaps left current set 0
+    bindsym plus  gaps left current plus 5
+    bindsym minus gaps left current minus 5
+    bindsym 0     gaps left current set 0
 
-        bindsym Shift+plus  gaps left all plus 5
-        bindsym Shift+minus gaps left all minus 5
-        bindsym Shift+0     gaps left all set 0
+    bindsym Shift+plus  gaps left all plus 5
+    bindsym Shift+minus gaps left all minus 5
+    bindsym Shift+0     gaps left all set 0
 
-        bindsym Return mode "$mode_gaps"
-        bindsym Escape mode "default"
+    bindsym Return mode "$mode_gaps"
+    bindsym Escape mode "default"
 }
