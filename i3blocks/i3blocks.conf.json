@@ -28,8 +28,8 @@
             ],
             "time": [
                 {
-                    "day": 6,
-                    "night": 24,
+                    "day": 7,
+                    "night": 21,
                     "time_format": "%a%d %H:%M"
                 }
             ],
