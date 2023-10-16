@@ -47,4 +47,7 @@ fi
 shopt -s checkwinsize
 
 # theme
+export QT_QPA_PLATFORMTHEME="qt5ct"
+export GTK_APPLICATION_PREFER_DARK_THEME=1
 export GTK_THEME='Arc-Dark'
+export GTK_ICON_THEME="Wings-Dark-Icons"
