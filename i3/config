@@ -21,7 +21,7 @@ font pango:Inconsolata Bold 11
 
 # default overrides
 for_window [class="Alacritty"] title_format " %title"
-for_window [class="Sxiv"] floating enable
+for_window [class="feh"] floating enable
 
 # start some stuff
 exec_always --no-startup-id dex --autostart --environment i3
