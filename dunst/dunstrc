@@ -473,3 +473,8 @@
 [gpt-news.py]
     appname = gpt-news
     icon_position="left"
+
+[wifi-manager]
+    appname = wifi-manager
+    set_stack_tag = "wifi-manager"
+    new_icon = /usr/share/icons/breeze-dark/status/24/network-wireless-connected-100.svg
