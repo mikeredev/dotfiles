@@ -24,7 +24,8 @@ export BACKUP_LOCATION=~/data/backup/dotfiles
 export OPENAI_MODEL='gpt-3.5-turbo'
 export PATH=$PATH:~/.local/bin
 export PYTHONPATH=$PYTHONPATH:~/.config/pymodules
-export VISUAL=vim
+export EDITOR=vim
+export VISUAL=notepadqq
 
 # history
 HISTCONTROL=ignoreboth:erasedups
