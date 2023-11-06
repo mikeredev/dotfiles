@@ -474,7 +474,12 @@
     appname = gpt-news
     icon_position="left"
 
-[wifi-manager]
-    appname = wifi-manager
-    set_stack_tag = "wifi-manager"
+[manage-screenshot]
+    appname = manage-screenshot
+    timeout = 3
+    new_icon = /usr/share/icons/breeze-dark/applets/64/preferences-system-windows-effect-screenshot.svg
+
+[manage-wifi]
+    appname = manage-wifi
+    set_stack_tag = "manage-wifi"
     new_icon = /usr/share/icons/breeze-dark/status/24/network-wireless-connected-100.svg
