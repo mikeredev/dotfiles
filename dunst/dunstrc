@@ -123,11 +123,11 @@
 
     ### Text ###
 
-    font = Cantarell Mono Regular 10
+    font = Inconsolata Regular 11
 
     # The spacing between lines.  If the height is smaller than the
     # font height, it will get raised to the font height.
-    line_height = 4
+    line_height = 1
 
     # Possible values are:
     # full: Allow a small subset of html markup in notifications:
@@ -201,9 +201,8 @@
     enable_recursive_icon_lookup = true
 
     # Set icon theme (only used for recursive icon lookup)
-    icon_theme = breeze-dark
+    icon_theme = Wings-Dark-Icons
     # You can also set multiple icon themes, with the leftmost one being used first.
-    # icon_theme = "Adwaita, breeze"
 
     # Align icons left/right/top/off
     icon_position = right
@@ -217,7 +216,7 @@
     max_icon_size = 32
 
     # Paths to default icons (only neccesary when not using recursive icon lookup)
-    icon_path = /usr/share/icons/breeze-dark/preferences/32/
+    # icon_path = /usr/share/icons/breeze-dark/preferences/32/
 
     ### History ###
 
@@ -310,25 +309,20 @@
     per_monitor_dpi = false
 
 [urgency_low]
-    # IMPORTANT: colors have to be defined in quotation marks.
-    # Otherwise the "#" and following would be interpreted as a comment.
-    background = "#1a1a1aaa"
-    foreground = "#cccccc"
+    background = "#2A2A2A"  # Dark gray
+    foreground = "#CCCCCC"  # Light gray
     timeout = 5
-    default_icon = /usr/share/icons/breeze-dark/preferences/32/yast-kernel.svg
 
 [urgency_normal]
-    background = "#1a1a1aee"
-    foreground = "#cccccc"
-    timeout = 10
-    default_icon = /usr/share/icons/breeze-dark/preferences/32/yast-kernel.svg
+    background = "#1E1E1E"  # Slightly darker gray
+    foreground = "#CCCCCC"  # Light gray
+    timeout = 8
 
 [urgency_critical]
-    background = "#1a1a1aaa"
-    foreground = "#D0FFFA"
-    frame_color = "#D0FFFA"
+    background = "#2A2A2A"  # Dark gray
+    foreground = "#FF7777"  # Light red for critical
+    frame_color = "#FF7777"  # Light red for critical
     timeout = 0
-    default_icon = /usr/share/icons/breeze-dark/preferences/32/yast-kernel.svg
 
 # Every section that isn't one of the above is interpreted as a rules to
 # override settings for certain messages.
@@ -454,21 +448,19 @@
 #
 # vim: ft=cfg
 
+# dunstify -u low "low" "this is a low urgency notification" ; dunstify -u normal "normal" "this is a normal urgency notification" ; dunstify -u critial "critical" "this is a critical urgency notification"
+
 [brave/slack]
     desktop_entry="brave-browser"
     body = *slack.com*
-    new_icon = /usr/share/icons/breeze-dark/status/24/irc-channel-joined.svg
     set_stack_tag = "slack"
-    icon_position = "right"
-    format = "%s\n%b"
-    timeout = 3
+    format = "<b>%s</b>\n%b"
+    new_icon = /usr/share/icons/breeze-dark/status/24/irc-channel-joined.svg
 
 [brave/discord]
     desktop_entry="brave-browser"
     body = *discord.com*
-    #set_stack_tag = "discord"
-    icon_position = "right"
-    format = "%s\n%b"
+    format = "<b>%s</b>\n%b"
 
 [gpt-news.py]
     appname = gpt-news
@@ -477,9 +469,11 @@
 [manage-screenshot]
     appname = manage-screenshot
     timeout = 3
+    format = "<b>%s</b>\n%b"
     new_icon = ~/.local/share/icons/custom/screensaver-monitor-wallpaper.svg
 
 [manage-wifi]
     appname = manage-wifi
     set_stack_tag = "manage-wifi"
+    format = "<b>%s</b>\n%b"
     new_icon = ~/.local/share/icons/custom/wifi.svg
