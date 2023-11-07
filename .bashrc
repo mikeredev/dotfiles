@@ -25,7 +25,7 @@ export OPENAI_MODEL='gpt-3.5-turbo'
 export PATH=$PATH:~/.local/bin
 export PYTHONPATH=$PYTHONPATH:~/.config/pymodules
 export EDITOR=vim
-export VISUAL=notepadqq
+export VISUAL=vim
 
 # history
 HISTCONTROL=ignoreboth:erasedups
