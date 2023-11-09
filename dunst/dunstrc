@@ -73,7 +73,7 @@
     # The transparency of the window.  Range: [0; 100].
     # This option will only work if a compositing window manager is
     # present (e.g. xcompmgr, compiz, etc.). (X11 only)
-    transparency = 10
+    transparency = 0
 
     # Draw a line of "separator_height" pixel height between two
     # notifications.
@@ -101,7 +101,7 @@
     # If value is greater than 0, separator_height will be ignored and a border
     # of size frame_width will be drawn around each notification instead.
     # Click events on gaps do not currently propagate to applications below.
-    gap_size = 2
+    gap_size = 0
 
     # Define a color for the separator.
     # possible values are:
@@ -123,7 +123,7 @@
 
     ### Text ###
 
-    font = Inconsolata Regular 11
+    font = Inconsolata Regular 10
 
     # The spacing between lines.  If the height is smaller than the
     # font height, it will get raised to the font height.
@@ -249,7 +249,7 @@
     # corners.
     # The radius will be automatically lowered if it exceeds half of the
     # notification height to avoid clipping text and/or icons.
-    corner_radius = 10
+    corner_radius = 5
 
     # Ignore the dbus closeNotification message.
     # Useful to enforce the timeout set by dunst configuration. Without this
@@ -309,19 +309,19 @@
     per_monitor_dpi = false
 
 [urgency_low]
-    background = "#2A2A2A"  # Dark gray
-    foreground = "#CCCCCC"  # Light gray
+    background = "#282c34"
+    foreground = "#a9a9a9"
     timeout = 5
 
 [urgency_normal]
-    background = "#1E1E1E"  # Slightly darker gray
-    foreground = "#CCCCCC"  # Light gray
+    background = "#282c34"
+    foreground = "#a9a9a9"
     timeout = 8
 
 [urgency_critical]
-    background = "#2A2A2A"  # Dark gray
-    foreground = "#FF7777"  # Light red for critical
-    frame_color = "#FF7777"  # Light red for critical
+    background = "#282c34"
+    foreground = "#a9a9a9" 
+    frame_color = "#FFD4B9"
     timeout = 0
 
 # Every section that isn't one of the above is interpreted as a rules to
@@ -448,7 +448,7 @@
 #
 # vim: ft=cfg
 
-# dunstify -u low "low" "this is a low urgency notification" ; dunstify -u normal "normal" "this is a normal urgency notification" ; dunstify -u critial "critical" "this is a critical urgency notification"
+# kill $(pgrep dunst) ; dunstify -u low "low" "this is a low urgency notification" ; dunstify -u normal "normal" "this is a normal urgency notification" ; dunstify -u critical "critical" "this is a critical urgency notification"
 
 [brave/slack]
     desktop_entry="brave-browser"
@@ -468,12 +468,11 @@
 
 [manage-screenshot]
     appname = manage-screenshot
-    timeout = 3
     format = "<b>%s</b>\n%b"
-    new_icon = ~/.local/share/icons/custom/screensaver-monitor-wallpaper.svg
+    new_icon = ~/.config/dunst/screensaver-monitor-wallpaper.svg
 
 [manage-wifi]
     appname = manage-wifi
     set_stack_tag = "manage-wifi"
     format = "<b>%s</b>\n%b"
-    new_icon = ~/.local/share/icons/custom/wifi.svg
+    new_icon = ~/.config/dunst/icons/custom/wifi.svg
