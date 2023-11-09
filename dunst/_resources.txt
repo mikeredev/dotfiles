@@ -1,0 +1,9 @@
+source:
+    https://www.streamlinehq.com/freebies/core-line-free
+
+properties:
+    format              SVG
+    stroke              1px
+    responsive stroke   selected
+    color               #dddddd
+    background          transparent

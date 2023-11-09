@@ -1,0 +1,58 @@
+# destination path is relative to DESTINATION_DIR const in script
+
+backup-dotfiles:
+
+# alacritty
+  - source: ~/.config/alacritty/alacritty.yml
+    destination: alacritty/alacritty.yml
+
+# bash profile
+  - source: ~/.bashrc
+    destination: bash/.bashrc
+
+# backup conf (this file!)
+  - source: ~/.config/system-mgmt/backup-dotfiles.yaml
+    destination: system-mgmt/backup-dotfiles.yaml
+
+# vscode user settings
+  - source: ~/.config/VSCodium/User/settings.json
+    destination: vscodium/settings.json
+
+# dunst
+  - source: ~/.config/dunst
+    destination: dunst/
+
+# gtk settings
+  - source: ~/.config/gtk-3.0/settings.ini
+    destination: gtk/settings.ini
+
+# i3 base
+  - source: ~/.config/i3/config
+    destination: i3/config
+
+# i3blocks
+  - source: ~/.config/i3blocks/
+    destination: i3blocks/
+
+# picom
+  - source: ~/.config/picom/picom.conf
+    destination: picom/picom.conf
+
+# custom python modules
+  - source: ~/.config/pymodules/openai_chat.py
+    destination: pymodules/openai_chat.py
+
+  - source: ~/.config/pymodules/run_function.py
+    destination: pymodules/run_function.py
+
+# redshift
+  - source: ~/.config/redshift.conf
+    destination: redshift/redshift.conf
+
+# rofi themes
+  - source: ~/.config/rofi/themes/
+    destination: rofi/
+
+# vim
+  - source: ~/.vimrc
+    destination: vim/.vimrc
