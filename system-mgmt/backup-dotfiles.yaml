@@ -1,4 +1,5 @@
 # destination path is relative to DESTINATION_DIR const in script
+# specify file paths or represent folders with a trailing slash
 
 backup-dotfiles:
 

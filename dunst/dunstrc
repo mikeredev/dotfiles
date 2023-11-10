@@ -475,4 +475,4 @@
     appname = manage-wifi
     set_stack_tag = "manage-wifi"
     format = "<b>%s</b>\n%b"
-    new_icon = ~/.config/dunst/icons/custom/wifi.svg
+    new_icon = ~/.config/dunst/wifi.svg
