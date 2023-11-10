@@ -1,7 +1,4 @@
-""" backup-dotfiles.py
-desc:       check selected files for changes and copy them to another folder
-usage:      python backup-dotfiles.py
-"""
+#!/usr/bin/env python3
 
 import os
 import yaml
@@ -11,11 +8,13 @@ import filecmp
 DESTINATION_DIR = "/home/mishi/Documents/github_repos/dotfiles"
 CONFIG_FILE_LOC = "/home/mishi/.config/scripts/backup/backup-dotfiles.yaml"
 
+
 def create_directories(destination_paths):
     for path in destination_paths:
         directory = os.path.dirname(path)
         if not os.path.exists(directory):
             os.makedirs(directory)
+
 
 def copy_if_different(source, relative_destination):
     destination = os.path.join(DESTINATION_DIR, relative_destination)
@@ -28,8 +27,10 @@ def copy_if_different(source, relative_destination):
         shutil.copy2(source, destination)
         print(f"Copied: {source} to {destination}")
 
+
 def expand_user(path):
     return os.path.expanduser(path)
+
 
 def list_files_to_backup(paths):
     files_to_backup = []
@@ -51,6 +52,7 @@ def list_files_to_backup(paths):
             files_to_backup.append((source, destination))
 
     return files_to_backup
+
 
 def main():
     # Load your YAML configuration
@@ -78,6 +80,7 @@ def main():
             # Copy the files if the user agrees
             for source, relative_destination in files_to_backup:
                 copy_if_different(source, relative_destination)
+
 
 if __name__ == "__main__":
     try:
