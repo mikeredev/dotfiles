@@ -3,13 +3,13 @@
 [[ $- != *i* ]] && return
 
 # aliases
-alias backup='python ~/data/scripts/system-tools/backup-dotfiles.py'
+alias backup='python ~/.config/scripts/backup/backup-dotfiles.py'
 alias grep='grep --color=auto'
 alias gs='git status'
 alias gac='git add . && git commit -m'
 alias gp='git push -u origin'
 alias ls='ls -lA --color=auto --block-size=M'
-alias q='python ~/data/scripts/openai/gpt-chatbot-console.py'
+alias q='python ~/.config/scripts/openai/gpt-chatbot-console.py'
 alias rr='ranger'
 
 # api keys
@@ -19,7 +19,7 @@ export PINECONE_API_KEY=$(cat ~/data/auth/pinecone/pinecone_api_key.txt)
 # environment variables
 export OPENAI_MODEL='gpt-3.5-turbo'
 export PATH=$PATH:~/.local/bin
-export PYTHONPATH=$PYTHONPATH:~/.config/pymodules
+export PYTHONPATH=$PYTHONPATH:~/.config/scripts/modules
 export EDITOR=vim
 export VISUAL=vim
 

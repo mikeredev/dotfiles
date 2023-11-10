@@ -11,10 +11,6 @@ backup-dotfiles:
   - source: ~/.bashrc
     destination: bash/.bashrc
 
-# backup conf (this file!)
-  - source: ~/.config/system-mgmt/backup-dotfiles.yaml
-    destination: system-mgmt/backup-dotfiles.yaml
-
 # vscode user settings
   - source: ~/.config/VSCodium/User/settings.json
     destination: vscodium/settings.json
@@ -39,13 +35,6 @@ backup-dotfiles:
   - source: ~/.config/picom/picom.conf
     destination: picom/picom.conf
 
-# custom python modules
-  - source: ~/.config/pymodules/openai_chat.py
-    destination: pymodules/openai_chat.py
-
-  - source: ~/.config/pymodules/run_function.py
-    destination: pymodules/run_function.py
-
 # redshift
   - source: ~/.config/redshift.conf
     destination: redshift/redshift.conf
@@ -53,6 +42,10 @@ backup-dotfiles:
 # rofi themes
   - source: ~/.config/rofi/themes/
     destination: rofi/
+
+# scripts
+  - source: ~/.config/scripts/
+    destination: scripts/
 
 # vim
   - source: ~/.vimrc
