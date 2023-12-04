@@ -5,282 +5,326 @@
 # 2    ethernet
 # 3    wifi
 
-# set modkey
-set $mod Mod4
+# general configuration
+    # environment
+        set $mod                Mod4
+        set $locale             ie
+        set $terminal           alacritty
+    # screen
+        set $monitor            HDMI-0
+        set $resolution         1920x1080
+    # desktop
+        set $compositor         picom -f
+        set $notification_mgr   dunst
+        set $start_volume       40%
+        set $background         feh --bg-fill --randomize ~/Pictures/wallpapers/*
+    # window appearance
+        set $window_title_format [%title]
+        set $window_border_pixel 1
+        set $window_title_font  Inconsolata Bold 11
+        set $start_gaps_inner   2
+        set $start_gaps_outer   1
+        set $floating_windows   Pavucontrol|Gnome-tweaks|Lxappearance|feh
 
-# set monitor
-set $monitor HDMI-0
-exec_always xrandr --output:$monitor --mode 1920x1080
+# desktop
+    # rofi
+        bindsym $mod+d exec --no-startup-id rofi -show drun
+        bindsym $mod+Tab exec --no-startup-id rofi -show window
+    # xsession manager
+        bindsym $mod+l mode "$mode_xsession"
+    # volume control
+        bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && exec pkill -RTMIN+1 i3blocks
+        bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && exec pkill -RTMIN+1 i3blocks
+        bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && exec pkill -RTMIN+1 i3blocks
+        bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && exec pkill -RTMIN+1 i3blocks
+    # screenshots
+        bindsym $mod+Print exec --no-startup-id sh -c 'python ~/.config/scripts/tools/manage-screenshot.py --type full'
+        bindsym --release $mod+Shift+Print exec --no-startup-id sh -c 'python ~/.config/scripts/tools/manage-screenshot.py --type area'
+    # apps
+        bindsym $mod+Return exec i3-sensible-terminal
+        bindsym $mod+F1 exec --no-startup-id brave; workspace $ws2; focus
+        bindsym $mod+F2 exec --no-startup-id vscodium; workspace $ws2; focus
+        bindsym $mod+F3 exec --no-startup-id thunar
+    # custom / scripts
+        bindsym $mod+k exec --no-startup-id dunstctl history-pop
+        bindsym $mod+m exec --no-startup-id sh -c 'python ~/.config/scripts/rofi/manage-wifi.py'
+        bindsym $mod+x exec --no-startup-id sh -c 'python ~/.config/scripts/openai/gpt-chatbot-rofi.py'
+        bindsym $mod+i exec --no-startup-id redshift-gtk
 
-# set window properties
-for_window [class=".*"] border pixel 0
-for_window [class=".*"] title_format "%title"
-for_window [class="feh"] floating enable
-
-# set font
-font pango:Inconsolata Bold 11
-
-# startup
-exec_always --no-startup-id /usr/bin/dunst
-exec_always --no-startup-id feh --bg-fill --randomize ~/Pictures/wallpapers/*
-exec_always --no-startup-id picom -f
-exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ 40%
-#exec --no-startup-id sh -c 'python ~/.config/scripts/openai/gpt-news.py'
-
-# set keyboard locale
-exec_always setxkbmap ie
-
-# volume control (i3blocks signal 1)
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && exec pkill -RTMIN+1 i3blocks
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && exec pkill -RTMIN+1 i3blocks
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && exec pkill -RTMIN+1 i3blocks
-bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && exec pkill -RTMIN+1 i3blocks
-
-# keybindings
-bindsym $mod+Return exec i3-sensible-terminal
-bindsym $mod+d exec --no-startup-id rofi -show drun
-bindsym $mod+Shift+q kill
-
-# keybindings apps
-bindsym $mod+KP_End exec --no-startup-id brave
-bindsym $mod+KP_Down exec --no-startup-id vscodium
-bindsym $mod+KP_Page_Down exec --no-startup-id thunar
-#bindsym $mod+KP_Left exec
-#bindsym $mod+KP_Begin
-#bindsym $mod+KP_Right
-#bindsym $mod+KP_Home exec
-#bindsym $mod+KP_Up
-#bindsym $mod+KP_Page_Up
-
-# keybindings tools
-bindsym $mod+Shift+KP_End exec --no-startup-id dunstctl history-pop
-bindsym $mod+Shift+KP_Down exec --no-startup-id sh -c 'python ~/.config/scripts/rofi/manage-wifi.py'
-bindsym $mod+Shift+KP_Page_Down exec --no-startup-id sh -c 'python ~/.config/scripts/openai/gpt-chatbot-rofi.py'
-bindsym $mod+Shift+KP_Left exec --no-startup-id redshift-gtk
-#bindsym $mod+Shift+KP_Begin
-#bindsym $mod+Shift+KP_Right
-#bindsym $mod+Shift+KP_Home
-#bindsym $mod+Shift+KP_Up
-#bindsym $mod+Shift+KP_Page_Up
-
-# keybindings i3
-bindsym $mod+Ctrl+KP_End reload
-bindsym $mod+Ctrl+KP_Down restart
-bindsym $mod+Ctrl+KP_Page_Down exec "i3-nagbar -t warning -m 'Do you want to exit?' -B 'Yes, exit i3' 'i3-msg exit'"
-bindsym $mod+Ctrl+KP_Left layout stacking
-bindsym $mod+Ctrl+KP_Begin layout tabbed
-bindsym $mod+Ctrl+KP_Right layout toggle split
-bindsym $mod+Ctrl+KP_Home mode "resize"
-bindsym $mod+Ctrl+KP_Up mode "$mode_gaps"
-bindsym $mod+Ctrl+KP_Page_Up exec --no-startup-id sh -c 'python ~/.config/scripts/rofi/manage-power.py --rofi'
-
-# screenshots
-bindsym $mod+Print exec --no-startup-id sh -c 'python ~/.config/scripts/tools/manage-screenshot.py --type full'
-bindsym --release $mod+Shift+Print exec --no-startup-id sh -c 'python ~/.config/scripts/tools/manage-screenshot.py --type area'
-
-# statusbar
-bar {
-    status_command i3blocks -c ~/.config/i3blocks/i3blocks.conf
-    position top
-    height 30
-    font pango:Inconsolata Bold 11
-    separator_symbol " « "
-    workspace_buttons yes
-    workspace_min_width 75
-    strip_workspace_numbers yes
-    colors {
-        background #282c34
-        statusline #a9a9a9
-        separator #666666
-        focused_workspace #ffffff #4c566a #ffffff
-        active_workspace #ffffff #282c34 #ffffff
-        inactive_workspace #4c566a #282c34 #a9a9a9
-        urgent_workspace #ffffff #c678dd #ffffff
-    }
-}
+# windows
+    # appearance
+        font pango:$window_title_font
+        for_window [class=".*"] title_format $window_title_format
+        for_window [class=".*"] border pixel $window_border_pixel
+    # behaviour
+        floating_modifier $mod
+        focus_follows_mouse off
+        tiling_drag modifier titlebar
+        popup_during_fullscreen smart
+        for_window [class=$floating_windows] floating enable
+    # keybindings
+        # management
+            bindsym $mod+Shift+q kill
+            bindsym $mod+s mode "$mode_layout"
+            bindsym $mod+r mode "$mode_resize"
+            bindsym $mod+f fullscreen toggle
+            bindsym $mod+h split h
+            bindsym $mod+v split v
+            bindsym --whole-window $mod+button2 kill
+        # resizing
+            #bindsym $mod+Ctrl+Right resize grow width 1 px or 1 ppt
+            #bindsym $mod+Ctrl+Up resize grow height 1 px or 1 ppt
+            #bindsym $mod+Ctrl+Down resize shrink height 1 px or 1 ppt
+            #bindsym $mod+Ctrl+Left resize shrink width 1 px or 1 ppt            
+        # shift window focus
+            bindsym $mod+Left focus left
+            bindsym $mod+Down focus down
+            bindsym $mod+Up focus up
+            bindsym $mod+Right focus right
+        # shift window position
+            bindsym $mod+Shift+Left move left
+            bindsym $mod+Shift+Down move down
+            bindsym $mod+Shift+Up move up
+            bindsym $mod+Shift+Right move right
 
 # workspaces
-set $ws0 "0:"
-set $ws1 "1:"
-set $ws2 "2:"
-set $ws3 "3:"
+    # configuration
+        set $ws0 "0:"
+        set $ws1 "1:"
+        set $ws2 "2:"
+        set $ws3 "3:"
+    # keybindings
+        # switch to workspace
+            bindsym $mod+Control+Right workspace next
+            bindsym $mod+Control+Left workspace prev
+            bindsym $mod+0 workspace number $ws0
+            bindsym $mod+1 workspace number $ws1
+            bindsym $mod+2 workspace number $ws2
+            bindsym $mod+3 workspace number $ws3
+        # move focused container to workspace
+            bindsym $mod+Shift+0 move container to workspace number $ws0
+            bindsym $mod+Shift+1 move container to workspace number $ws1
+            bindsym $mod+Shift+2 move container to workspace number $ws2
+            bindsym $mod+Shift+3 move container to workspace number $ws3
 
-# assigned workspaces
-for_window [class="Brave-browser"] move to workspace $ws1
-for_window [class="VSCodium"] move to workspace $ws2
-for_window [class="steam"] move to workspace $ws3
+# screen configuration
+    exec_always xrandr --output $monitor --mode $resolution
 
-# switch to workspace
-bindsym $mod+0 workspace number $ws0
-bindsym $mod+1 workspace number $ws1
-bindsym $mod+2 workspace number $ws2
-bindsym $mod+3 workspace number $ws3
+# application rules
+    for_window [class="Brave-browser"] move to workspace $ws1
+    for_window [class="VSCodium"] move to workspace $ws2
+    for_window [class="steam"] move to workspace $ws3
 
-# move focused container to workspace
-bindsym $mod+Shift+0 move container to workspace number $ws0
-bindsym $mod+Shift+1 move container to workspace number $ws1
-bindsym $mod+Shift+2 move container to workspace number $ws2
-bindsym $mod+Shift+3 move container to workspace number $ws3
+# extras
+    gaps inner $start_gaps_inner
+    gaps outer $start_gaps_outer
 
-# shift window focus
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
+# launch
+    exec_always --no-startup-id $notification_mgr
+    exec_always --no-startup-id $compositor
+    exec_always --no-startup-id $background
+    exec_always --no-startup-id setxkbmap $locale
+    exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ $start_volume
 
-# shift window position
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
+# statusbar
+    bar {
+        status_command i3blocks -c ~/.config/i3blocks/i3blocks.conf
+        font pango:$window_title_font
+        position top
+        height 30
+        workspace_min_width 75
+        separator_symbol " « "
+        workspace_buttons yes
+        strip_workspace_numbers yes
+        colors {
+            background $black
+            statusline $lightgrey
+            separator $darkgrey
+            # class             border backgr. text
+            focused_workspace   $white $darkgrey $white
+            active_workspace    $white $black $white
+            inactive_workspace  $darkgrey $black $lightgrey
+            urgent_workspace    $darkgreen $orange $darkgrey
+        }
+    }
 
-# split orientation horz/vert
-bindsym $mod+h split h
-bindsym $mod+v split v
+# appearance
+    # colors
+        set $black      #282c34
+        set $white      #ffffff
+        set $lightgrey  #a9a9a9
+        set $darkgrey   #4c566a
+        set $green      #00ff66
+        set $darkgreen  #149414
+        set $orange     #ff8c00
+    # windows
+        # class                 border backgr. text indicator child_border
+        client.focused          $black $green $black $orange
+        client.focused_inactive $darkgrey $darkgrey $black
+        client.unfocused        $black $black $darkgrey
+        client.urgent           $darkgreen $green $darkgrey
+        client.placeholder      $black $black $darkgrey
+        client.background       $black
 
-# enter fullscreen
-bindsym $mod+f fullscreen toggle
+# modes 
+    # layout mode - switch between stacked/tabbed views
+        set $mode_layout Layout: stacking(s), tabbed(w), toggle split(e)
+        mode "$mode_layout" {
+            bindsym s       layout stacking
+            bindsym w       layout tabbed
+            bindsym e       layout toggle split
+            bindsym Return  mode "default"
+            bindsym Escape  mode "default"
+        }
 
-# Use Mouse+$mod to drag floating windows to their wanted position
-floating_modifier $mod
+    # session mode - lock, logoff, reboot, etc. also reload or restart i3.
+        set $mode_xsession Xsession: lock(Return), suspend(s), hibernate($mod+Ctrl+h), reload i3(r), restart i3(c), logoff($mod+Ctrl+x), reboot($mod+Ctrl+r), poweroff($mod+Ctrl+s)
+        mode "$mode_xsession" {
+            bindsym Return          exec --no-startup-id i3lock -efi ~/Pictures/wallpapers/arch_pixel_dark.png, mode "default"
+            bindsym s               exec systemctl suspend, mode "default"
+            bindsym $mod+Ctrl+h     exec systemctl hibernate, mode "default"
+            bindsym r               reload
+            bindsym c               restart
+            bindsym $mod+Ctrl+x     exec i3-msg exit
+            bindsym $mod+Ctrl+r     exec systemctl reboot
+            bindsym $mod+Ctrl+s     exec systemctl poweroff
+            bindsym Escape          mode "default"
+        }
 
-# move tiling windows via drag & drop by left-clicking into the title bar,
-# or left-clicking anywhere into the window while holding the floating modifier.
-tiling_drag modifier titlebar
+    # window mode - enter resize or gaps manual modes
+        set $mode_resize Window: resize(r), gaps(g)
+        mode "$mode_resize" {
+            bindsym r       mode "resize"
+            bindsym g       mode "$mode_gaps"
+            bindsym Escape  mode "default"
+        }
 
-# resize window (you can also use the mouse for that)
-mode "resize" {
-    # These bindings trigger as soon as you enter the resize mode
-    bindsym Left resize shrink width 10 px or 10 ppt
-    bindsym Down resize grow height 10 px or 10 ppt
-    bindsym Up resize shrink height 10 px or 10 ppt
-    bindsym Right resize grow width 10 px or 10 ppt
+    # resize mode
+        mode "resize" {
+            bindsym Left resize shrink width 10 px or 10 ppt
+            bindsym Down resize grow height 10 px or 10 ppt
+            bindsym Up resize shrink height 10 px or 10 ppt
+            bindsym Right resize grow width 10 px or 10 ppt
+            bindsym Return mode "default"
+            bindsym Escape mode "default"
+        }
 
-    # back to normal: Enter or Escape
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
+    # gaps mode
+        set $mode_gaps Gaps: (o)uter, (i)nner, (h)orizontal, (v)ertical, (t)op, (r)ight, (b)ottom, (l)eft
+        set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
+        set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
+        set $mode_gaps_horiz Horizontal Gaps: +|-|0 (local), Shift + +|-|0 (global)
+        set $mode_gaps_verti Vertical Gaps: +|-|0 (local), Shift + +|-|0 (global)
+        set $mode_gaps_top Top Gaps: +|-|0 (local), Shift + +|-|0 (global)
+        set $mode_gaps_right Right Gaps: +|-|0 (local), Shift + +|-|0 (global)
+        set $mode_gaps_bottom Bottom Gaps: +|-|0 (local), Shift + +|-|0 (global)
+        set $mode_gaps_left Left Gaps: +|-|0 (local), Shift + +|-|0 (global)
 
-# start with gaps
-gaps inner 2
-gaps outer 1
+        mode "$mode_gaps" {
+            bindsym o      mode "$mode_gaps_outer"
+            bindsym i      mode "$mode_gaps_inner"
+            bindsym h      mode "$mode_gaps_horiz"
+            bindsym v      mode "$mode_gaps_verti"
+            bindsym t      mode "$mode_gaps_top"
+            bindsym r      mode "$mode_gaps_right"
+            bindsym b      mode "$mode_gaps_bottom"
+            bindsym l      mode "$mode_gaps_left"
+            bindsym Return mode "$mode_gaps"
+            bindsym Escape mode "default"
+        }
+        mode "$mode_gaps_outer" {
+            bindsym plus  gaps outer current plus 5
+            bindsym minus gaps outer current minus 5
+            bindsym 0     gaps outer current set 0
 
-# gaps
-set $mode_gaps Gaps: (o)uter, (i)nner, (h)orizontal, (v)ertical, (t)op, (r)ight, (b)ottom, (l)eft
-set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
-set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
-set $mode_gaps_horiz Horizontal Gaps: +|-|0 (local), Shift + +|-|0 (global)
-set $mode_gaps_verti Vertical Gaps: +|-|0 (local), Shift + +|-|0 (global)
-set $mode_gaps_top Top Gaps: +|-|0 (local), Shift + +|-|0 (global)
-set $mode_gaps_right Right Gaps: +|-|0 (local), Shift + +|-|0 (global)
-set $mode_gaps_bottom Bottom Gaps: +|-|0 (local), Shift + +|-|0 (global)
-set $mode_gaps_left Left Gaps: +|-|0 (local), Shift + +|-|0 (global)
+            bindsym Shift+plus  gaps outer all plus 5
+            bindsym Shift+minus gaps outer all minus 5
+            bindsym Shift+0     gaps outer all set 0
 
-mode "$mode_gaps" {
-    bindsym o      mode "$mode_gaps_outer"
-    bindsym i      mode "$mode_gaps_inner"
-    bindsym h      mode "$mode_gaps_horiz"
-    bindsym v      mode "$mode_gaps_verti"
-    bindsym t      mode "$mode_gaps_top"
-    bindsym r      mode "$mode_gaps_right"
-    bindsym b      mode "$mode_gaps_bottom"
-    bindsym l      mode "$mode_gaps_left"
-    bindsym Return mode "$mode_gaps"
-    bindsym Escape mode "default"
-}
-mode "$mode_gaps_outer" {
-    bindsym plus  gaps outer current plus 5
-    bindsym minus gaps outer current minus 5
-    bindsym 0     gaps outer current set 0
+            bindsym Return mode "$mode_gaps"
+            bindsym Escape mode "default"
+        }
+        mode "$mode_gaps_inner" {
+            bindsym plus  gaps inner current plus 5
+            bindsym minus gaps inner current minus 5
+            bindsym 0     gaps inner current set 0
 
-    bindsym Shift+plus  gaps outer all plus 5
-    bindsym Shift+minus gaps outer all minus 5
-    bindsym Shift+0     gaps outer all set 0
+            bindsym Shift+plus  gaps inner all plus 5
+            bindsym Shift+minus gaps inner all minus 5
+            bindsym Shift+0     gaps inner all set 0
 
-    bindsym Return mode "$mode_gaps"
-    bindsym Escape mode "default"
-}
-mode "$mode_gaps_inner" {
-    bindsym plus  gaps inner current plus 5
-    bindsym minus gaps inner current minus 5
-    bindsym 0     gaps inner current set 0
+            bindsym Return mode "$mode_gaps"
+            bindsym Escape mode "default"
+        }
+        mode "$mode_gaps_horiz" {
+            bindsym plus  gaps horizontal current plus 5
+            bindsym minus gaps horizontal current minus 5
+            bindsym 0     gaps horizontal current set 0
 
-    bindsym Shift+plus  gaps inner all plus 5
-    bindsym Shift+minus gaps inner all minus 5
-    bindsym Shift+0     gaps inner all set 0
+            bindsym Shift+plus  gaps horizontal all plus 5
+            bindsym Shift+minus gaps horizontal all minus 5
+            bindsym Shift+0     gaps horizontal all set 0
 
-    bindsym Return mode "$mode_gaps"
-    bindsym Escape mode "default"
-}
-mode "$mode_gaps_horiz" {
-    bindsym plus  gaps horizontal current plus 5
-    bindsym minus gaps horizontal current minus 5
-    bindsym 0     gaps horizontal current set 0
+            bindsym Return mode "$mode_gaps"
+            bindsym Escape mode "default"
+        }
+        mode "$mode_gaps_verti" {
+            bindsym plus  gaps vertical current plus 5
+            bindsym minus gaps vertical current minus 5
+            bindsym 0     gaps vertical current set 0
 
-    bindsym Shift+plus  gaps horizontal all plus 5
-    bindsym Shift+minus gaps horizontal all minus 5
-    bindsym Shift+0     gaps horizontal all set 0
+            bindsym Shift+plus  gaps vertical all plus 5
+            bindsym Shift+minus gaps vertical all minus 5
+            bindsym Shift+0     gaps vertical all set 0
 
-    bindsym Return mode "$mode_gaps"
-    bindsym Escape mode "default"
-}
-mode "$mode_gaps_verti" {
-    bindsym plus  gaps vertical current plus 5
-    bindsym minus gaps vertical current minus 5
-    bindsym 0     gaps vertical current set 0
+            bindsym Return mode "$mode_gaps"
+            bindsym Escape mode "default"
+        }
+        mode "$mode_gaps_top" {
+            bindsym plus  gaps top current plus 5
+            bindsym minus gaps top current minus 5
+            bindsym 0     gaps top current set 0
 
-    bindsym Shift+plus  gaps vertical all plus 5
-    bindsym Shift+minus gaps vertical all minus 5
-    bindsym Shift+0     gaps vertical all set 0
+            bindsym Shift+plus  gaps top all plus 5
+            bindsym Shift+minus gaps top all minus 5
+            bindsym Shift+0     gaps top all set 0
 
-    bindsym Return mode "$mode_gaps"
-    bindsym Escape mode "default"
-}
-mode "$mode_gaps_top" {
-    bindsym plus  gaps top current plus 5
-    bindsym minus gaps top current minus 5
-    bindsym 0     gaps top current set 0
+            bindsym Return mode "$mode_gaps"
+            bindsym Escape mode "default"
+        }
+        mode "$mode_gaps_right" {
+            bindsym plus  gaps right current plus 5
+            bindsym minus gaps right current minus 5
+            bindsym 0     gaps right current set 0
 
-    bindsym Shift+plus  gaps top all plus 5
-    bindsym Shift+minus gaps top all minus 5
-    bindsym Shift+0     gaps top all set 0
+            bindsym Shift+plus  gaps right all plus 5
+            bindsym Shift+minus gaps right all minus 5
+            bindsym Shift+0     gaps right all set 0
 
-    bindsym Return mode "$mode_gaps"
-    bindsym Escape mode "default"
-}
-mode "$mode_gaps_right" {
-    bindsym plus  gaps right current plus 5
-    bindsym minus gaps right current minus 5
-    bindsym 0     gaps right current set 0
+            bindsym Return mode "$mode_gaps"
+            bindsym Escape mode "default"
+        }
+        mode "$mode_gaps_bottom" {
+            bindsym plus  gaps bottom current plus 5
+            bindsym minus gaps bottom current minus 5
+            bindsym 0     gaps bottom current set 0
 
-    bindsym Shift+plus  gaps right all plus 5
-    bindsym Shift+minus gaps right all minus 5
-    bindsym Shift+0     gaps right all set 0
+            bindsym Shift+plus  gaps bottom all plus 5
+            bindsym Shift+minus gaps bottom all minus 5
+            bindsym Shift+0     gaps bottom all set 0
 
-    bindsym Return mode "$mode_gaps"
-    bindsym Escape mode "default"
-}
-mode "$mode_gaps_bottom" {
-    bindsym plus  gaps bottom current plus 5
-    bindsym minus gaps bottom current minus 5
-    bindsym 0     gaps bottom current set 0
+            bindsym Return mode "$mode_gaps"
+            bindsym Escape mode "default"
+        }
+        mode "$mode_gaps_left" {
+            bindsym plus  gaps left current plus 5
+            bindsym minus gaps left current minus 5
+            bindsym 0     gaps left current set 0
 
-    bindsym Shift+plus  gaps bottom all plus 5
-    bindsym Shift+minus gaps bottom all minus 5
-    bindsym Shift+0     gaps bottom all set 0
+            bindsym Shift+plus  gaps left all plus 5
+            bindsym Shift+minus gaps left all minus 5
+            bindsym Shift+0     gaps left all set 0
 
-    bindsym Return mode "$mode_gaps"
-    bindsym Escape mode "default"
-}
-mode "$mode_gaps_left" {
-    bindsym plus  gaps left current plus 5
-    bindsym minus gaps left current minus 5
-    bindsym 0     gaps left current set 0
-
-    bindsym Shift+plus  gaps left all plus 5
-    bindsym Shift+minus gaps left all minus 5
-    bindsym Shift+0     gaps left all set 0
-
-    bindsym Return mode "$mode_gaps"
-    bindsym Escape mode "default"
-}
+            bindsym Return mode "$mode_gaps"
+            bindsym Escape mode "default"
+        }
