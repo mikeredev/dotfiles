@@ -31,6 +31,10 @@ backup-dotfiles:
   - source: ~/.config/i3blocks/
     destination: i3blocks/
 
+# picom
+  - source: ~/.config/picom/picom.conf
+    destination: picom/picom.conf
+
 # redshift
   - source: ~/.config/redshift.conf
     destination: redshift/redshift.conf
