@@ -1,7 +1,7 @@
 * {
     foreground:                 #cccccc;
-    background-color:           #282c3477;
-    background:                 @background-color;
+    background-color:           transparent;
+    normal-background:          #282c34ef;
     selected-foreground:        #8ae234;
     selected-background:        #149414;
     message-background:         #4c566a;
@@ -18,7 +18,7 @@ window {
 }
 
 mainbox {
-    background-color:   @background;
+    background-color:   @normal-background;
 }
 
 inputbar {
@@ -45,8 +45,8 @@ textbox {
 }
 
 listview {
-    scrollbar:          false;
     padding:            0px;
+    scrollbar:          false;
 }
 
 element {
@@ -64,11 +64,20 @@ element-icon {
 }
 
 element-text {
-    background-color:   inherit;
     text-color:         inherit;
+}
+
+element {
+    background-color:   inherit;
+    border-radius:      5px;
 }
 
 element.selected {
     background-color:   @selected-background;
     text-color:         @selected-foreground;
+}
+
+error-message {
+    expand:             true;
+    background-color:   @normal-background;
 }

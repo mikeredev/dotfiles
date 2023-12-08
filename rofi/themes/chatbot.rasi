@@ -1,3 +1,14 @@
+/**
+ * based on:
+ *
+ * ROFI Color theme
+ * User: Qball
+ * Copyright: Dave Davenport
+ *
+ * changes:
+ * entry width
+ */
+
 * {
     background-color:   #1E1E1E;
     border-color:       #282c34;
@@ -9,7 +20,7 @@ window {
     location:           north;
     width:              100%;
     height:             30px;
-    padding:            5px;
+    padding:            7px;
     children:           [ horibox ];
 }
 horibox {
@@ -23,7 +34,7 @@ listview {
 }
 entry {
     expand:     false;
-    width:      10em;
+    width:      95%;
     padding:    0px 10px;
 }
 element {

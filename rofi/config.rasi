@@ -1,0 +1,11 @@
+configuration {
+    modi:                   [ drun, ssh, window ];
+    combi-modi:             [ drun, ssh, window ];
+    //display-drun:           "launch";
+    display-window:         "workspace";
+    //drun-display-format:    "{name}";
+    disable-history:        true;
+ }
+ 
+@theme "/home/mishi/.config/rofi/themes/sidebar.rasi"
+

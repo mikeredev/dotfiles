@@ -40,7 +40,7 @@ backup-dotfiles:
     destination: redshift/redshift.conf
 
 # rofi themes
-  - source: ~/.config/rofi/themes/
+  - source: ~/.config/rofi/
     destination: rofi/
 
 # scripts
