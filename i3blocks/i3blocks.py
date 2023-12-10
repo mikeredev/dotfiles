@@ -6,13 +6,14 @@ from importlib import import_module
 
 # define a dictionary mapping i3blocks indicators to their corresponding module names
 i3blocks = {
-    "gpu": "check_gpu",
-    "load": "check_load",
-    "memory": "check_memory",
-    "time": "check_time",
-    "volume": "check_volume",
-    "wifi": "check_wifi"
+    "gpu":      "check_gpu",
+    "load":     "check_load",
+    "memory":   "check_memory",
+    "time":     "check_time",
+    "volume":   "check_volume",
+    "wifi":     "check_wifi"
 }
+
 
 # define the main function for handling command-line arguments and invoking module checks
 def main():

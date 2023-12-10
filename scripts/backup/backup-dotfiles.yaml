@@ -23,7 +23,7 @@ backup-dotfiles:
   - source: ~/.config/gtk-3.0/settings.ini
     destination: gtk/settings.ini
 
-# i3 base
+# i3wm
   - source: ~/.config/i3/config
     destination: i3/config
 
@@ -39,7 +39,7 @@ backup-dotfiles:
   - source: ~/.config/redshift.conf
     destination: redshift/redshift.conf
 
-# rofi themes
+# rofi
   - source: ~/.config/rofi/
     destination: rofi/
 
