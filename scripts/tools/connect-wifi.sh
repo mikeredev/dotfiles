@@ -2,7 +2,7 @@
 # requires: nmcli, rofi, dunst
 
 # Display an initial notification (scan can take a few seconds)
-dunstify -a manage-wifi "scanning" "this may take a few moments..."
+dunstify -a manage-wifi "scanning 🤔" "this may take a few moments..."
 
 # Run the nmcli command and store the output in an array
 readarray -t wifi_info_array < <(nmcli -t -f "Signal,SSID,Security,IN-USE" device wifi)

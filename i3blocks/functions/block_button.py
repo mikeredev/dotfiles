@@ -1,4 +1,4 @@
-# import required modules
+# import required functions/modules
 import os
 from functions.run_shell_command import run_shell_command as run
 
@@ -6,7 +6,6 @@ from functions.run_shell_command import run_shell_command as run
 # function to handle mouse button actions
 # 1 left, 2 middle, 3 right, 4 mouse up, 5 mouse down
 def block_button(module, button):
-
     # Define the button actions for each module
     module_actions = {
         "check_volume": {
