@@ -5,7 +5,7 @@
     "editor.cursorBlinking": "smooth",
     "editor.cursorSmoothCaretAnimation": "on",
     "editor.detectIndentation": false,
-    "editor.fontFamily": "'Monaco', monospace, 'Font Awesome 6 Brands', 'Font Awesome 6 Free Solid'",
+    "editor.fontFamily": "'Monaco', monospace, 'Inconsolata Nerd Font', 'Font Awesome 6 Brands', 'Font Awesome 6 Free Solid'",
     "editor.fontSize": 12,
     "editor.fontWeight": "normal",
     "editor.fontLigatures": true,
