@@ -48,7 +48,6 @@
         for_window [class=".*"] border pixel $border_px
         gaps inner 2
         gaps outer 1
-        hide_edge_borders vertical
     # behaviour
         smart_borders on
         floating_modifier $mod
@@ -109,7 +108,7 @@
     for_window [class="VSCodium"] move to workspace $ws2
     for_window [class="steam"] move to workspace $ws3
 
-# launch
+# autostart
     exec --no-startup-id dunst
     exec --no-startup-id picom -b
     exec_always --no-startup-id feh --bg-fill $background
@@ -125,7 +124,7 @@
         set $darkgrey           #4c566a
         set $green              #8ae234
         set $darkgreen          #149414
-        set $orange             #ff8c00
+        set $orange             #ffa500
     # windows
         # class                 border      backgr.     text        indicator   child_border
         client.focused          $darkgrey   $black      $lightgrey  $orange     $green
@@ -140,7 +139,7 @@
         status_command          i3blocks -c ~/.config/i3blocks/i3blocks.conf
         position                top
         height                  30
-        tray_padding            5
+        tray_padding            4
         workspace_min_width     75
         separator_symbol        "/"
         workspace_buttons       yes
@@ -153,13 +152,13 @@
             focused_workspace   $white      $darkgrey   $white
             inactive_workspace  $darkgrey   $black      $lightgrey
             urgent_workspace    $lightgrey  $green      $darkgreen
-            binding_mode        $black      $black      $green
+            binding_mode        $black      $black      $orange
         }
     }
 
 # binding modes
     # session mode - lock, reboot, etc. also reload or restart i3.
-        set $mode_session session: lock(Return), suspend(s), reload i3(r), restart i3(c), logoff($mod+Ctrl+x), reboot($mod+Ctrl+r), poweroff($mod+Ctrl+s)
+        set $mode_session lock(Return), (s)uspend, (r)eload i3, restart i3(c), logoff($mod+Ctrl+x), reboot($mod+Ctrl+r), poweroff($mod+Ctrl+s)
         mode "$mode_session" {
             bindsym Return      exec --no-startup-id i3lock -efti $lockscreen, mode "default"
             bindsym s           exec --no-startup-id i3lock -efti $lockscreen && exec systemctl suspend, mode "default"
