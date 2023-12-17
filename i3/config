@@ -10,7 +10,7 @@
         set $background     --randomize ~/Pictures/wallpapers/*
         set $lockscreen     ~/Pictures/wallpapers/lockscreen.png
     # window appearance
-        set $font           monospace 9
+        set $font           JetBrains Mono Bold 9
         set $title          <span font='JetBrains Mono Light 9'>[%title]</span>
         set $border_px      1
     # window behaviour
@@ -37,6 +37,9 @@
         bindsym $mod+space exec --no-startup-id dunstctl history-pop
         bindsym $mod+mod2+KP_0 mode "$mode_menu"
         bindsym $mod+l mode "$mode_session"
+        #bindsym $mod+mod2+KP_8 exec --no-startup-id i3-msg reload
+        #bindsym $mod+mod2+KP_9 exec --no-startup-id i3-msg restart
+        #bindsym $mod+l exec --no-startup-id sh -c "~/.config/scripts/tools/powermenu.sh"
 
 # containers
     # appearance
@@ -159,9 +162,9 @@
         set $mode_session session: lock(Return), suspend(s), reload i3(r), restart i3(c), logoff($mod+Ctrl+x), reboot($mod+Ctrl+r), poweroff($mod+Ctrl+s)
         mode "$mode_session" {
             bindsym Return      exec --no-startup-id i3lock -efti $lockscreen, mode "default"
-            bindsym s           exec i3lock -efti $lockscreen && exec systemctl suspend, mode "default"
-            bindsym r           reload
-            bindsym c           restart
+            bindsym s           exec --no-startup-id i3lock -efti $lockscreen && exec systemctl suspend, mode "default"
+            bindsym r           exec i3-msg reload
+            bindsym c           exec i3-msg restart
             bindsym $mod+Ctrl+x exec i3-msg exit
             bindsym $mod+Ctrl+r exec systemctl reboot
             bindsym $mod+Ctrl+s exec systemctl poweroff
