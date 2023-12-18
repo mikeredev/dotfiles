@@ -5,7 +5,7 @@ import yaml
 import shutil
 import filecmp
 
-DESTINATION_DIR = "/home/mishi/Documents/github_repos/dotfiles"
+DESTINATION_DIR = "/home/mishi/Documents/github/dotfiles"
 CONFIG_FILE_LOC = "/home/mishi/.config/scripts/backup/backup-dotfiles.yaml"
 
 

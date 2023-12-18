@@ -13,12 +13,12 @@ alias q='python ~/.config/scripts/openai/gpt-chatbot-console.py'
 alias rr='ranger'
 
 # api keys
-export OPENAI_API_KEY=$(cat ~/data/auth/openai/openai_api_key.txt)
-export PINECONE_API_KEY=$(cat ~/data/auth/pinecone/pinecone_api_key.txt)
+export OPENAI_API_KEY=$(cat ~/Documents/auth/openai//openai_api_key.txt)
+export PINECONE_API_KEY=$(cat ~/Documents/auth/pinecone/pinecone_api_key.txt)
 
 # environment variables
 export OPENAI_MODEL='gpt-3.5-turbo'
-export PATH=$PATH:~/.local/bin
+#export PATH=$PATH:~/.local/bin
 export PYTHONPATH=$PYTHONPATH:~/.config/scripts/modules
 export EDITOR=vim
 export VISUAL=vim

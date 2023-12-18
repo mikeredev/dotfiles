@@ -34,14 +34,11 @@
         bindsym $mod+mod2+KP_2 exec --no-startup-id vscodium; workspace $ws2; focus
         bindsym $mod+mod2+KP_3 exec --no-startup-id thunar
     # custom / scripts
-        bindsym $mod+space exec --no-startup-id dunstctl history-pop
         bindsym $mod+mod2+KP_0 mode "$mode_menu"
+        bindsym $mod+mod2+KP_Decimal exec --no-startup-id dunstctl history-pop
         bindsym $mod+l mode "$mode_session"
-        #bindsym $mod+mod2+KP_8 exec --no-startup-id i3-msg reload
-        #bindsym $mod+mod2+KP_9 exec --no-startup-id i3-msg restart
-        #bindsym $mod+l exec --no-startup-id sh -c "~/.config/scripts/tools/powermenu.sh"
 
-# containers
+# containers/windows
     # appearance
         font pango:$font
         for_window [class=".*"] title_format $title
@@ -52,7 +49,7 @@
         smart_borders on
         floating_modifier $mod
         focus_follows_mouse off
-        tiling_drag modifier titlebar
+        tiling_drag modifier
         for_window [class=$float_class] floating enable, border pixel 0
         for_window [window_type="dialog"] move absolute position center, border pixel 0
     # keybindings
@@ -176,7 +173,6 @@
             bindsym mod2+KP_1   mode "$mode_containers"
             bindsym mod2+KP_2   exec --no-startup-id sh -c '~/.config/scripts/tools/connect-wifi.sh', mode "default"
             bindsym mod2+KP_3   exec --no-startup-id sh -c 'python ~/.config/scripts/openai/gpt-chatbot-rofi.py', mode "default"
-            bindsym Return      mode "$mode_menu"
             bindsym Escape      mode "default"
         }
 
@@ -186,7 +182,6 @@
             bindsym mod2+KP_1   mode "$mode_layout"
             bindsym mod2+KP_2   mode "$mode_resize"
             bindsym mod2+KP_3   mode "$mode_gaps"
-            bindsym Return      mode "$mode_containers"
             bindsym Escape      mode "default"
         }
 
@@ -198,7 +193,7 @@
                 bindsym mod2+KP_2   layout stacking
                 bindsym mod2+KP_3   layout tabbed
                 bindsym Return      mode "default"
-                bindsym Escape      mode "$mode_containers"
+                bindsym Escape      mode "default"
             }
 
         # resize mode
@@ -209,7 +204,7 @@
                 bindsym Down    resize shrink height 10 px or 10 ppt
                 bindsym Left    resize shrink width 10 px or 10 ppt
                 bindsym Return  mode "default"
-                bindsym Escape  mode "$mode_containers"
+                bindsym Escape  mode "default"
             }
 
         # gaps mode
@@ -233,7 +228,7 @@
                 bindsym b      mode "$mode_gaps_bottom"
                 bindsym l      mode "$mode_gaps_left"
                 bindsym Return mode "default"
-                bindsym Escape mode "$mode_containers"
+                bindsym Escape mode "default"
             }
             mode "$mode_gaps_outer" {
                 bindsym plus  gaps outer current plus 5

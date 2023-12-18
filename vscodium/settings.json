@@ -11,13 +11,11 @@
     "editor.fontLigatures": true,
     "editor.formatOnType": true,
     "editor.formatOnSave": false,
-    "[python]": {
-        "editor.formatOnSave": true,
-    },
     "editor.insertSpaces": true,
     "editor.indentSize": 4,
-    "editor.letterSpacing": 0.2,
-    "editor.lineHeight": 1.6,
+    "editor.letterSpacing": 0.4,
+    "editor.lineHeight": 1.5,
+    "editor.minimap.enabled": false,
     "editor.quickSuggestions": {
         "other": false,
         "comments": false,
@@ -27,17 +25,33 @@
     "editor.tabSize": 4,
     "editor.tabCompletion": "on",
     "editor.wordSeparators": "`~!@#$%^&*()-=+[{]}\\|;:'\",.<>/?",
+    "editor.tokenColorCustomizations": {
+        "textMateRules": [
+          {
+            "scope": "comment",
+            "settings": {
+              "fontStyle": "italic"
+            },
+          },
+        ]
+      },
     "git.confirmSync": false,
-    "security.workspace.trust.untrustedFiles": "open",
-    "terminal.integrated.fontFamily": "'JetBrains Mono', monospace, 'Noto Color Emoji', 'Font Awesome 6 Brands', 'Font Awesome 6 Free Solid'",
-    "workbench.colorTheme": "Monokai Dimmed",
-    "window.menuBarVisibility": "toggle",
-    "workbench.statusBar.visible": false,
-    "workbench.tree.indent": 20,
-    "workbench.tree.renderIndentGuides": "always",
-    "workbench.colorCustomizations": {
-    "tree.indentGuidesStroke": "#05ef3c",
+    "[python]": {
+        "editor.formatOnSave": true,
     },
-    "editor.minimap.enabled": false,
-    "terminal.integrated.fontSize": 12
+    "security.workspace.trust.untrustedFiles": "open",
+    "terminal.integrated.fontFamily": "'Fira Code Retina', monospace, 'Noto Color Emoji', 'Font Awesome 6 Brands', 'Font Awesome 6 Free Solid'",
+    "terminal.integrated.fontSize": 12,
+    "terminal.integrated.lineHeight": 1.2,
+    "window.menuBarVisibility": "toggle",
+    "workbench.colorCustomizations": {
+        "editorBracketHighlight.foreground1": "#ffca00",
+        "editorBracketHighlight.foreground2": "#aaaaff",
+        "editorBracketHighlight.unexpectedBracket.foreground": "#ff0000",
+        "tree.indentGuidesStroke": "#708090"
+    },
+    "workbench.colorTheme": "Nord Deep",
+    "workbench.statusBar.visible": true,
+    "workbench.tree.indent": 20,
+    "workbench.tree.renderIndentGuides": "always"
 }
