@@ -13,12 +13,12 @@ alias q='python ~/.config/scripts/openai/gpt-chatbot-console.py'
 alias rr='ranger'
 
 # api keys
-export OPENAI_API_KEY=$(cat ~/Documents/auth/openai//openai_api_key.txt)
-export PINECONE_API_KEY=$(cat ~/Documents/auth/pinecone/pinecone_api_key.txt)
+export OPENAI_API_KEY=$(cat ~/documents/auth/openai//openai_api_key.txt)
+export PINECONE_API_KEY=$(cat ~/documents/auth/pinecone/pinecone_api_key.txt)
 
 # environment variables
 export OPENAI_MODEL='gpt-3.5-turbo'
-#export PATH=$PATH:~/.local/bin
+export PATH=$PATH:~/.local/bin
 export PYTHONPATH=$PYTHONPATH:~/.config/scripts/modules
 export EDITOR=vim
 export VISUAL=vim
@@ -48,3 +48,18 @@ export QT_QPA_PLATFORMTHEME="qt5ct"
 export GTK_APPLICATION_PREFER_DARK_THEME=1
 export GTK_THEME='Arc-Dark'
 export GTK_ICON_THEME="Wings-Dark-Icons"
+
+# XDG paths
+export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:="$HOME/.config"}
+export XDG_CACHE_HOME=${XDG_CACHE_HOME:="$HOME/.cache"}
+export XDG_DATA_HOME=${XDG_DATA_HOME:="$HOME/.local/share"}
+export XDG_STATE_HOME=${XDG_STATE_HOME:="$HOME/.local/state"}
+export XDG_DATA_DIRS=${XDG_DATA_DIRS:="/usr/local/share:/usr/share"}
+export XDG_CONFIG_DIRS=${XDG_CONFIG_DIRS:="/etc/xdg"}
+
+# move files to .config
+export GNUPGHOME=${XDG_CONFIG_HOME}/gnupg
+export LESSHISTFILE="${XDG_CONFIG_HOME}/less/history"
+export LESSKEY="${XDG_CONFIG_HOME}/less/keys"
+export VIMINIT='let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc" | source $MYVIMRC'
+export VIMDOTDIR="$XDG_CONFIG_HOME/vim"

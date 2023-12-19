@@ -7,8 +7,8 @@
         set $resolution     1920x1080
     # environment
         set $mod            Mod4
-        set $background     --randomize ~/Pictures/wallpapers/*
-        set $lockscreen     ~/Pictures/wallpapers/lockscreen.png
+        set $background     --randomize ~/pictures/wallpapers/* --no-fehbg
+        set $lockscreen     ~/pictures/wallpapers/lockscreen.png
     # window appearance
         set $font           JetBrains Mono Bold 9
         set $title          <span font='JetBrains Mono Light 9'>[%title]</span>
@@ -127,13 +127,14 @@
         client.focused          $darkgrey   $black      $lightgrey  $orange     $green
         client.focused_inactive $darkgrey   $black      $darkgrey
         client.unfocused        $black      $black      $darkgrey
-        client.urgent           $darkgreen  $green      $darkgreen
+        client.urgent           $white      $orange     $white
         client.placeholder      $black      $black      $darkgrey
         client.background       $black
 
 # statusbar
     bar {
         status_command          i3blocks -c ~/.config/i3blocks/i3blocks.conf
+        i3bar_command           i3bar --transparency
         position                top
         height                  30
         tray_padding            4
@@ -148,7 +149,7 @@
             # class             border      backgr.     text
             focused_workspace   $white      $darkgrey   $white
             inactive_workspace  $darkgrey   $black      $lightgrey
-            urgent_workspace    $lightgrey  $green      $darkgreen
+            urgent_workspace    $white      $orange     $white
             binding_mode        $black      $black      $orange
         }
     }

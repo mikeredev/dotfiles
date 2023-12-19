@@ -4,8 +4,8 @@
 backup-dotfiles:
 
 # alacritty
-  - source: ~/.config/alacritty/alacritty.yml
-    destination: alacritty/alacritty.yml
+  - source: ~/.config/alacritty/
+    destination: alacritty/
 
 # bash profile
   - source: ~/.bashrc
@@ -16,12 +16,12 @@ backup-dotfiles:
     destination: vscodium/settings.json
 
 # dunst
-  - source: ~/.config/dunst
+  - source: ~/.config/dunst/
     destination: dunst/
 
 # gtk settings
   - source: ~/.config/gtk-3.0/settings.ini
-    destination: gtk/settings.ini
+    destination: gtk-3.0/settings.ini
 
 # i3wm
   - source: ~/.config/i3/config
@@ -48,5 +48,5 @@ backup-dotfiles:
     destination: scripts/
 
 # vim
-  - source: ~/.vimrc
-    destination: vim/.vimrc
+  - source: ~/.config/vim/vimrc
+    destination: vim/vimrc

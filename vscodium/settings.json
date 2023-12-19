@@ -25,33 +25,45 @@
     "editor.tabSize": 4,
     "editor.tabCompletion": "on",
     "editor.wordSeparators": "`~!@#$%^&*()-=+[{]}\\|;:'\",.<>/?",
-    "editor.tokenColorCustomizations": {
-        "textMateRules": [
-          {
-            "scope": "comment",
-            "settings": {
-              "fontStyle": "italic"
-            },
-          },
-        ]
-      },
     "git.confirmSync": false,
     "[python]": {
-        "editor.formatOnSave": true,
+        "editor.formatOnSave": true
     },
     "security.workspace.trust.untrustedFiles": "open",
     "terminal.integrated.fontFamily": "'Fira Code Retina', monospace, 'Noto Color Emoji', 'Font Awesome 6 Brands', 'Font Awesome 6 Free Solid'",
     "terminal.integrated.fontSize": 12,
     "terminal.integrated.lineHeight": 1.2,
     "window.menuBarVisibility": "toggle",
-    "workbench.colorCustomizations": {
-        "editorBracketHighlight.foreground1": "#ffca00",
-        "editorBracketHighlight.foreground2": "#aaaaff",
-        "editorBracketHighlight.unexpectedBracket.foreground": "#ff0000",
-        "tree.indentGuidesStroke": "#708090"
-    },
-    "workbench.colorTheme": "Nord Deep",
     "workbench.statusBar.visible": true,
     "workbench.tree.indent": 20,
-    "workbench.tree.renderIndentGuides": "always"
+    "workbench.tree.renderIndentGuides": "always",
+    // theme customisations
+    "workbench.colorTheme": "Nord Deep",
+    "workbench.colorCustomizations": {
+        "[Nord Deep]": {
+            //"editorBracketHighlight.foreground1": "#D0FFFA",
+            //"editorBracketHighlight.foreground2": "#D0C3FF",
+            //"editorBracketHighlight.unexpectedBracket.foreground": "#ff0000",
+            "tree.indentGuidesStroke": "#708090"
+        }
+    },
+    "editor.tokenColorCustomizations": {
+        "[Nord Deep]": {
+            "textMateRules": [
+                {
+                    "scope": "comment",
+                    "settings": {
+                    "fontStyle": "italic"
+                    }
+                },
+                {
+                    "scope": "variable.language.special.self.python",
+                    "settings": { 
+                        "fontStyle": "italic",
+                        "foreground": "#aaaaff"
+                    }
+                }
+            ]
+        }
+    }
 }

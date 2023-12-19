@@ -469,10 +469,10 @@
 [manage-screenshot]
     appname = manage-screenshot
     format = "<b>%s</b>\n%b"
-    new_icon = ~/.config/dunst/screensaver-monitor-wallpaper.svg
+    new_icon = ~/.config/dunst/icons/screensaver-monitor-wallpaper.svg
 
 [manage-wifi]
     appname = manage-wifi
     set_stack_tag = "manage-wifi"
     format = "<b>%s</b>\n%b"
-    new_icon = ~/.config/dunst/wifi.svg
+    new_icon = ~/.config/dunst/icons/wifi.svg
