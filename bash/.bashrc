@@ -13,7 +13,7 @@ alias q='python ~/.config/scripts/openai/gpt-chatbot-console.py'
 alias rr='ranger'
 
 # api keys
-export OPENAI_API_KEY=$(cat ~/documents/auth/openai//openai_api_key.txt)
+export OPENAI_API_KEY=$(cat ~/documents/auth/openai/openai_api_key.txt)
 export PINECONE_API_KEY=$(cat ~/documents/auth/pinecone/pinecone_api_key.txt)
 
 # environment variables
@@ -25,8 +25,8 @@ export VISUAL=vim
 
 # history
 HISTCONTROL=ignoreboth:erasedups
-HISTSIZE=100
-HISTFILESIZE=200
+HISTSIZE=500
+HISTFILESIZE=500
 shopt -s histappend
 
 # prompt
