@@ -2,7 +2,7 @@
 # call directly or via ./script.sh -option [ID|display name]
 
 # define the directory path for saved images
-screenshot_directory=~/Pictures/screenshots
+screenshot_directory=~/pictures/screenshots
 
 # define the timestamp string for filenames
 timestamp=$(date +"%Y-%m-%d-%H-%M-%S")
