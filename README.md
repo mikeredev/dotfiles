@@ -1,1 +1,1 @@
-![desktop](https://github.com/mikeredev/dotfiles/assets/132297919/9546002f-8dc9-4f1d-994d-085f1dc86b8a)
+![desktop](https://github.com/mikeredev/dotfiles/assets/132297919/c1a74909-cbec-47e2-8a53-41e10ffd377a)
