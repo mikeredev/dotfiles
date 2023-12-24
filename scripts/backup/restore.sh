@@ -1,9 +1,26 @@
 #!/bin/bash
 
-read -p "do you want to restore dotfiles? (y/n): " response
+# Function to update user-dirs.dirs
+update_user_dirs() {
+    user_dirs_file="$HOME/.config/user-dirs.dirs"
 
-if [ "$response" == "y" ]; then
-    # Don't forget the *
+    cat <<EOL > "$user_dirs_file"
+XDG_DESKTOP_DIR="$HOME/desktop"
+XDG_DOWNLOAD_DIR="$HOME/downloads"
+XDG_TEMPLATES_DIR="$HOME/templates"
+XDG_PUBLICSHARE_DIR="$HOME/public"
+XDG_DOCUMENTS_DIR="$HOME/documents"
+XDG_MUSIC_DIR="$HOME/music"
+XDG_PICTURES_DIR="$HOME/pictures"
+XDG_VIDEOS_DIR="$HOME/videos"
+EOL
+
+    xdg-user-dirs-update
+    echo "user-dirs.dirs updated!"
+}
+
+# Function to create symbolic links. Don't forget the *
+create_symlinks() {
     ln -s ~/documents/github/dotfiles/alacritty/* ~/.config/alacritty/
     ln -s ~/documents/github/dotfiles/bash/.bashrc ~/.bashrc
     ln -s ~/documents/github/dotfiles/dunst/* ~/.config/dunst/
@@ -17,6 +34,20 @@ if [ "$response" == "y" ]; then
     ln -s ~/documents/github/dotfiles/vim/* ~/.config/vim/
     ln -s ~/documents/github/dotfiles/vscodium/settings.json ~/.config/VSCodium/User/settings.json
     echo "Files restored!"
+}
+
+read -p "Do you want to update user-dirs.dirs? (y/n): " response
+
+if [ "$response" == "y" ]; then
+    update_user_dirs
 else
-    echo "Operation canceled."
+    echo "User-dirs.dirs operation canceled."
+fi
+
+read -p "Do you want to restore these files? (y/n): " response
+
+if [ "$response" == "y" ]; then
+    create_symlinks
+else
+    echo "Symlinks operation canceled."
 fi
