@@ -19,20 +19,32 @@ EOL
     echo "user-dirs.dirs updated!"
 }
 
-# Function to create symbolic links. Don't forget the *
+# Function to create symbolic links and ensure directories exist
 create_symlinks() {
-    ln -s ~/documents/github/dotfiles/alacritty/* ~/.config/alacritty/
-    ln -s ~/documents/github/dotfiles/bash/.bashrc ~/.bashrc
-    ln -s ~/documents/github/dotfiles/dunst/* ~/.config/dunst/
-    ln -s ~/documents/github/dotfiles/gtk-3.0/* ~/.config/gtk-3.0/
-    ln -s ~/documents/github/dotfiles/i3/* ~/.config/i3/
-    ln -s ~/documents/github/dotfiles/i3blocks/* ~/.config/i3blocks/
-    ln -s ~/documents/github/dotfiles/picom/* ~/.config/picom/
-    ln -s ~/documents/github/dotfiles/redshift/redshift.conf ~/.config/
-    ln -s ~/documents/github/dotfiles/rofi/* ~/.config/rofi/
-    ln -s ~/documents/github/dotfiles/scripts/* ~/.config/scripts/
-    ln -s ~/documents/github/dotfiles/vim/* ~/.config/vim/
-    ln -s ~/documents/github/dotfiles/vscodium/settings.json ~/.config/VSCodium/User/settings.json
+    mkdir -p ~/.config/alacritty
+    mkdir -p ~/.config/dunst
+    mkdir -p ~/.config/gtk-3.0
+    mkdir -p ~/.config/i3
+    mkdir -p ~/.config/i3blocks
+    mkdir -p ~/.config/picom
+    mkdir -p ~/.config/rofi
+    mkdir -p ~/.config/scripts
+    mkdir -p ~/.config/vim
+    mkdir -p ~/.config/VSCodium/User
+
+    ln -sf ~/documents/github/dotfiles/alacritty/* ~/.config/alacritty/
+    ln -sf ~/documents/github/dotfiles/bash/.bashrc ~/.bashrc
+    ln -sf ~/documents/github/dotfiles/dunst/* ~/.config/dunst/
+    ln -sf ~/documents/github/dotfiles/gtk-3.0/* ~/.config/gtk-3.0/
+    ln -sf ~/documents/github/dotfiles/i3/* ~/.config/i3/
+    ln -sf ~/documents/github/dotfiles/i3blocks/* ~/.config/i3blocks/
+    ln -sf ~/documents/github/dotfiles/picom/* ~/.config/picom/
+    ln -sf ~/documents/github/dotfiles/redshift/redshift.conf ~/.config/
+    ln -sf ~/documents/github/dotfiles/rofi/* ~/.config/rofi/
+    ln -sf ~/documents/github/dotfiles/scripts/* ~/.config/scripts/
+    ln -sf ~/documents/github/dotfiles/vim/* ~/.config/vim/
+    ln -sf ~/documents/github/dotfiles/vscodium/settings.json ~/.config/VSCodium/User/settings.json
+
     echo "Files restored!"
 }
 
