@@ -7,7 +7,7 @@
         set $resolution     1920x1080
     # environment
         set $mod            Mod4
-        set $background     --randomize ~/pictures/wallpapers/* --no-fehbg
+        set $background     --randomize ~/pictures/wallpapers/*
         set $lockscreen     ~/pictures/wallpapers/lockscreen.png
     # window appearance
         set $font           JetBrains Mono Bold 9
@@ -81,7 +81,6 @@
         set $ws1 "1:<span font='Font Awesome 6 Free Regular 11'></span>"
         set $ws2 "2:<span font='Font Awesome 6 Free Regular 11'></span>"
         set $ws3 "3:<span font='Font Awesome 6 Free Regular 11'></span>"
-
     # keybindings
         # switch to workspace
             bindsym $mod+comma workspace prev
@@ -108,7 +107,7 @@
 # autostart
     exec --no-startup-id dunst
     exec --no-startup-id picom -b
-    exec_always --no-startup-id feh --bg-fill $background
+    exec_always --no-startup-id feh --bg-fill --no-fehbg $background
     exec --no-startup-id setxkbmap ie
     exec --no-startup-id redshift
     exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ 40%

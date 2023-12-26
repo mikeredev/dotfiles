@@ -33,7 +33,7 @@ create_symlinks() {
     mkdir -p ~/.config/VSCodium/User
 
     ln -sf ~/documents/github/dotfiles/alacritty/* ~/.config/alacritty/
-    ln -sf ~/documents/github/dotfiles/bash/.bashrc ~/.bashrc
+    ln -sf ~/documents/github/dotfiles/bash/bashrc ~/.bashrc
     ln -sf ~/documents/github/dotfiles/dunst/* ~/.config/dunst/
     ln -sf ~/documents/github/dotfiles/gtk-3.0/* ~/.config/gtk-3.0/
     ln -sf ~/documents/github/dotfiles/i3/* ~/.config/i3/
