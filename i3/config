@@ -168,11 +168,12 @@
         }
 
     # tools menu mode
-        set $mode_menu [NUMPAD] containers(1), wifi manager(2), chatbot(3)
+        set $mode_menu [NUMPAD] containers(1), wifi manager(2), chatbot(3), music(4)
         mode "$mode_menu" {
             bindsym mod2+KP_1   mode "$mode_containers"
             bindsym mod2+KP_2   exec --no-startup-id sh -c '~/.config/scripts/tools/connect-wifi.sh', mode "default"
             bindsym mod2+KP_3   exec --no-startup-id sh -c 'python ~/.config/scripts/openai/gpt-chatbot-rofi.py', mode "default"
+            bindsym mod2+KP_4   mode "$mode_music"
             bindsym Escape      mode "default"
         }
 
@@ -193,6 +194,19 @@
                 bindsym mod2+KP_2   layout stacking
                 bindsym mod2+KP_3   layout tabbed
                 bindsym Return      mode "default"
+                bindsym Escape      mode "default"
+            }
+            
+        # music mode
+            set $mode_music [mplite] select(0), play(1), pause(2), resume(3), stop(4), next(5), prev(6)
+            mode "$mode_music" {
+                bindsym mod2+KP_0   exec --no-startup-id sh -c 'python ~/.config/mplite/mplite.py'
+                bindsym mod2+KP_1   exec --no-startup-id sh -c 'python ~/.config/mplite/mplite.py --action play', mode "default"
+                bindsym mod2+KP_2   exec --no-startup-id sh -c 'python ~/.config/mplite/mplite.py --action pause', mode "default"
+                bindsym mod2+KP_3   exec --no-startup-id sh -c 'python ~/.config/mplite/mplite.py --action resume', mode "default"
+                bindsym mod2+KP_4   exec --no-startup-id sh -c 'python ~/.config/mplite/mplite.py --action stop', mode "default"
+                bindsym mod2+KP_5   exec --no-startup-id sh -c 'python ~/.config/mplite/mplite.py --action next', mode "default"
+                bindsym mod2+KP_6   exec --no-startup-id sh -c 'python ~/.config/mplite/mplite.py --action prev', mode "default"
                 bindsym Escape      mode "default"
             }
 
@@ -326,3 +340,4 @@
                 bindsym Return mode "$mode_gaps"
                 bindsym Escape mode "default"
             }
+
