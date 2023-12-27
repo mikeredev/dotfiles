@@ -26,7 +26,6 @@ create_symlinks() {
     mkdir -p ~/.config/gtk-3.0
     mkdir -p ~/.config/i3
     mkdir -p ~/.config/i3blocks
-    mkdir -p ~/.config/mplite
     mkdir -p ~/.config/picom
     mkdir -p ~/.config/rofi
     mkdir -p ~/.config/scripts
@@ -39,7 +38,6 @@ create_symlinks() {
     ln -sf ~/documents/github/dotfiles/gtk-3.0/* ~/.config/gtk-3.0/
     ln -sf ~/documents/github/dotfiles/i3/* ~/.config/i3/
     ln -sf ~/documents/github/dotfiles/i3blocks/* ~/.config/i3blocks/
-    ln -sf /home/mishi/documents/github/dotfiles/mplite/* ~/.config/mplite/
     ln -sf ~/documents/github/dotfiles/picom/* ~/.config/picom/
     ln -sf ~/documents/github/dotfiles/redshift/redshift.conf ~/.config/
     ln -sf ~/documents/github/dotfiles/rofi/* ~/.config/rofi/
