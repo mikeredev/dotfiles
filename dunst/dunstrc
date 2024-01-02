@@ -1,288 +1,124 @@
 # See dunst(5) for all configuration options
-
 [global]
-    ### Display ###
-
-    # Which monitor should the notifications be displayed on.
+# display
+    follow = none               # {mouse, keyboard, none}
     monitor = 0
-
-    # Display notification on focused monitor.  Possible modes are:
-    #   mouse: follow mouse pointer
-    #   keyboard: follow window with keyboard focus
-    #   none: don't follow anything
-    #
-    # "keyboard" needs a window manager that exports the
-    # _NET_ACTIVE_WINDOW property.
-    # This should be the case for almost all modern window managers.
-    #
-    # If this option is set to mouse or keyboard, the monitor option
-    # will be ignored.
-    follow = none
-
-    ### Geometry ###
-
-    # dynamic width from 0 to 300
-    # width = (0, 300)
-    # constant width of 300
     width = 300
-
-    # The maximum height of a single notification, excluding the frame.
-    height = 500
-
-    # Position the notification in the top right corner
+    height = 300
     origin = top-right
-
-    # Offset from the origin
     offset = 20x70
-
-    # Scale factor. It is auto-detected if value is 0.
     scale = 0
 
-    # Maximum number of notification (0 means no limit)
-    notification_limit = 10
-
-    ### Progress bar ###
-
-    # Turn on the progess bar. It appears when a progress hint is passed with
-    # for example dunstify -h int:value:12
-    progress_bar = true
-
-    # Set the progress bar height. This includes the frame, so make sure
-    # it's at least twice as big as the frame width.
+# progress bar
+    progress_bar = true         # used via `dunstify -h int:value:12`
+    progress_bar_frame_width = 1 
     progress_bar_height = 10
-
-    # Set the frame width of the progress bar
-    progress_bar_frame_width = 1
-
-    # Set the minimum width for the progress bar
     progress_bar_min_width = 150
-
-    # Set the maximum width for the progress bar
     progress_bar_max_width = 300
-
-    # Corner radius for the progress bar. 0 disables rounded corners.
     progress_bar_corner_radius = 0
 
-    # Corner radius for the icon image.
-    icon_corner_radius = 0
+# padding
+    padding = 10                # padding between text and separator
+    horizontal_padding = 10     # horizontal padding
+    text_icon_padding = 15      # padding between text and icon
 
-    # Show how many messages are currently hidden (because of
-    # notification_limit).
-    indicate_hidden = yes
-
-    # The transparency of the window.  Range: [0; 100].
-    # This option will only work if a compositing window manager is
-    # present (e.g. xcompmgr, compiz, etc.). (X11 only)
-    transparency = 0
-
-    # Draw a line of "separator_height" pixel height between two
-    # notifications.
-    # Set to 0 to disable.
-    # If gap_size is greater than 0, this setting will be ignored.
-    separator_height = 2
-
-    # Padding between text and separator.
-    padding = 16
-
-    # Horizontal padding.
-    horizontal_padding = 16
-
-    # Padding between text and icon.
-    text_icon_padding = 16
-
-    # Defines width in pixels of frame around the notification window.
-    # Set to 0 to disable.
-    frame_width = 1
-
-    # Defines color of the frame around the notification window.
-    frame_color = "#a9a9a9"
-
-    # Size of gap to display between notifications - requires a compositor.
-    # If value is greater than 0, separator_height will be ignored and a border
-    # of size frame_width will be drawn around each notification instead.
-    # Click events on gaps do not currently propagate to applications below.
-    gap_size = 0
-
-    # Define a color for the separator.
-    # possible values are:
-    #  * auto: dunst tries to find a color fitting to the background;
-    #  * foreground: use the same color as the foreground;
-    #  * frame: use the same color as the frame;
-    #  * anything else will be interpreted as a X color.
-    separator_color = auto
-
-    # Sort messages by urgency.
-    sort = yes
-
-    # Don't remove messages, if the user is idle (no mouse or keyboard input)
-    # for longer than idle_threshold seconds.
-    # Set to 0 to disable.
-    # A client can set the 'transient' hint to bypass this. See the rules
-    # section for how to disable this if necessary
-    # idle_threshold = 120
-
-    ### Text ###
-
-    font = Inconsolata Regular 10
-
-    # The spacing between lines.  If the height is smaller than the
-    # font height, it will get raised to the font height.
-    line_height = 1
-
-    # Possible values are:
-    # full: Allow a small subset of html markup in notifications:
-    #        <b>bold</b>
-    #        <i>italic</i>
-    #        <s>strikethrough</s>
-    #        <u>underline</u>
-    #
-    #        For a complete reference see
-    #        <https://docs.gtk.org/Pango/pango_markup.html>.
-    #
-    # strip: This setting is provided for compatibility with some broken
-    #        clients that send markup even though it's not enabled on the
-    #        server. Dunst will try to strip the markup but the parsing is
-    #        simplistic so using this option outside of matching rules for
-    #        specific applications *IS GREATLY DISCOURAGED*.
-    #
-    # no:    Disable markup parsing, incoming notifications will be treated as
-    #        plain text. Dunst will not advertise that it has the body-markup
-    #        capability if this is set as a global setting.
-    #
-    # It's important to note that markup inside the format option will be parsed
-    # regardless of what this is set to.
-    markup = full
-
-    # The format of the message.  Possible variables are:
-    #   %a  appname
-    #   %s  summary
-    #   %b  body
-    #   %i  iconname (including its path)
-    #   %I  iconname (without its path)
-    #   %p  progress value if set ([  0%] to [100%]) or nothing
-    #   %n  progress value if set without any extra characters
-    #   %%  Literal %
-    # Markup is allowed
-    format = "<b>%s</b>\n%b"
-
-    # Alignment of message text.
-    # Possible values are "left", "center" and "right".
-    alignment = left
-
-    # Vertical alignment of message text and icon.
-    # Possible values are "top", "center" and "bottom".
-    vertical_alignment = top
-
-    # Show age of message if message is older than show_age_threshold
-    # seconds.
-    # Set to -1 to disable.
-    show_age_threshold = 60
-
-    # Specify where to make an ellipsis in long lines.
-    # Possible values are "start", "middle" and "end".
-    ellipsize = end
-
-    # Ignore newlines '\n' in notifications.
-    ignore_newline = no
-
-    # Stack together notifications with the same content
-    stack_duplicates = true
-
-    # Hide the count of stacked notifications with the same content
-    hide_duplicate_count = false
-
-    # Display indicators for URLs (U) and actions (A).
-    show_indicators = no
-
-    ### Icons ###
-
-    # Recursive icon lookup. You can set a single theme, instead of having to
-    # define all lookup paths.
+# icon
     enable_recursive_icon_lookup = true
+    icon_theme = breeze         # set multiple themes with left-most one used first
+    icon_position = left        # {left, right, top, off}
+    icon_corner_radius = 0      # 0 to disable
+    min_icon_size = 64          # scale up to this size
+    max_icon_size = 64          # scale down to this size, 0 to disable
 
-    # Set icon theme (only used for recursive icon lookup)
-    icon_theme = Wings-Dark-Icons
-    # You can also set multiple icon themes, with the leftmost one being used first.
+# style
+    alignment = center          # message text, {left, center, right}
+    vertical_alignment = top    # {top, center, bottom}
+    ellipsize = end             # {start, middle, end}
+    font = JetBrains Mono Bold 15
+    line_height = 1
+    markup = full               # (%a)ppname, (%s)ummary, (%b)ody, (%i)conname w/path, (%%) literal %,
+    format = "<b>%s</b>\n%b"    # (%I)conname w/o path, (%p)rogress value, (%n) progess value no whitespace
+                                
+# frame
+    corner_radius = 10          # 0 to disable. beware clipping
+    frame_width = 1             # pixel width of notification frame
+    frame_color = "#574a9d"     # default color of notification frame 
+    gap_size = 0                # gap between notifs (overrides separator_height)
+    separator_color = auto      # {auto, foreground, frame} [Xcolor]
+    separator_height = 2        # width of separating line between multiple notifs
+    transparency = 0            # range 0-100
 
-    # Align icons left/right/top/off
-    icon_position = right
-
-    # Scale small icons up to this size, set to 0 to disable. Helpful
-    # for e.g. small files or high-dpi screens. In case of conflict,
-    # max_icon_size takes precedence over this.
-    min_icon_size = 32
-
-    # Scale larger icons down to this size, set to 0 to disable
-    max_icon_size = 32
-
-    # Paths to default icons (only neccesary when not using recursive icon lookup)
-    # icon_path = /usr/share/icons/breeze-dark/preferences/32/
-
-    ### History ###
-
-    # Should a notification popped up from history be sticky or timeout
-    # as if it would normally do.
-    sticky_history = no
-
-    # Maximum amount of notifications kept in history
+# display
+    hide_duplicate_count = false
     history_length = 20
+    idle_threshold = 0          # remove message after n seconds, 0 to disable
+    ignore_newline = no         # ignore new lines in messages
+    indicate_hidden = yes
+    notification_limit = 10     # max notifications to display
+    show_age_threshold = -1     # show message age if older than n seconds, -1 to disable
+    show_indicators = no
+    sort = yes                  # sort messages by urgency
+    stack_duplicates = true
+    sticky_history = no         # sticky or timeout as normal for popped notifs
 
-    ### Misc/Advanced ###
+# window
+    title = Dunst               # title of the windows spawned by dunst
+    class = Dunst               # class of the windows spawned by dunst
+    ignore_dbusclose = false    # enforce timeout set by dunst
 
-    # dmenu path.
+# advanced options
     dmenu = /usr/bin/dmenu -p dunst:
+    browser = /usr/bin/xdg-open # browser for opening urls in context menu
+    always_run_script = true    # always run rule-defined scripts, even if the notification is suppressed
 
-    # Browser for opening urls in context menu.
-    browser = /usr/bin/xdg-open
+# wayland only
+    # layer = top               # notifs appear under fullscreen apps. {overlay, top}
+    force_xwayland = false      # set this to true to use X11 output on wayland
+    force_xinerama = false      # use xinerama instead of randr for multi-monitor support
 
-    # Always run rule-defined scripts, even if the notification is suppressed
-    always_run_script = true
+# default styles
+[urgency_low]
+    background = "#626262"
+    foreground = "#a9a9a9"
+    frame_color = "#00ffd4"
+    timeout = 5
 
-    # Define the title of the windows spawned by dunst
-    title = Dunst
+[urgency_normal]
+    background = "#626262"
+    foreground = "#a9a9a9"
+    frame_color = "#00ffd4"
+    timeout = 8
 
-    # Define the class of the windows spawned by dunst
-    class = Dunst
+[urgency_critical]
+    background = "#8ae234"
+    foreground = "#ffa500"
+    frame_color = "#006400"
+    timeout = 0
 
-    # Define the corner radius of the notification window
-    # in pixel size. If the radius is 0, you have no rounded
-    # corners.
-    # The radius will be automatically lowered if it exceeds half of the
-    # notification height to avoid clipping text and/or icons.
-    corner_radius = 5
+# custom styles
+#kill $(pgrep dunst) ; dunstify -u low "low" "this is a low urgency notification" ; dunstify -u normal "normal" "this is a normal urgency notification" ; dunstify -u critical "critical" "this is a critical urgency notification"
+[browser-slack]
+    desktop_entry="brave-browser"
+    body = *slack.com*
+    set_stack_tag = "slack"
+    new_icon = "irc-channel-joined"
 
-    # Ignore the dbus closeNotification message.
-    # Useful to enforce the timeout set by dunst configuration. Without this
-    # parameter, an application may close the notification sent before the
-    # user defined timeout.
-    ignore_dbusclose = false
+[browser-discord]
+    desktop_entry="brave-browser"
+    body = *discord.com*
 
-    ### Wayland ###
-    # These settings are Wayland-specific. They have no effect when using X11
+[gpt-news]
+    appname = gpt-news
 
-    # Uncomment this if you want to let notications appear under fullscreen
-    # applications (default: overlay)
-    # layer = top
+[manage-screenshot]
+    appname = manage-screenshot
+    new_icon = "camera-photo-symbolic"
 
-    # Set this to true to use X11 output on Wayland.
-    force_xwayland = false
+[manage-wifi]
+    appname = manage-wifi
+    set_stack_tag = "manage-wifi"
+    new_icon = "network-wireless-symbolic"
 
-    ### Legacy
-
-    # Use the Xinerama extension instead of RandR for multi-monitor support.
-    # This setting is provided for compatibility with older nVidia drivers that
-    # do not support RandR and using it on systems that support RandR is highly
-    # discouraged.
-    #
-    # By enabling this setting dunst will not be able to detect when a monitor
-    # is connected or disconnected which might break follow mode if the screen
-    # layout changes.
-    force_xinerama = false
-
-    ### mouse
-
-    # Defines list of actions for each mouse event
-    # Possible values are:
     # * none: Don't do anything.
     # * do_action: Invoke the action determined by the action_name rule. If there is no
     #              such action, open the context menu.
@@ -294,35 +130,12 @@
     # * context_all: Open context menu for all notifications.
     # These values can be strung together for each mouse event, and
     # will be executed in sequence.
-    mouse_left_click = close_current
+    mouse_left_click = close_current, context
     mouse_middle_click = do_action, close_current
     mouse_right_click = close_all
 
-# Experimental features that may or may not work correctly. Do not expect them
-# to have a consistent behaviour across releases.
 [experimental]
-    # Calculate the dpi to use on a per-monitor basis.
-    # If this setting is enabled the Xft.dpi value will be ignored and instead
-    # dunst will attempt to calculate an appropriate dpi value for each monitor
-    # using the resolution and physical size. This might be useful in setups
-    # where there are multiple screens with very different dpi values.
     per_monitor_dpi = false
-
-[urgency_low]
-    background = "#282c34"
-    foreground = "#a9a9a9"
-    timeout = 5
-
-[urgency_normal]
-    background = "#282c34"
-    foreground = "#a9a9a9"
-    timeout = 8
-
-[urgency_critical]
-    background = "#282c34"
-    foreground = "#a9a9a9" 
-    frame_color = "#ff8c00"
-    timeout = 0
 
 # Every section that isn't one of the above is interpreted as a rules to
 # override settings for certain messages.
@@ -445,34 +258,3 @@
 #[stack-volumes]
 #    appname = "some_volume_notifiers"
 #    set_stack_tag = "volume"
-#
-# vim: ft=cfg
-
-# kill $(pgrep dunst) ; dunstify -u low "low" "this is a low urgency notification" ; dunstify -u normal "normal" "this is a normal urgency notification" ; dunstify -u critical "critical" "this is a critical urgency notification"
-
-[brave/slack]
-    desktop_entry="brave-browser"
-    body = *slack.com*
-    set_stack_tag = "slack"
-    format = "<b>%s</b>\n%b"
-    new_icon = /usr/share/icons/breeze-dark/status/24/irc-channel-joined.svg
-
-[brave/discord]
-    desktop_entry="brave-browser"
-    body = *discord.com*
-    format = "<b>%s</b>\n%b"
-
-[gpt-news.py]
-    appname = gpt-news
-    icon_position="left"
-
-[manage-screenshot]
-    appname = manage-screenshot
-    format = "<b>%s</b>\n%b"
-    new_icon = ~/.config/dunst/icons/screensaver-monitor-wallpaper.svg
-
-[manage-wifi]
-    appname = manage-wifi
-    set_stack_tag = "manage-wifi"
-    format = "<b>%s</b>\n%b"
-    new_icon = ~/.config/dunst/icons/wifi.svg

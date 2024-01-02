@@ -1,26 +1,26 @@
 # import required functions/modules
-from styles import styles
+from styles import style
 from functions.run_shell_command import run_shell_command as run
 from functions.block_button import block_button
 
 # load mouse button click handler
-block_button("check_wifi", button=None)
+block_button("wifi", button=None)
 
 # escaped shell commands
-cmd_wifi_signal     = "nmcli -f SIGNAL,IN-USE dev wifi | grep '*' | awk '{print $1}' | tr -d '*'"
+cmd_wifi_signal = "nmcli -f SIGNAL,IN-USE dev wifi | grep '*' | awk '{print $1}' | tr -d '*'"
 
 # collect check data
 try:
-    wifi_signal     = int(run(cmd_wifi_signal))
+    wifi_signal = int(run(cmd_wifi_signal))
 except:
     wifi_signal = 0
 
 
-# i3blocks_check function called by i3blocks.py
+# i3blocks_check function invoked by control script
 def i3blocks_check(warning, critical):
-    status_color =  f"{styles.NONE}" if wifi_signal == 0 else (
-                    f"{styles.NOK}" if wifi_signal <= int(critical) else
-                    f"{styles.WARN}" if wifi_signal <= int(warning) else
-                    f"{styles.OK}")
+    status_color =  f"{style.NONE}" if wifi_signal == 0 else (
+                    f"{style.NOK}" if wifi_signal <= int(critical) else
+                    f"{style.WARN}" if wifi_signal <= int(warning) else
+                    f"{style.OK}")
         
-    print(f"<span font='{styles.FONT}'>{wifi_signal}%</span> <span font='{styles.GLYPHS}' color='{status_color}'>\uf1eb</span>")
+    print(f"<span font='{style.FONT}'>{wifi_signal}%</span> <span font='{style.GLYPHS}' color='{status_color}'>\uf1eb</span>")

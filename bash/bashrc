@@ -30,7 +30,7 @@ HISTFILESIZE=500
 shopt -s histappend
 
 # prompt
-PS1='[\W]\$ > '
+PS1='\W -> '
 
 # powerline
 function _update_ps1() {

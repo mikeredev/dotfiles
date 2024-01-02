@@ -1,9 +1,9 @@
 * {
     foreground:                 #cccccc;
     background-color:           transparent;
-    normal-background:          #282c34ef;
-    selected-foreground:        #8ae234;
-    selected-background:        #149414;
+    normal-background:          #282c34dd;
+    selected-foreground:        #006400;
+    selected-background:        #8ae234;
     message-background:         #4c566a;
 }
 

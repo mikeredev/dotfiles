@@ -19,7 +19,7 @@ action() {
             if scrot -s /tmp/screenshot.png; then
                 xclip -selection clipboard -t image/png /tmp/screenshot.png
                 rm /tmp/screenshot.png
-                dunstify -a manage-screenshot "screenshot copied 📷" "selected area copied to clipboard"
+                dunstify -a manage-screenshot "Screenshot taken" "Area copied to clipboard"
             else
                 exit 0
             fi
@@ -30,7 +30,7 @@ action() {
             if scrot /tmp/screenshot.png; then
                 xclip -selection clipboard -t image/png /tmp/screenshot.png
                 rm /tmp/screenshot.png
-                dunstify -a manage-screenshot "screenshot copied 📷" "fullscreen image copied to clipboard"
+                dunstify -a manage-screenshot "Screenshot taken" "Fullscreen copied to clipboard"
             else
                 exit 0
             fi
@@ -39,7 +39,7 @@ action() {
             if scrot -s /tmp/screenshot.png; then
                 xclip -selection clipboard -t image/png /tmp/screenshot.png
                 mv /tmp/screenshot.png "$screenshot_directory/screenshot_${timestamp}.png"
-                dunstify -a manage-screenshot "screenshot saved 📷" "$screenshot_directory/screenshot_${timestamp}.png"
+                dunstify -a manage-screenshot "Screenshot saved" "$screenshot_directory/screenshot_${timestamp}.png"
             else
                 exit 0
             fi
@@ -50,7 +50,7 @@ action() {
             if scrot /tmp/screenshot.png; then
                 xclip -selection clipboard -t image/png /tmp/screenshot.png
                 mv /tmp/screenshot.png "$screenshot_directory/screenshot_${timestamp}.png"
-                dunstify -a manage-screenshot "screenshot saved 📷" "$screenshot_directory/screenshot_${timestamp}.png"
+                dunstify -a manage-screenshot "Screenshot saved" "$screenshot_directory/screenshot_${timestamp}.png"
             else
                 exit 0
             fi

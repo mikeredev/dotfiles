@@ -114,12 +114,20 @@
 
 # appearance
     # colors
+        set $transparent        #00000044
         set $black              #282c34
         set $white              #ffffff
         set $lightgrey          #a9a9a9
         set $darkgrey           #4c566a
+        set $red                #e74c3c
         set $green              #8ae234
-        set $darkgreen          #149414
+        set $darkgreen          #006400
+        set $blue               #3498db
+        set $darkblue           #2f3b5a
+        set $cyan               #00ffd4
+        set $purple             #b4bbf1
+        set $indigo             #4b0082
+        set $violet             #8a2be2
         set $orange             #ffa500
     # windows
         # class                 border      backgr.     text        indicator   child_border
@@ -129,7 +137,7 @@
         client.urgent           $white      $orange     $white
         client.placeholder      $black      $black      $darkgrey
         client.background       $black
-
+        
 # statusbar
     bar {
         status_command          i3blocks -c ~/.config/i3blocks/i3blocks.conf
