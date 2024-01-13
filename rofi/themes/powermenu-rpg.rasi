@@ -9,7 +9,7 @@ window {
     location:           center;
     anchor:             center;
     width:              512px;
-    background-image:   url("/home/mishi/pictures/images/banner.png");
+    background-image:   url("~/pictures/images/banner.png");
     border:             2px;
     border-color:       @foreground;
     border-radius:      20px;
