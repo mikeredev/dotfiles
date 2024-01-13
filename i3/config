@@ -11,7 +11,7 @@
         set $lockscreen     ~/pictures/wallpapers/lockscreen.png
     # window appearance
         set $font           JetBrains Mono Bold 9
-        set $title          <span font='JetBrains Mono Light 9'>[%title]</span>
+        set $title          <span font='Fira Code Semibold 10'>[%title]</span>
         set $border_px      1
     # window behaviour
         set $float_class    Pavucontrol|Gnome-tweaks|Lxappearance
@@ -26,8 +26,7 @@
         bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && exec pkill -RTMIN+1 i3blocks
         bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && exec pkill -RTMIN+1 i3blocks
     # screenshots
-        bindsym --release Print exec --no-startup-id sh -c '~/.config/scripts/tools/screenshot.sh -option "copy area"'
-        bindsym $mod+Print exec --no-startup-id sh -c '~/.config/scripts/tools/screenshot.sh'
+        bindsym Print exec --no-startup-id sh -c '~/.config/scripts/tools/screenshot.sh'
     # apps
         bindsym $mod+Return exec i3-sensible-terminal
         bindsym $mod+mod2+KP_1 exec --no-startup-id brave; workspace $ws1; focus

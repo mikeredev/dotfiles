@@ -3,8 +3,8 @@
 # display
     follow = none               # {mouse, keyboard, none}
     monitor = 0
-    width = 300
-    height = 300
+    width = 400
+    height = 600
     origin = top-right
     offset = 20x70
     scale = 0
@@ -31,10 +31,10 @@
     max_icon_size = 64          # scale down to this size, 0 to disable
 
 # style
-    alignment = center          # message text, {left, center, right}
+    font = Fira Code Retina 10
+    alignment = left            # message text, {left, center, right}
     vertical_alignment = top    # {top, center, bottom}
     ellipsize = end             # {start, middle, end}
-    font = JetBrains Mono Bold 15
     line_height = 1
     markup = full               # (%a)ppname, (%s)ummary, (%b)ody, (%i)conname w/path, (%%) literal %,
     format = "<b>%s</b>\n%b"    # (%I)conname w/o path, (%p)rogress value, (%n) progess value no whitespace
@@ -78,21 +78,21 @@
 
 # default styles
 [urgency_low]
-    background = "#626262"
-    foreground = "#a9a9a9"
-    frame_color = "#00ffd4"
+    background = "#b4bbf1"
+    foreground = "#4b0082"
+    frame_color = "#2f3b5a"
     timeout = 5
 
 [urgency_normal]
-    background = "#626262"
-    foreground = "#a9a9a9"
-    frame_color = "#00ffd4"
+    background = "#b4bbf1"
+    foreground = "#4b0082"
+    frame_color = "#2f3b5a"
     timeout = 8
 
 [urgency_critical]
-    background = "#8ae234"
-    foreground = "#ffa500"
-    frame_color = "#006400"
+    background = "#3498db"
+    foreground = "#2f3b5a"
+    frame_color = "#2f3b5a"
     timeout = 0
 
 # custom styles

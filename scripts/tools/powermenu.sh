@@ -1,26 +1,26 @@
 #!/bin/bash
 
-lock=""
+lock=""
 suspend="󰤄"
-reboot=""
+reboot=""
 logout="󰍃"
 hibernate="󰏤"
 poweroff=""
 host="`cat /etc/hostname`"
 
 rofi_cmd(){
-    rofi -dmenu -theme "powermenu" -mesg "$host > $USER $"
+    rofi -dmenu -theme "powermenu-rpg" -p "Press ESC to cancel" -mesg "Do you want to save your progress?"
 }
 
 rofi_confirm(){
-    echo -e "󰔓\n󰔑" |
-    rofi -theme-str 'mainbox {orientation: vertical; children: [ message, listview ];}' \
-        -theme-str 'window {padding: 10em 45em 40em 45em;}' \
+    echo -e "\n" |
+    rofi -theme-str 'mainbox {orientation: horizontal; children: [ mainnav, sidenav ];}' \
+        -theme-str 'window {padding: 0px 0px 10px 0px;}' \
 		-theme-str 'listview {columns: 2; lines: 1;}' \
-        -dmenu -mesg "are u sure?" -theme "powermenu"
+        -dmenu -mesg "Are you sure?" -theme "powermenu-rpg"
 }
 
-rofi_run(){
+main(){
     options="$lock\n$suspend\n$reboot\n$logout\n$hibernate\n$poweroff"
     selected=$(echo -e "$options" | rofi_cmd)
 
@@ -30,7 +30,7 @@ rofi_run(){
             ;;
         "$suspend")
             confirm=$(rofi_confirm)
-            if [ "$confirm" == "󰔓" ]; then
+            if [ "$confirm" == "" ]; then
                 i3lock -efti ~/Pictures/wallpapers/lockscreen.png && systemctl suspend
             else
                 return
@@ -38,7 +38,7 @@ rofi_run(){
             ;;
         "$reboot")
             confirm=$(rofi_confirm)
-            if [ "$confirm" == "󰔓" ]; then
+            if [ "$confirm" == "" ]; then
                 systemctl reboot
             else
                 return
@@ -46,7 +46,7 @@ rofi_run(){
             ;;
         "$logout")
             confirm=$(rofi_confirm)
-            if [ "$confirm" == "󰔓" ]; then
+            if [ "$confirm" == "" ]; then
                 i3-msg exit
             else
                 return
@@ -54,7 +54,7 @@ rofi_run(){
             ;;
         "$hibernate")
             confirm=$(rofi_confirm)
-            if [ "$confirm" == "󰔓" ]; then
+            if [ "$confirm" == "" ]; then
                 i3lock -efti ~/Pictures/wallpapers/lockscreen.png && systemctl hibernate
             else
                 return
@@ -62,7 +62,7 @@ rofi_run(){
             ;;
         "$poweroff")
             confirm=$(rofi_confirm)
-            if [ "$confirm" == "󰔓" ]; then
+            if [ "$confirm" == "" ]; then
                 systemctl poweroff
             else
                 return
@@ -73,4 +73,4 @@ rofi_run(){
     esac
 }
 
-rofi_run
+main
