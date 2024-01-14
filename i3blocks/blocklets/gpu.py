@@ -34,4 +34,4 @@ def i3blocks_check(warning, critical):
                     f"{style.INACTIVE}" if fan_speed > 0 else 
                     f"{style.NONE}")
     
-    print(f"<span font='{style.FONT}'>{vram_util}%</span> <span font='{style.GLYPHS}'><span color='{fan_color}'>\uf863</span> <span color='{status_color}'>{icon}</span></span>")
+    print(f"<span font='monospace 9'><span font='{style.FONT}'>{vram_util}%</span> <span font='{style.GLYPHS}'><span color='{fan_color}'>\uf863</span> <span color='{status_color}'>{icon}</span></span></span>")

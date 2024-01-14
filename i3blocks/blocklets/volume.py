@@ -27,4 +27,4 @@ def i3blocks_check(warning, critical):
                     f"{style.WARN}" if volume_level >= int(warning) else
                     f"{style.OK}")
     
-    print(f"<span font='{style.FONT}'>{volume_level}%</span> <span font='{style.GLYPHS}' color='{status_color}'>{icon}</span>")
+    print(f"<span font='monospace 9'><span font='{style.FONT}'>{volume_level}%</span> <span font='{style.GLYPHS}' color='{status_color}'>{icon}</span></span>")

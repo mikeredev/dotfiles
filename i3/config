@@ -10,8 +10,8 @@
         set $background     --randomize ~/pictures/wallpapers/*
         set $lockscreen     ~/pictures/wallpapers/lockscreen.png
     # window appearance
-        set $font           JetBrains Mono Bold 9
-        set $title          <span font='Fira Code Semibold 10'>[%title]</span>
+        set $font           monospace 2
+        set $title          " "
         set $border_px      1
     # window behaviour
         set $float_class    Pavucontrol|Gnome-tweaks|Lxappearance
@@ -33,17 +33,17 @@
         bindsym $mod+mod2+KP_2 exec --no-startup-id vscodium; workspace $ws2; focus
         bindsym $mod+mod2+KP_3 exec --no-startup-id thunar
     # custom / scripts
-        bindsym $mod+mod2+KP_0 mode "$mode_menu"
+        bindsym $mod+mod2+KP_0 exec --no-startup-id sh -c '~/.config/scripts/tools/i3-container-mode.sh'
         bindsym $mod+mod2+KP_Decimal exec --no-startup-id dunstctl history-pop
-        bindsym $mod+l mode "$mode_session"
+        bindsym $mod+l exec --no-startup-id sh -c '~/.config/scripts/tools/powermenu.sh'
 
 # containers/windows
     # appearance
         font pango:$font
         for_window [class=".*"] title_format $title
         for_window [class=".*"] border pixel $border_px
-        gaps inner 2
-        gaps outer 1
+        gaps inner 0
+        gaps outer 0
     # behaviour
         smart_borders on
         floating_modifier $mod
@@ -130,17 +130,16 @@
         set $orange             #ffa500
     # windows
         # class                 border      backgr.     text        indicator   child_border
-        client.focused          $darkgrey   $black      $lightgrey  $orange     $green
-        client.focused_inactive $darkgrey   $black      $darkgrey
-        client.unfocused        $black      $black      $darkgrey
-        client.urgent           $white      $orange     $white
+        client.focused          $black      $green      $darkgreen  $orange     $green
+        client.focused_inactive $black      $darkgreen  $orange
+        client.unfocused        $black      $darkgreen  $orange
+        client.urgent           $orange     $orange     $white
         client.placeholder      $black      $black      $darkgrey
         client.background       $black
         
 # statusbar
     bar {
         status_command          i3blocks -c ~/.config/i3blocks/i3blocks.conf
-        i3bar_command           i3bar --transparency
         position                top
         height                  30
         tray_padding            4
@@ -159,177 +158,3 @@
             binding_mode        $black      $black      $orange
         }
     }
-
-# binding modes
-    # session mode - lock, reboot, etc. also reload or restart i3.
-        set $mode_session lock(Return), (s)uspend, (r)eload i3, restart i3(c), logoff($mod+Ctrl+x), reboot($mod+Ctrl+r), poweroff($mod+Ctrl+s)
-        mode "$mode_session" {
-            bindsym Return      exec --no-startup-id i3lock -efti $lockscreen, mode "default"
-            bindsym s           exec --no-startup-id i3lock -efti $lockscreen && exec systemctl suspend, mode "default"
-            bindsym r           exec i3-msg reload
-            bindsym c           exec i3-msg restart
-            bindsym $mod+Ctrl+x exec i3-msg exit
-            bindsym $mod+Ctrl+r exec systemctl reboot
-            bindsym $mod+Ctrl+s exec systemctl poweroff
-            bindsym Escape      mode "default"
-        }
-
-    # tools menu mode
-        set $mode_menu [NUMPAD] containers(1), wifi manager(2), chatbot(3)
-        mode "$mode_menu" {
-            bindsym mod2+KP_1   mode "$mode_containers"
-            bindsym mod2+KP_2   exec --no-startup-id sh -c '~/.config/scripts/tools/connect-wifi.sh', mode "default"
-            bindsym mod2+KP_3   exec --no-startup-id sh -c 'python ~/.config/scripts/openai/gpt-chatbot-rofi.py', mode "default"
-            bindsym Escape      mode "default"
-        }
-
-    # container display mode - enter resize or gaps manual modes
-        set $mode_containers [containers] layout(1), resize(2), gaps(3)
-        mode "$mode_containers" {
-            bindsym mod2+KP_1   mode "$mode_layout"
-            bindsym mod2+KP_2   mode "$mode_resize"
-            bindsym mod2+KP_3   mode "$mode_gaps"
-            bindsym Escape      mode "default"
-        }
-
-        # layout mode - switch between stacked/tabbed containers
-            set $mode_layout [layout] cycle(0), split(1), stacked(2), tabbed(3)
-            mode "$mode_layout" {
-                bindsym mod2+KP_0   layout toggle
-                bindsym mod2+KP_1   layout toggle split
-                bindsym mod2+KP_2   layout stacking
-                bindsym mod2+KP_3   layout tabbed
-                bindsym Return      mode "default"
-                bindsym Escape      mode "default"
-            }
-
-        # resize mode
-            set $mode_resize [resize]    
-            mode "$mode_resize" {
-                bindsym Up      resize grow height 10 px or 10 ppt
-                bindsym Right   resize grow width 10 px or 10 ppt
-                bindsym Down    resize shrink height 10 px or 10 ppt
-                bindsym Left    resize shrink width 10 px or 10 ppt
-                bindsym Return  mode "default"
-                bindsym Escape  mode "default"
-            }
-
-        # gaps mode
-            set $mode_gaps [gaps] (o)uter, (i)nner, (h)orizontal, (v)ertical, (t)op, (r)ight, (b)ottom, (l)eft
-            set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
-            set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
-            set $mode_gaps_horiz Horizontal Gaps: +|-|0 (local), Shift + +|-|0 (global)
-            set $mode_gaps_verti Vertical Gaps: +|-|0 (local), Shift + +|-|0 (global)
-            set $mode_gaps_top Top Gaps: +|-|0 (local), Shift + +|-|0 (global)
-            set $mode_gaps_right Right Gaps: +|-|0 (local), Shift + +|-|0 (global)
-            set $mode_gaps_bottom Bottom Gaps: +|-|0 (local), Shift + +|-|0 (global)
-            set $mode_gaps_left Left Gaps: +|-|0 (local), Shift + +|-|0 (global)
-
-            mode "$mode_gaps" {
-                bindsym o      mode "$mode_gaps_outer"
-                bindsym i      mode "$mode_gaps_inner"
-                bindsym h      mode "$mode_gaps_horiz"
-                bindsym v      mode "$mode_gaps_verti"
-                bindsym t      mode "$mode_gaps_top"
-                bindsym r      mode "$mode_gaps_right"
-                bindsym b      mode "$mode_gaps_bottom"
-                bindsym l      mode "$mode_gaps_left"
-                bindsym Return mode "default"
-                bindsym Escape mode "default"
-            }
-            mode "$mode_gaps_outer" {
-                bindsym plus  gaps outer current plus 5
-                bindsym minus gaps outer current minus 5
-                bindsym 0     gaps outer current set 0
-
-                bindsym Shift+plus  gaps outer all plus 5
-                bindsym Shift+minus gaps outer all minus 5
-                bindsym Shift+0     gaps outer all set 0
-
-                bindsym Return mode "$mode_gaps"
-                bindsym Escape mode "default"
-            }
-            mode "$mode_gaps_inner" {
-                bindsym plus  gaps inner current plus 5
-                bindsym minus gaps inner current minus 5
-                bindsym 0     gaps inner current set 0
-
-                bindsym Shift+plus  gaps inner all plus 5
-                bindsym Shift+minus gaps inner all minus 5
-                bindsym Shift+0     gaps inner all set 0
-
-                bindsym Return mode "$mode_gaps"
-                bindsym Escape mode "default"
-            }
-            mode "$mode_gaps_horiz" {
-                bindsym plus  gaps horizontal current plus 5
-                bindsym minus gaps horizontal current minus 5
-                bindsym 0     gaps horizontal current set 0
-
-                bindsym Shift+plus  gaps horizontal all plus 5
-                bindsym Shift+minus gaps horizontal all minus 5
-                bindsym Shift+0     gaps horizontal all set 0
-
-                bindsym Return mode "$mode_gaps"
-                bindsym Escape mode "default"
-            }
-            mode "$mode_gaps_verti" {
-                bindsym plus  gaps vertical current plus 5
-                bindsym minus gaps vertical current minus 5
-                bindsym 0     gaps vertical current set 0
-
-                bindsym Shift+plus  gaps vertical all plus 5
-                bindsym Shift+minus gaps vertical all minus 5
-                bindsym Shift+0     gaps vertical all set 0
-
-                bindsym Return mode "$mode_gaps"
-                bindsym Escape mode "default"
-            }
-            mode "$mode_gaps_top" {
-                bindsym plus  gaps top current plus 5
-                bindsym minus gaps top current minus 5
-                bindsym 0     gaps top current set 0
-
-                bindsym Shift+plus  gaps top all plus 5
-                bindsym Shift+minus gaps top all minus 5
-                bindsym Shift+0     gaps top all set 0
-
-                bindsym Return mode "$mode_gaps"
-                bindsym Escape mode "default"
-            }
-            mode "$mode_gaps_right" {
-                bindsym plus  gaps right current plus 5
-                bindsym minus gaps right current minus 5
-                bindsym 0     gaps right current set 0
-
-                bindsym Shift+plus  gaps right all plus 5
-                bindsym Shift+minus gaps right all minus 5
-                bindsym Shift+0     gaps right all set 0
-
-                bindsym Return mode "$mode_gaps"
-                bindsym Escape mode "default"
-            }
-            mode "$mode_gaps_bottom" {
-                bindsym plus  gaps bottom current plus 5
-                bindsym minus gaps bottom current minus 5
-                bindsym 0     gaps bottom current set 0
-
-                bindsym Shift+plus  gaps bottom all plus 5
-                bindsym Shift+minus gaps bottom all minus 5
-                bindsym Shift+0     gaps bottom all set 0
-
-                bindsym Return mode "$mode_gaps"
-                bindsym Escape mode "default"
-            }
-            mode "$mode_gaps_left" {
-                bindsym plus  gaps left current plus 5
-                bindsym minus gaps left current minus 5
-                bindsym 0     gaps left current set 0
-
-                bindsym Shift+plus  gaps left all plus 5
-                bindsym Shift+minus gaps left all minus 5
-                bindsym Shift+0     gaps left all set 0
-
-                bindsym Return mode "$mode_gaps"
-                bindsym Escape mode "default"
-            }

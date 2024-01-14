@@ -1,0 +1,45 @@
+window {
+    location: southeast;
+    anchor: southeast;
+    background-color: transparent;
+}
+
+mainbox {
+    background-color: inherit;
+    orientation: vertical;
+    children: [message, textbox-current-entry, listview];
+}
+
+textbox-current-entry, message, textbox {
+    font: "monospace 9";
+    background-color: #00000044;
+    text-color: #ffffff;
+    horizontal-align: 0.5;
+    border-radius: 10px;
+}
+
+listview {
+    children: [element];
+    spacing: 5px;
+    padding: 8px;
+    background-color: inherit;
+}
+
+element {
+    children: [element-icon];
+    enabled: true;
+    padding: 20px;
+    border: 5px;
+    border-radius:2px;
+    cursor: pointer;
+}
+
+element-icon {
+    size: 32px;
+    background-color: inherit;
+    cursor: inherit;
+}
+
+element selected {
+    border: 3px;
+}
