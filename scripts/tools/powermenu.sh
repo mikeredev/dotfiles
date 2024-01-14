@@ -1,76 +1,85 @@
 #!/bin/bash
 
-lock=""
-suspend="󰤄"
-reboot=""
-logout="󰍃"
-hibernate="󰏤"
-poweroff=""
-host="`cat /etc/hostname`"
+# define any custom colors
+foreground="#9f6a05"
+background="#e3d533"
+selected="#ffffff"
 
-rofi_cmd(){
-    rofi -dmenu -theme "powermenu-rpg" -p "Press ESC to cancel" -mesg "Do you want to save your progress?"
-}
+# define choices
+lock="lock\0icon\x1f<span font='Font Awesome 6 Free Regular' color='$foreground'></span>"
+sleep="sleep\0icon\x1f<span font='Font Awesome 6 Free Regular' color='$foreground'></span>"
+reboot="reboot\0icon\x1f<span font='Font Awesome 6 Free Regular' color='$foreground'></span>"
+i3_reload="i3 reload\0icon\x1f<span font='Font Awesome 6 Free Regular' color='$foreground'></span>"
+i3_restart="i3 restart\0icon\x1f<span font='Font Awesome 6 Free Regular' color='$foreground'></span>"
+poweroff="poweroff\0icon\x1f<span font='Font Awesome 6 Free Regular' color='$foreground'></span>"
 
+# function to confirm user action
 rofi_confirm(){
-    echo -e "\n" |
-    rofi -theme-str 'mainbox {orientation: horizontal; children: [ mainnav, sidenav ];}' \
-        -theme-str 'window {padding: 0px 0px 10px 0px;}' \
-		-theme-str 'listview {columns: 2; lines: 1;}' \
-        -dmenu -mesg "Are you sure?" -theme "powermenu-rpg"
+    local selection="$1"
+    echo -e "$selection?\0icon\x1f<span font='Font Awesome 6 Free Regular' color='$foreground'></span>\n$selection?\0icon\x1f<span font='Font Awesome 6 Free Regular' color='$foreground'></span>" |
+    rofi -dmenu -theme "icon-bar" \
+        -theme-str 'window {width: 100px;}' \
+        -theme-str 'listview {columns: 1; lines: 2;}' \
+        -theme-str 'element {background-color: '$background';}' \
+        -theme-str 'element selected {border-color: '$selected';}'
 }
 
-main(){
-    options="$lock\n$suspend\n$reboot\n$logout\n$hibernate\n$poweroff"
-    selected=$(echo -e "$options" | rofi_cmd)
+# main function
+rofi_main() {
+    options_string="$lock\n$sleep\n$reboot\n$i3_reload\n$i3_restart\n$poweroff"
+    choice=$(echo -e "$options_string" | rofi -dmenu -theme "icon-bar" \
+        -theme-str 'window {width: 100px;}' \
+        -theme-str 'listview {columns: 1; lines: 6;}' \
+        -theme-str 'element {background-color: '$background';}' \
+        -theme-str 'element selected {border-color: '$selected';}')
 
-    case "$selected" in
-        "$lock")
-            i3lock -efti ~/Pictures/wallpapers/lockscreen.png
+    case 1 in
+        $(echo "$choice" | grep -q "lock" && echo 1) )
+            i3lock -efti ~/pictures/wallpapers/lockscreen.png
             ;;
-        "$suspend")
-            confirm=$(rofi_confirm)
-            if [ "$confirm" == "" ]; then
-                i3lock -efti ~/Pictures/wallpapers/lockscreen.png && systemctl suspend
+
+        $(echo "$choice" | grep -q "sleep" && echo 1) )
+            confirm=$(rofi_confirm sleep)
+            if echo $confirm | grep -e $choice; then
+                i3lock -efti ~/pictures/wallpapers/lockscreen.png && systemctl suspend
             else
                 return
             fi
             ;;
-        "$reboot")
-            confirm=$(rofi_confirm)
-            if [ "$confirm" == "" ]; then
+
+        $(echo "$choice" | grep -q "reload" && echo 1) )
+            i3-msg reload > /dev/null 2>&1
+            dunstify -a "i3wm" -u low "i3" "configuration reloaded"
+            ;;
+
+        $(echo "$choice" | grep -q "restart" && echo 1) )
+            dunstify -a "i3wm" -u low "i3" "restarted"
+            i3-msg restart
+            ;;
+
+        $(echo "$choice" | grep -q "reboot" && echo 1) )
+            confirm=$(rofi_confirm reboot)
+            if echo $confirm | grep -e $choice; then
                 systemctl reboot
             else
                 return
             fi
             ;;
-        "$logout")
-            confirm=$(rofi_confirm)
-            if [ "$confirm" == "" ]; then
-                i3-msg exit
-            else
-                return
-            fi
-            ;;
-        "$hibernate")
-            confirm=$(rofi_confirm)
-            if [ "$confirm" == "" ]; then
-                i3lock -efti ~/Pictures/wallpapers/lockscreen.png && systemctl hibernate
-            else
-                return
-            fi
-            ;;
-        "$poweroff")
-            confirm=$(rofi_confirm)
-            if [ "$confirm" == "" ]; then
+
+        $(echo "$choice" | grep -q "poweroff" && echo 1) )
+            confirm=$(rofi_confirm poweroff)
+            if echo $confirm | grep -e $choice; then
                 systemctl poweroff
             else
                 return
             fi
             ;;
+
         *)
+            exit 0
             ;;
     esac
 }
 
-main
+# main entry point to script
+rofi_main

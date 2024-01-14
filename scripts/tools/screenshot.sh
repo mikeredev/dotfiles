@@ -7,25 +7,37 @@ screenshot_directory=~/pictures/screenshots
 # define the timestamp string for filenames
 timestamp=$(date +"%Y%m%d-%H%M%S")
 
+# define in seconds how long to wait before taking screenshot in `wait` option
+wait_secs=3
+
+# define any custom colors
+foreground="#9f6a05"
+background="#e3d533"
+selected="#ffffff"
+
 # define available options
-copy=""
-save=""
-soon=""
+copy="copy\0icon\x1f<span font='Font Awesome 6 Free Regular' color='$foreground'></span>"
+save="save\0icon\x1f<span font='Font Awesome 6 Free Regular' color='$foreground'></span>"
+wait="wait "$wait_secs""s"\0icon\x1f<span font='Font Awesome 6 Free Regular' color='$foreground'></span>"
 
 # load rofi with available options
 main() {
-    options_string="$copy\n$save\n$soon"
-    selected=$(echo -e "$options_string" | rofi -dmenu -theme "system-menu")
+    options_string="$copy\n$save\n$wait"
+    choice=$(echo -e "$options_string" | rofi -dmenu -theme "icon-bar" \
+    -theme-str 'window {width: 100px;}' \
+    -theme-str 'listview {columns: 1; lines: 3;}' \
+    -theme-str 'element {background-color: '$background';}' \
+    -theme-str 'element selected {border-color: '$selected';}')
 
-    case $selected in
-        "$copy")
+    case 1 in
+        $(echo "$choice" | grep -q "copy" && echo 1) )
             copy
             ;;
-        "$save")
+        $(echo "$choice" | grep -q "save" && echo 1) )
             save
             ;;
-        "$soon")
-            soon 3
+        $(echo "$choice" | grep -q "wait" && echo 1) )
+            wait
             ;;
         *)
             exit 0
@@ -56,10 +68,9 @@ save() {
 }
 
 # function to wait n seconds and copy the full screen
-soon() {
-    local wait_seconds="$1"
-    dunstify -a manage-screenshot "Capturing full screen" "in $wait_seconds seconds..." -t 1000
-    sleep "$wait_seconds"
+wait() {
+    dunstify -a manage-screenshot "Capturing full screen" "in $wait_secs seconds..." -t 1000
+    sleep "$wait_secs"
     if scrot /tmp/screenshot.png; then
         xclip -selection clipboard -t image/png /tmp/screenshot.png
         rm /tmp/screenshot.png
