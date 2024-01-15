@@ -13,7 +13,6 @@ wait_secs=3
 # define any custom colors
 foreground="#9f6a05"
 background="#e3d533"
-selected="#ffffff"
 
 # define available options
 copy="copy\0icon\x1f<span font='Font Awesome 6 Free Regular' color='$foreground'></span>"
@@ -25,8 +24,7 @@ main() {
     options_string="$copy\n$save\n$wait"
     choice=$(echo -e "$options_string" | rofi -dmenu -theme "icon-bar" \
     -theme-str 'listview {columns: 1; lines: 3;}' \
-    -theme-str 'element {background-color: '$background';}' \
-    -theme-str 'element selected {border-color: '$selected';}')
+    -theme-str 'element {background-color: '$background';}')
 
     case 1 in
         $(echo "$choice" | grep -q "copy" && echo 1) )

@@ -10,8 +10,8 @@
         set $background     --randomize ~/pictures/wallpapers/*
         set $lockscreen     ~/pictures/wallpapers/lockscreen.png
     # window appearance
-        set $font           monospace 2
-        set $title          " "
+        set $font           mono 2
+        set $title          "[%title]"
         set $border_px      1
     # window behaviour
         set $float_class    Pavucontrol|Gnome-tweaks|Lxappearance
@@ -64,10 +64,10 @@
             bindsym $mod+Ctrl+Down resize shrink height 1 px or 1 ppt
             bindsym $mod+Ctrl+Left resize shrink width 1 px or 1 ppt
         # shift window focus
-            bindsym $mod+Left focus left
-            bindsym $mod+Down focus down
             bindsym $mod+Up focus up
             bindsym $mod+Right focus right
+            bindsym $mod+Down focus down
+            bindsym $mod+Left focus left
         # shift window position
             bindsym $mod+Shift+Left move left
             bindsym $mod+Shift+Down move down
@@ -130,10 +130,10 @@
         set $orange             #ffa500
     # windows
         # class                 border      backgr.     text        indicator   child_border
-        client.focused          $black      $green      $darkgreen  $orange     $green
-        client.focused_inactive $black      $darkgreen  $orange
-        client.unfocused        $black      $darkgreen  $orange
-        client.urgent           $orange     $orange     $white
+        client.focused          $black      $blue       $blue       $orange     $blue
+        client.focused_inactive #222222     $darkblue   $darkblue   $orange     $darkblue
+        client.unfocused        #222222     $darkblue   $darkblue   $orange     $darkblue
+        client.urgent           #9f6a05     #e3d533     #e3d533     $orange     $orange 
         client.placeholder      $black      $black      $darkgrey
         client.background       $black
         
@@ -154,7 +154,7 @@
             # class             border      backgr.     text
             focused_workspace   $white      $darkgrey   $white
             inactive_workspace  $darkgrey   $black      $lightgrey
-            urgent_workspace    $white      $orange     $white
+            urgent_workspace    #9f6a05     #e3d533     #9f6a05
             binding_mode        $black      $black      $orange
         }
     }

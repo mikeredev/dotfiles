@@ -3,22 +3,19 @@
 # define any custom colors
 foreground="#9f6a05"
 background="#e3d533"
-selected="#ffffff"
 
 # define available options
 cycle="cycle\0icon\x1f<span font='Font Awesome 6 Free Regular' color='$foreground'></span>"
-split="split\0icon\x1f<span font='Font Awesome 6 Free Regular' color='$foreground'></span>"
-stacking="stacking\0icon\x1f<span font='Font Awesome 6 Free Regular' color='$foreground'></span>"
-tabbed="tabbed\0icon\x1f<span font='Font Awesome 6 Free Regular' color='$foreground'></span>"
+split="split\0icon\x1f<span font='Font Awesome 6 Free Regular' color='$foreground'></span>"
+stacking="stacking\0icon\x1f<span font='Font Awesome 6 Free Regular' color='$foreground'></span>"
+tabbed="tabbed\0icon\x1f<span font='Font Awesome 6 Free Regular' color='$foreground'></span>"
 
 # main function
 rofi_main() {
     options_string="$cycle\n$split\n$stacking\n$tabbed"
     choice=$(echo -e "$options_string" | rofi -dmenu -theme "icon-bar" \
         -theme-str 'listview {columns: 1; lines: 4;}' \
-        -theme-str 'element {background-color: '$background';}' \
-        -theme-str 'element selected {border-color: '$selected';}' \
-        -markup-rows)
+        -theme-str 'element {background-color: '$background';}')
 
     case 1 in
         $(echo "$choice" | grep -q "cycle" && echo 1) )

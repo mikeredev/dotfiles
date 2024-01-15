@@ -1,6 +1,13 @@
+* {
+    background-color:   #e3d533;
+    foreground-color:   #9f6a05;
+    selected-color:     #ffffff;
+    font:               "JetBrains Mono Regular 9";
+}
+
 window {
-    location: southeast;
-    anchor: southeast;
+    location: east;
+    anchor: east;
     background-color: transparent;
     width: 80px;
 }
@@ -8,32 +15,33 @@ window {
 mainbox {
     background-color: inherit;
     orientation: vertical;
-    children: [textbox-current-entry, listview];
+    children: [message, textbox-current-entry, listview];
+    spacing: 5px;
 }
 
-textbox-current-entry {
-    font: "JetBrains Mono Regular 9";
+textbox-current-entry, message, textbox {
     background-color: #000000aa;
     text-color: #ffffff;
     horizontal-align: 0.5;
-    border-radius: 10px;
+    border-radius: 5px;
 }
 
 listview {
     children: [element];
     spacing: 5px;
     padding: 8px;
-    background-color: inherit;
-    border-radius: 2px;
+    background-color: #00000044;
+    border-radius: 5px;
 }
 
 element {
     children: [element-icon];
     enabled: true;
-    padding:15px;
+    padding: 15px;
     border: 3px;
-    border-radius: 2px;
+    border-radius: 5px;
     cursor: pointer;
+    background-color: @background-color;
 }
 
 element-icon {
@@ -44,4 +52,6 @@ element-icon {
 
 element selected {
     border: 3px;
+    border-color: @selected-color;
+    border-radius: 7px;
 }

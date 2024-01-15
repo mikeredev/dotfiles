@@ -1,43 +1,39 @@
 #!/bin/bash
 
-# define any custom colors
-foreground="#9f6a05"
-background="#e3d533"
-selection="#ffffff"
+# read fgcolor from rofi theme. only necessary if using icons instead of text
+fg_color=$(grep 'foreground-color:' "$HOME/.config/rofi/themes/icon-bar.rasi" | awk '{sub(/;/, "", $2); print $2}')
+glyphs="Font Awesome 6 Free Regular"
 
-# define choices
-lock="lock\0icon\x1f<span font='Font Awesome 6 Free Regular' color='$foreground'></span>"
-suspend="suspend\0icon\x1f<span font='Font Awesome 6 Free Regular' color='$foreground'>󰤄</span>"
-reboot="reboot\0icon\x1f<span font='Font Awesome 6 Free Regular' color='$foreground'></span>"
-i3_reload="i3 reload\0icon\x1f<span font='Font Awesome 6 Free Regular' color='$foreground'></span>"
-i3_restart="i3 restart\0icon\x1f<span font='Font Awesome 6 Free Regular' color='$foreground'></span>"
-poweroff="poweroff\0icon\x1f<span font='Font Awesome 6 Free Regular' color='$foreground'></span>"
+# define available options
+lock="lock\0icon\x1f<span font='$glyphs' color='$fg_color'></span>"
+suspend="suspend\0icon\x1f<span font='$glyphs' color='$fg_color'>󰤄</span>"
+reboot="reboot\0icon\x1f<span font='$glyphs' color='$fg_color'></span>"
+i3_reload="i3 reload\0icon\x1f<span font='$glyphs' color='$fg_color'></span>"
+i3_restart="i3 restart\0icon\x1f<span font='$glyphs' color='$fg_color'></span>"
+poweroff="poweroff\0icon\x1f<span font='$glyphs' color='$fg_color'></span>"
 
 # function to confirm user action
 rofi_confirm(){
-    echo -e "ok\0icon\x1f<span font='Font Awesome 6 Free Regular' color='$foreground'></span>\ncancel\0icon\x1f<span font='Font Awesome 6 Free Regular' color='$foreground'></span>" |
-    rofi -dmenu -theme "icon-bar" \
+    echo -e "ok\0icon\x1f<span font='$glyphs' color='$fg_color'></span>\ncancel\0icon\x1f<span font='$glyphs' color='$fg_color'></span>" |
+    rofi -dmenu -mesg "$selected?" -theme "icon-bar" \
         -theme-str 'listview {columns: 1; lines: 2;}' \
-        -theme-str 'element {background-color: '$background';}' \
-        -theme-str 'element selected {border-color: '$selection';}'
+        -theme-str 'textbox-current-entry {enabled: false;}';
 }
 
 # main function
 rofi_main() {
     options="$lock\n$suspend\n$reboot\n$i3_reload\n$i3_restart\n$poweroff"
     selected=$(echo -e "$options" | rofi -dmenu -theme "icon-bar" \
-        -theme-str 'listview {columns: 1; lines: 6;}' \
-        -theme-str 'element {background-color: '$background';}' \
-        -theme-str 'element selected {border-color: '$selection';}')
+        -theme-str 'listview {columns: 1; lines: 6;}')
 
     case "$selected" in
         "lock")
-            i3lock -efti ~/pictures/wallpapers/lockscreen.png
+            i3lock -efti `xdg-user-dir PICTURES`/wallpapers/lockscreen.png
             ;;
 
         "suspend")
             if [ "$(rofi_confirm)" == "ok" ]; then
-                echo "i3lock -efti ~/pictures/wallpapers/lockscreen.png && systemctl suspend"
+                i3lock -efti `xdg-user-dir PICTURES`/wallpapers/lockscreen.png && systemctl suspend
             else
                 return
             fi

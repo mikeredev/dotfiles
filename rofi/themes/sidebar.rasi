@@ -16,6 +16,7 @@ mainbox {
 inputbar {
     children: [prompt, entry, case-indicator];
     background-color: inherit;
+    padding: 5px 0px 5px 0px;
 }
 
 prompt, entry, case-indicator {
@@ -54,6 +55,5 @@ element-text {
 }
 
 error-message {
-    expand:             true;
-    background-color:   inherit;
+    background-color: inherit;
 }
