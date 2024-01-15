@@ -24,7 +24,6 @@ wait="wait "$wait_secs""s"\0icon\x1f<span font='Font Awesome 6 Free Regular' col
 main() {
     options_string="$copy\n$save\n$wait"
     choice=$(echo -e "$options_string" | rofi -dmenu -theme "icon-bar" \
-    -theme-str 'window {width: 100px;}' \
     -theme-str 'listview {columns: 1; lines: 3;}' \
     -theme-str 'element {background-color: '$background';}' \
     -theme-str 'element selected {border-color: '$selected';}')

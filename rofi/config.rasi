@@ -5,7 +5,8 @@ configuration {
     display-window:         "workspace";
     //drun-display-format:    "{name}";
     disable-history:        true;
+    hover-select:           true;
+    me-accept-entry:        "!MousePrimary";
  }
  
-@theme "/home/mishi/.config/rofi/themes/sidebar.rasi"
-
+@theme "themes/sidebar.rasi"

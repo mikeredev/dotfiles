@@ -2,17 +2,18 @@ window {
     location: southeast;
     anchor: southeast;
     background-color: transparent;
+    width: 80px;
 }
 
 mainbox {
     background-color: inherit;
     orientation: vertical;
-    children: [message, textbox-current-entry, listview];
+    children: [textbox-current-entry, listview];
 }
 
-textbox-current-entry, message, textbox {
-    font: "monospace 9";
-    background-color: #00000044;
+textbox-current-entry {
+    font: "JetBrains Mono Regular 9";
+    background-color: #000000aa;
     text-color: #ffffff;
     horizontal-align: 0.5;
     border-radius: 10px;
@@ -23,19 +24,20 @@ listview {
     spacing: 5px;
     padding: 8px;
     background-color: inherit;
+    border-radius: 2px;
 }
 
 element {
     children: [element-icon];
     enabled: true;
-    padding: 20px;
-    border: 5px;
-    border-radius:2px;
+    padding:15px;
+    border: 3px;
+    border-radius: 2px;
     cursor: pointer;
 }
 
 element-icon {
-    size: 32px;
+    size: 26px;
     background-color: inherit;
     cursor: inherit;
 }

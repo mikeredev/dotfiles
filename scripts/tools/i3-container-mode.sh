@@ -15,7 +15,6 @@ tabbed="tabbed\0icon\x1f<span font='Font Awesome 6 Free Regular' color='$foregro
 rofi_main() {
     options_string="$cycle\n$split\n$stacking\n$tabbed"
     choice=$(echo -e "$options_string" | rofi -dmenu -theme "icon-bar" \
-        -theme-str 'window {width: 100px;}' \
         -theme-str 'listview {columns: 1; lines: 4;}' \
         -theme-str 'element {background-color: '$background';}' \
         -theme-str 'element selected {border-color: '$selected';}' \

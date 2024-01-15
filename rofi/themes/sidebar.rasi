@@ -1,83 +1,59 @@
-* {
-    foreground:                 #cccccc;
-    background-color:           transparent;
-    normal-background:          #282c34dd;
-    selected-foreground:        #006400;
-    selected-background:        #8ae234;
-    message-background:         #4c566a;
-}
-
 window {
-    anchor:             west;
-    location:           west;
-    width:              25%;
-    height:             100%;
-    border:             0px;
-    padding:            0px 5px 5px 1px;
-    font:               "JetBrains Mono Bold 9";
+    children: [mainbox];
+    anchor: west;
+    location: west;
+    width: 25%;
+    height: 100%;
+    font: "JetBrains Mono Bold 9";
+    background-color: #282c3499;
 }
 
 mainbox {
-    background-color:   @normal-background;
+    children: [inputbar, listview];
+    background-color: inherit;
 }
 
 inputbar {
-    padding:            5px 5px 5px 5px;
+    children: [prompt, entry, case-indicator];
+    background-color: inherit;
 }
 
-prompt {
-    text-color:         @foreground;
+prompt, entry, case-indicator {
+    background-color: inherit;
+    text-color: #cccccc;
 }
 
 entry {
-    padding:            0px 0px 0px 10px;
-    text-color:         @foreground;
-}
-
-message {
-    border:             5px;
-    background-color:   @message-background;
-}
-
-textbox {
-    text-color:         @foreground;
-    padding:            5px;
+    padding: 0px 0px 0px 10px;
 }
 
 listview {
-    padding:            0px;
-    scrollbar:          false;
+    children: [element];
+    background-color: inherit;
+    padding: 0px 15px 0px 0px;
+    scrollbar: false;
 }
 
 element {
-    padding:            5px 0px 5px 10px;
-    background-color:   inherit;
-    text-color:         @foreground;
-    orientation:        horizontal;
-    children:           [ element-text ];
+    children: [element-text];
+    background-color: transparent;
+    text-color: #cccccc;
+    padding: 5px;
 }
 
-element-icon {
-    background-color:   inherit;
-    padding:            0px 10px 0px 0px;
-    size:               0.8em;
+element selected {
+    background-color: #8ae234;
+    text-color: #006400;
+    border-radius: 5px;
 }
 
 element-text {
-    text-color:         inherit;
-}
-
-element {
-    background-color:   inherit;
-    border-radius:      5px;
-}
-
-element.selected {
-    background-color:   @selected-background;
-    text-color:         @selected-foreground;
+    background-color: inherit;
+    text-color: inherit;
+    padding: 0px 0px 0px 5px;
 }
 
 error-message {
     expand:             true;
-    background-color:   @normal-background;
+    background-color:   inherit;
 }
