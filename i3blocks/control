@@ -28,12 +28,6 @@ if [ -z "$check" ]; then
     exit 1
 fi
 
-# check if the specified check is valid
-if [ -z "$check" ]; then
-    echo "Error: Invalid check specified."
-    exit 1
-fi
-
 # import the module dynamically and invoke its i3blocks_check function
 check_module=""$HOME"/.config/i3blocks/blocks/$check"
 if [ -f "${check_module}" ]; then

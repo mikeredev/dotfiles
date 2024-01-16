@@ -37,6 +37,16 @@ i3-msg restart
 `1 volume` `2 ethernet` `3 wifi`
 
 
+### mouse actions
+`$BLOCK_BUTTON` allows for the following mouse events:
+```
+1: left-click
+2: middle-click
+3: right-click
+4: mouse wheel up
+5: mouse wheel down
+```
+
 ### configuring thresholds
 - define `warning` and `critical` thresholds directly in `i3blocks.conf`, e.g.:
 
@@ -55,7 +65,7 @@ command="$HOME"/.config/i3blocks/control --check $BLOCK_NAME --warning 70 --crit
 
 
 ### styling
-- colors and fonts can be defined in `i3blocks.conf`
+- colors/fonts/glyphs can be defined in `i3blocks.conf`
 
 
 ### more info

@@ -22,7 +22,6 @@ get_status_color() {
     else
         echo "$color_ok"      # ok
 fi
-
 }
 
 # main function
