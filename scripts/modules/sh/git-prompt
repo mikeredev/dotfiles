@@ -1,0 +1,34 @@
+#!/bin/bash
+
+# Function to get the current Git branch name
+get_branch_name() {
+    branch=$(git symbolic-ref --short HEAD 2>/dev/null) || echo ""
+    echo "$branch"
+}
+
+# Function to get the repository name
+get_repo_name() {
+    repo_path=$(git rev-parse --show-toplevel 2>/dev/null) || echo ""
+    repo_name=$(basename "$repo_path")
+    echo "$repo_name"
+}
+
+# Function to determine the status color and count of unstaged files
+get_changes() {
+    count_changes=$(git status --porcelain | grep -c "^[ MDARCU??]")
+
+    if [ $count_changes -gt 0 ]; then
+        echo -n "$count_changes"
+    else
+        echo -n "\[$(tput setaf 82)\]✔️\[$(tput sgr0)\]"
+    fi
+}
+
+# Main script
+branch=$(get_branch_name)
+repo=$(get_repo_name)
+
+if [ -n "$branch" ] && [ -n "$repo" ]; then
+    changes=$(get_changes)
+    echo -e "\[$(tput setab 0)\]🔀${repo}/\[$(tput setab 16)\]${branch}\[$(tput sgr0)\] ${changes} "
+fi

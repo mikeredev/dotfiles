@@ -18,8 +18,8 @@ export PINECONE_API_KEY=$(cat ~/documents/auth/pinecone/pinecone_api_key.txt)
 
 # environment variables
 export OPENAI_MODEL='gpt-3.5-turbo'
-export PATH=$PATH:~/.local/bin
-export PYTHONPATH=$PYTHONPATH:~/.config/scripts/modules
+export PATH="$HOME/.config/scripts/modules/sh:$HOME/.local/bin:$PATH"
+export PYTHONPATH="$HOME/.config/scripts/modules/py:$PYTHONPATH"
 export EDITOR=vim
 export VISUAL=vim
 
@@ -30,16 +30,19 @@ HISTFILESIZE=500
 shopt -s histappend
 
 # prompt
-PS1='\W -> '
-#source /usr/share/git/git-prompt.sh
-#export PS1='\w$(__git_ps1 " (%s)") -> \$ '
+PS1='\w -> '
 
-# powerline
 function _update_ps1() {
-    PS1=$(powerline-shell $?)
+    local last_status=$(source last-status)
+    local git_info=$(source git-prompt)
+    tput smam
+    PS1="\[$(tput setaf 214)\]\w \[$(tput sgr0)\]"
+    [ -n "${git_info}" ] && PS1+="${git_info}"
+    PS1+="${last_status}$\[$(tput sgr0)\] "
 }
+
 if [[ $TERM != linux && ! $PROMPT_COMMAND =~ _update_ps1 ]]; then
-    PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
+    PROMPT_COMMAND='_update_ps1;'"$PROMPT_COMMAND"
 fi
 
 # terminal

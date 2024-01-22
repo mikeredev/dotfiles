@@ -14,7 +14,7 @@
         set $title          "[%title]"
         set $border_px      1
     # window behaviour
-        set $float_class    Pavucontrol|Gnome-tweaks|Lxappearance
+        set $float_class    Pavucontrol|Gnome-tweaks|Lxappearance|TelegramDesktop
 
 # desktop
     # rofi
