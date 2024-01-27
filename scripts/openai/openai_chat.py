@@ -1,3 +1,4 @@
+#!/bin/python
 """ openai_chat.py
 desc:       module for creating and returning an OpenAI chat completion
 requires:   openai
