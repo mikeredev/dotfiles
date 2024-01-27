@@ -8,7 +8,7 @@ alias gs='git status'
 alias gac='git add . && git commit -m'
 alias gp='git push -u origin'
 alias ls='ls -lA --color=auto --block-size=M'
-alias q='termgpt'
+alias q='~/.config/openai/gpt-chatbot-console.py'
 alias rr='ranger'
 
 # api keys
@@ -17,8 +17,8 @@ export PINECONE_API_KEY=$(cat ~/documents/auth/pinecone/pinecone_api_key.txt)
 
 # environment variables
 export OPENAI_MODEL='gpt-3.5-turbo'
-export PATH=$PATH:$HOME/.config/scripts/modules/PATH/:$HOME/.local/bin
-export PYTHONPATH=$PYTHONPATH:$HOME/.config/scripts/modules/PYTHONPATH
+export PATH=$PATH:$HOME/.local/bin:$HOME/.config/bash/bin/
+export PYTHONPATH=$PYTHONPATH:$HOME/.local/bin
 export EDITOR=vim
 export VISUAL=vim
 

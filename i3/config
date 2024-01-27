@@ -26,7 +26,7 @@
         bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && exec pkill -RTMIN+1 i3blocks
         bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && exec pkill -RTMIN+1 i3blocks
     # screenshots
-        bindsym Print exec --no-startup-id screenshot
+        bindsym Print exec --no-startup-id ~/.config/rofi/bin/screenshot
     # apps
         bindsym $mod+Return exec i3-sensible-terminal
         bindsym $mod+mod2+KP_1 exec --no-startup-id brave; workspace $ws1; focus
@@ -35,9 +35,10 @@
     # notifications
         bindsym $mod+mod2+KP_Decimal exec --no-startup-id dunstctl history-pop
         bindsym $mod+mod2+KP_Enter exec --no-startup-id dunstctl close-all
-    # custom / scripts
-        bindsym $mod+mod2+KP_0 exec --no-startup-id i3-container-mode
-        bindsym $mod+l exec --no-startup-id powermenu
+    # powermenu
+        bindsym $mod+l exec --no-startup-id ~/.config/rofi/bin/powermenu
+    # select i3 container type
+        bindsym $mod+mod2+KP_0 exec --no-startup-id ~/.config/rofi/bin/i3-container-mode
 
 # containers/windows
     # appearance
