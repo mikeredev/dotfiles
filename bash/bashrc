@@ -3,13 +3,12 @@
 [[ $- != *i* ]] && return
 
 # aliases
-alias backup='python ~/.config/scripts/backup/backup-dotfiles.py'
 alias grep='grep --color=auto'
 alias gs='git status'
 alias gac='git add . && git commit -m'
 alias gp='git push -u origin'
 alias ls='ls -lA --color=auto --block-size=M'
-alias q='python ~/.config/scripts/openai/gpt-chatbot-console.py'
+alias q='gpt-chatbot-console'
 alias rr='ranger'
 
 # api keys
@@ -18,8 +17,8 @@ export PINECONE_API_KEY=$(cat ~/documents/auth/pinecone/pinecone_api_key.txt)
 
 # environment variables
 export OPENAI_MODEL='gpt-3.5-turbo'
-export PATH="$HOME/.config/scripts/modules/sh:$HOME/.local/bin:$PATH"
-export PYTHONPATH="$HOME/.config/scripts/modules/py:$PYTHONPATH"
+export PATH=$PATH:$HOME/.config/scripts/tools:$HOME/.local/bin
+export PYTHONPATH=$PYTHONPATH:$HOME/.config/scripts/tools
 export EDITOR=vim
 export VISUAL=vim
 
@@ -33,7 +32,7 @@ shopt -s histappend
 PS1='\w -> '
 
 function _update_ps1() {
-    local last_status=$(source last-status)
+    local last_status=$(source last-cmd-exit-code)
     local git_info=$(source git-prompt)
     tput smam
     PS1="\[$(tput setaf 214)\]\w \[$(tput sgr0)\]"
@@ -47,12 +46,6 @@ fi
 
 # terminal
 shopt -s checkwinsize
-
-# theme
-export QT_QPA_PLATFORMTHEME="qt5ct"
-export GTK_APPLICATION_PREFER_DARK_THEME=1
-export GTK_THEME='Arc-Dark'
-export GTK_ICON_THEME="Wings-Dark-Icons"
 
 # XDG paths
 export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:="$HOME/.config"}

@@ -1,5 +1,5 @@
 # i3 config file (v4)
-# i3blocks signals: 1 volume, 2 ethernet, 3 wifi
+# i3blocks signals: 1 volume, 2 ethernet, 3 wifi, 4 notifications
 
 # variables
     # display
@@ -14,7 +14,7 @@
         set $title          "[%title]"
         set $border_px      1
     # window behaviour
-        set $float_class    Pavucontrol|Gnome-tweaks|Lxappearance|TelegramDesktop
+        set $float_class    Pavucontrol|Gnome-tweaks|Lxappearance
 
 # desktop
     # rofi
@@ -26,16 +26,18 @@
         bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && exec pkill -RTMIN+1 i3blocks
         bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && exec pkill -RTMIN+1 i3blocks
     # screenshots
-        bindsym Print exec --no-startup-id sh -c '~/.config/scripts/tools/screenshot.sh'
+        bindsym Print exec --no-startup-id screenshot
     # apps
         bindsym $mod+Return exec i3-sensible-terminal
         bindsym $mod+mod2+KP_1 exec --no-startup-id brave; workspace $ws1; focus
         bindsym $mod+mod2+KP_2 exec --no-startup-id vscodium; workspace $ws2; focus
         bindsym $mod+mod2+KP_3 exec --no-startup-id thunar
-    # custom / scripts
-        bindsym $mod+mod2+KP_0 exec --no-startup-id sh -c '~/.config/scripts/tools/i3-container-mode.sh'
+    # notifications
         bindsym $mod+mod2+KP_Decimal exec --no-startup-id dunstctl history-pop
-        bindsym $mod+l exec --no-startup-id sh -c '~/.config/scripts/tools/powermenu.sh'
+        bindsym $mod+mod2+KP_Enter exec --no-startup-id dunstctl close-all
+    # custom / scripts
+        bindsym $mod+mod2+KP_0 exec --no-startup-id i3-container-mode
+        bindsym $mod+l exec --no-startup-id powermenu
 
 # containers/windows
     # appearance
@@ -104,11 +106,11 @@
     for_window [class="steam"] move to workspace $ws3
 
 # autostart
-    exec --no-startup-id dunst
+    exec --no-startup-id dunst &
     exec --no-startup-id picom -b
-    exec_always --no-startup-id feh --bg-fill --no-fehbg $background
+    exec_always --no-startup-id feh --bg-fill --no-fehbg $background &
     exec --no-startup-id setxkbmap ie
-    exec --no-startup-id redshift
+    exec --no-startup-id redshift &
     exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ 40%
 
 # appearance

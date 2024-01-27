@@ -24,14 +24,15 @@
 
 # icon
     enable_recursive_icon_lookup = true
-    icon_theme = breeze         # set multiple themes with left-most one used first
+    icon_theme = Papirus         # set multiple themes with left-most one used first
     icon_position = left        # {left, right, top, off}
     icon_corner_radius = 0      # 0 to disable
     min_icon_size = 64          # scale up to this size
     max_icon_size = 64          # scale down to this size, 0 to disable
 
 # style
-    font = Fira Code Retina 10
+    #font = Fira Code Retina 9
+    font = Monaco 10
     alignment = left            # message text, {left, center, right}
     vertical_alignment = top    # {top, center, bottom}
     ellipsize = end             # {start, middle, end}
@@ -52,7 +53,7 @@
     hide_duplicate_count = false
     history_length = 20
     idle_threshold = 0          # remove message after n seconds, 0 to disable
-    ignore_newline = no         # ignore new lines in messages
+    ignore_newline = yes        # ignore new lines in messages
     indicate_hidden = yes
     notification_limit = 10     # max notifications to display
     show_age_threshold = -1     # show message age if older than n seconds, -1 to disable
@@ -81,21 +82,21 @@
 
 # default styles
 [urgency_low]
-    background = "#b4bbf1"
-    foreground = "#4b0082"
-    frame_color = "#2f3b5a"
+    background = "#1e1f29cc"
+    foreground = "#f8f8f2"
+    frame_color = "#6272a4"
     timeout = 5
 
 [urgency_normal]
-    background = "#b4bbf1"
-    foreground = "#4b0082"
-    frame_color = "#2f3b5a"
+    background = "#1e1f29cc"
+    foreground = "#f8f8f2"
+    frame_color = "#6272a4"
     timeout = 8
 
 [urgency_critical]
-    background = "#3498db"
-    foreground = "#2f3b5a"
-    frame_color = "#2f3b5a"
+    background = "#ff5555cc"
+    foreground = "#f8f8f2"
+    frame_color = "#ff5555"
     timeout = 0
 
 # custom styles
@@ -113,11 +114,6 @@
 [gpt-news]
     appname = gpt-news
 
-[i3wm]
-    appname = i3wm
-    set_stack_tag = "i3wm"
-    new_icon = "~/.local/share/icons/i3wm.png"
-
 [manage-screenshot]
     appname = manage-screenshot
     new_icon = "camera-photo-symbolic"
@@ -126,7 +122,6 @@
     appname = manage-wifi
     set_stack_tag = "manage-wifi"
     new_icon = "network-wireless-symbolic"
-
 
     # * none: Don't do anything.
     # * do_action: Invoke the action determined by the action_name rule. If there is no
