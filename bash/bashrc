@@ -8,7 +8,7 @@ alias gs='git status'
 alias gac='git add . && git commit -m'
 alias gp='git push -u origin'
 alias ls='ls -lA --color=auto --block-size=M'
-alias q='gpt-chatbot-console'
+alias q='termgpt'
 alias rr='ranger'
 
 # api keys
@@ -17,7 +17,7 @@ export PINECONE_API_KEY=$(cat ~/documents/auth/pinecone/pinecone_api_key.txt)
 
 # environment variables
 export OPENAI_MODEL='gpt-3.5-turbo'
-export PATH=$PATH:$HOME/.config/scripts/modules/PATH:$HOME/.local/bin
+export PATH=$PATH:$HOME/.config/scripts/modules/PATH/:$HOME/.local/bin
 export PYTHONPATH=$PYTHONPATH:$HOME/.config/scripts/modules/PYTHONPATH
 export EDITOR=vim
 export VISUAL=vim
@@ -32,8 +32,8 @@ shopt -s histappend
 PS1='\w -> '
 
 function _update_ps1() {
-    local last_status=$(source last-cmd-exit-code)
-    local git_info=$(source git-prompt)
+    local last_status=$(source ps1-last-exit-code)
+    local git_info=$(source ps1-git-info)
     tput smam
     PS1="\[$(tput setaf 214)\]\w \[$(tput sgr0)\]"
     [ -n "${git_info}" ] && PS1+="${git_info}"
