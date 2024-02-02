@@ -31,8 +31,8 @@
     max_icon_size = 64          # scale down to this size, 0 to disable
 
 # style
-    #font = Fira Code Retina 9
-    font = Monaco 10
+    font = JetBrains Mono Bold 11
+    #font = Monaco 10
     alignment = left            # message text, {left, center, right}
     vertical_alignment = top    # {top, center, bottom}
     ellipsize = end             # {start, middle, end}
@@ -122,6 +122,11 @@
     appname = manage-wifi
     set_stack_tag = "manage-wifi"
     new_icon = "network-wireless-symbolic"
+
+[rofi-gpt]
+    appname = rofi-gpt
+    new_icon = "~/.config/dunst/icons/robot.png"
+    format = "%s"
 
     # * none: Don't do anything.
     # * do_action: Invoke the action determined by the action_name rule. If there is no
