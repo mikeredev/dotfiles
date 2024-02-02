@@ -1,3 +1,7 @@
+* {
+    font: "Manaspace 16";
+}
+
 window {
     location: center;
     anchor: center;
