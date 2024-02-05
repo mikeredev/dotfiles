@@ -30,7 +30,7 @@
         "editor.formatOnSave": true
     },
     "security.workspace.trust.untrustedFiles": "open",
-    "terminal.integrated.fontFamily": "'Fira Code Retina', monospace, 'Noto Color Emoji', 'Font Awesome 6 Brands', 'Font Awesome 6 Free Solid'",
+    "terminal.integrated.fontFamily": "'Fira Code Retina', 'Font Awesome 6 Brands', 'Font Awesome 6 Free Solid'",
     "terminal.integrated.fontSize": 12,
     "terminal.integrated.lineHeight": 1.2,
     "window.menuBarVisibility": "toggle",
