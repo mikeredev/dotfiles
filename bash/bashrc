@@ -57,6 +57,10 @@ export XDG_STATE_HOME=${XDG_STATE_HOME:="$HOME/.local/state"}
 export XDG_DATA_DIRS=${XDG_DATA_DIRS:="/usr/local/share:/usr/share"}
 export XDG_CONFIG_DIRS=${XDG_CONFIG_DIRS:="/etc/xdg"}
 
+# theme
+export QT_QPA_PLATFORMTHEME="qt5ct"
+export GTK_APPLICATION_PREFER_DARK_THEME=1
+
 # move files to .config
 export GNUPGHOME=${XDG_CONFIG_HOME}/gnupg
 export LESSHISTFILE="${XDG_CONFIG_HOME}/less/history"
