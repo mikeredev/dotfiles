@@ -8,7 +8,6 @@ alias gs='git status'
 alias gac='git add . && git commit -m'
 alias gp='git push -u origin'
 alias ls='ls -lA --color=auto --block-size=M'
-alias q='~/.config/openai/gpt-chatbot-console.py'
 alias rr='ranger'
 
 # api keys
@@ -27,6 +26,12 @@ HISTCONTROL=ignoreboth:erasedups
 HISTSIZE=500
 HISTFILESIZE=500
 shopt -s histappend
+
+# console-gpt function
+function q() {
+    cd ~/.config/openai && ./console-gpt "$1"
+    cd - > /dev/null
+}
 
 # prompt
 PS1='\w -> '
