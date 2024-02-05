@@ -31,7 +31,7 @@
     max_icon_size = 64          # scale down to this size, 0 to disable
 
 # style
-    font = JetBrains Mono Bold 11
+    font = mono 10
     #font = Monaco 10
     alignment = left            # message text, {left, center, right}
     vertical_alignment = top    # {top, center, bottom}
@@ -53,7 +53,7 @@
     hide_duplicate_count = false
     history_length = 20
     idle_threshold = 0          # remove message after n seconds, 0 to disable
-    ignore_newline = yes        # ignore new lines in messages
+    ignore_newline = no         # ignore new lines in messages
     indicate_hidden = yes
     notification_limit = 10     # max notifications to display
     show_age_threshold = -1     # show message age if older than n seconds, -1 to disable
@@ -91,7 +91,7 @@
     background = "#1e1f29cc"
     foreground = "#f8f8f2"
     frame_color = "#6272a4"
-    timeout = 8
+    timeout = 10
 
 [urgency_critical]
     background = "#ff5555cc"
@@ -111,8 +111,9 @@
     desktop_entry="brave-browser"
     body = *discord.com*
 
-[gpt-news]
-    appname = gpt-news
+[news-gpt]
+    appname = news-gpt
+    new_icon = "~/.config/dunst/icons/news.png"
 
 [manage-screenshot]
     appname = manage-screenshot
