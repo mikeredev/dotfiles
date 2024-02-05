@@ -32,13 +32,15 @@ shopt -s histappend
 PS1='\w -> '
 
 function _update_ps1() {
-    local last_status=$(source ps1-last-exit-code)
+    local is_venv=$(source ps1-is-venv)
     local git_info=$(source ps1-git-info)
+    local last_status=$(source ps1-last-exit-code)
     tput smam
-    PS1="\[$(tput setaf 214)\]\w \[$(tput sgr0)\]"
+    PS1="${is_venv}\[$(tput setaf 214)\]\w \[$(tput sgr0)\]"
     [ -n "${git_info}" ] && PS1+="${git_info}"
     PS1+="${last_status}$\[$(tput sgr0)\] "
 }
+
 
 if [[ $TERM != linux && ! $PROMPT_COMMAND =~ _update_ps1 ]]; then
     PROMPT_COMMAND='_update_ps1;'"$PROMPT_COMMAND"
