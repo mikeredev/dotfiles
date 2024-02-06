@@ -8,6 +8,7 @@ alias gs='git status'
 alias gac='git add . && git commit -m'
 alias gp='git push -u origin'
 alias ls='ls -lA --color=auto --block-size=M'
+alias q='~/.config/openai/console-gpt'
 alias rr='ranger'
 
 # api keys
@@ -15,9 +16,7 @@ export OPENAI_API_KEY=$(cat ~/documents/auth/openai/openai_api_key.txt)
 export PINECONE_API_KEY=$(cat ~/documents/auth/pinecone/pinecone_api_key.txt)
 
 # environment variables
-export OPENAI_MODEL='gpt-3.5-turbo'
 export PATH=$PATH:$HOME/.local/bin:$HOME/.config/bash/bin/
-export PYTHONPATH=$PYTHONPATH:$HOME/.local/bin
 export EDITOR=vim
 export VISUAL=vim
 
@@ -27,15 +26,10 @@ HISTSIZE=500
 HISTFILESIZE=500
 shopt -s histappend
 
-# console-gpt function
-function q() {
-    cd ~/.config/openai && ./console-gpt "$1"
-    cd - > /dev/null
-}
-
-# prompt
+# basic prompt
 PS1='\w -> '
 
+# detailed prompt
 function _update_ps1() {
     local is_venv=$(source ps1-is-venv)
     local git_info=$(source ps1-git-info)
@@ -45,8 +39,6 @@ function _update_ps1() {
     [ -n "${git_info}" ] && PS1+="${git_info}"
     PS1+="${last_status}$\[$(tput sgr0)\] "
 }
-
-
 if [[ $TERM != linux && ! $PROMPT_COMMAND =~ _update_ps1 ]]; then
     PROMPT_COMMAND='_update_ps1;'"$PROMPT_COMMAND"
 fi
