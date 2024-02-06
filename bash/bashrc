@@ -8,7 +8,7 @@ alias gs='git status'
 alias gac='git add . && git commit -m'
 alias gp='git push -u origin'
 alias ls='ls -lA --color=auto --block-size=M'
-alias q='~/.config/openai/console-gpt'
+alias q='~/.config/openai/bin/console-gpt'
 alias rr='ranger'
 
 # api keys
