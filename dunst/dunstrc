@@ -111,8 +111,8 @@
     desktop_entry="brave-browser"
     body = *discord.com*
 
-[news-gpt]
-    appname = news-gpt
+[rss-gpt]
+    appname = rss-gpt
     new_icon = "~/.config/dunst/icons/news.png"
 
 [manage-screenshot]
