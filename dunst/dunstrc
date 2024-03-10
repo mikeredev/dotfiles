@@ -101,16 +101,17 @@
 
 # custom styles
 #kill $(pgrep dunst) ; dunstify -u low "low" "this is a low urgency notification" ; dunstify -u normal "normal" "this is a normal urgency notification" ; dunstify -u critical "critical" "this is a critical urgency notification"
+
+[browser-slack-ignore]
+    desktop_entry="brave-browser"
+    body = *Typing...*
+    skip_display = true
+
 [browser-slack]
     desktop_entry="brave-browser"
     new_icon = "~/.config/dunst/icons/slack.png"
     body = *slack.com*
     set_stack_tag = "slack"
-
-[browser-slack-ignore]
-    desktop_entry="brave-browser"
-    body = *_Typing..._*
-    skip_display = true
 
 [browser-discord]
     desktop_entry="brave-browser"
