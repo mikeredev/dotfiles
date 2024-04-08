@@ -19,26 +19,26 @@
 
 # padding
     padding = 10                # padding between text and separator
-    horizontal_padding = 10     # horizontal padding
+    horizontal_padding = 25     # horizontal padding
     text_icon_padding = 15      # padding between text and icon
 
 # icon
     enable_recursive_icon_lookup = true
     icon_theme = Papirus         # set multiple themes with left-most one used first
-    icon_position = left        # {left, right, top, off}
+    icon_position = right        # {left, right, top, off}
     icon_corner_radius = 0      # 0 to disable
-    min_icon_size = 64          # scale up to this size
-    max_icon_size = 64          # scale down to this size, 0 to disable
+    min_icon_size = 32          # scale up to this size
+    max_icon_size = 32          # scale down to this size, 0 to disable
 
 # style
-    font = mono 10
+    font = mono 9
     #font = Monaco 10
     alignment = left            # message text, {left, center, right}
     vertical_alignment = top    # {top, center, bottom}
     ellipsize = end             # {start, middle, end}
     line_height = 1
     markup = full               # (%a)ppname, (%s)ummary, (%b)ody, (%i)conname w/path, (%%) literal %,
-    format = "<b>%s</b>\n%b"    # (%I)conname w/o path, (%p)rogress value, (%n) progess value no whitespace
+    format = "➡️ <b>%s</b>\n%b"    # (%I)conname w/o path, (%p)rogress value, (%n) progess value no whitespace
                                 
 # frame
     corner_radius = 10          # 0 to disable. beware clipping
@@ -100,18 +100,21 @@
     timeout = 0
 
 # custom styles
+# icons from iconfinder.com
 #kill $(pgrep dunst) ; dunstify -u low "low" "this is a low urgency notification" ; dunstify -u normal "normal" "this is a normal urgency notification" ; dunstify -u critical "critical" "this is a critical urgency notification"
 
 [browser-slack-ignore]
     desktop_entry="brave-browser"
     body = *Typing...*
     skip_display = true
+    history_ignore = true
 
 [browser-slack]
     desktop_entry="brave-browser"
     new_icon = "~/.config/dunst/icons/slack.png"
     body = *slack.com*
     set_stack_tag = "slack"
+    timeout = 10
 
 [browser-discord]
     desktop_entry="brave-browser"
@@ -120,10 +123,12 @@
 [rss-gpt]
     appname = rss-gpt
     new_icon = "~/.config/dunst/icons/news.png"
+    timeout = 30
 
 [manage-screenshot]
     appname = manage-screenshot
     new_icon = "camera-photo-symbolic"
+    timeout = 3
 
 [manage-wifi]
     appname = manage-wifi
