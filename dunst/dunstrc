@@ -3,8 +3,8 @@
 # display
     follow = none               # {mouse, keyboard, none}
     monitor = 0
-    width = 400
-    height = 600
+    width = 600
+    height = 150
     origin = top-right
     offset = 15x35
     scale = 0
@@ -19,7 +19,7 @@
 
 # padding
     padding = 10                # padding between text and separator
-    horizontal_padding = 25     # horizontal padding
+    horizontal_padding = 20     # horizontal padding
     text_icon_padding = 15      # padding between text and icon
 
 # icon
@@ -28,31 +28,30 @@
     icon_position = right        # {left, right, top, off}
     icon_corner_radius = 0      # 0 to disable
     min_icon_size = 32          # scale up to this size
-    max_icon_size = 32          # scale down to this size, 0 to disable
+    max_icon_size = 48          # scale down to this size, 0 to disable
 
 # style
-    font = mono 9
-    #font = Monaco 10
+    font = minecraft 12
     alignment = left            # message text, {left, center, right}
-    vertical_alignment = top    # {top, center, bottom}
+    vertical_alignment = center    # {top, center, bottom}
     ellipsize = end             # {start, middle, end}
-    line_height = 1
+    line_height = 3
     markup = full               # (%a)ppname, (%s)ummary, (%b)ody, (%i)conname w/path, (%%) literal %,
-    format = "➡️ <b>%s</b>\n%b"    # (%I)conname w/o path, (%p)rogress value, (%n) progess value no whitespace
+    format = "%s > %b"    # (%I)conname w/o path, (%p)rogress value, (%n) progess value no whitespace
                                 
 # frame
-    corner_radius = 10          # 0 to disable. beware clipping
-    frame_width = 1             # pixel width of notification frame
-    frame_color = "#574a9d"     # default color of notification frame 
-    gap_size = 0                # gap between notifs (overrides separator_height)
+    corner_radius = 3          # 0 to disable. beware clipping
+    frame_width = 2             # pixel width of notification frame
+    frame_color = "#5E81AC"     # default color of notification frame 
+    gap_size = 4                # gap between notifs (overrides separator_height)
     separator_color = auto      # {auto, foreground, frame} [Xcolor]
     separator_height = 2        # width of separating line between multiple notifs
     transparency = 0            # range 0-100
 
 # display
     hide_duplicate_count = false
-    history_length = 20
-    idle_threshold = 0          # remove message after n seconds, 0 to disable
+    history_length = 10
+    idle_threshold = 10          # remove message after n seconds, 0 to disable
     ignore_newline = no         # ignore new lines in messages
     indicate_hidden = yes
     notification_limit = 10     # max notifications to display
@@ -82,30 +81,32 @@
 
 # default styles
 [urgency_low]
-    background = "#1e1f29cc"
-    foreground = "#f8f8f2"
-    frame_color = "#6272a4"
+    background = "#4C566Acc"
+    foreground = "#ECEFF4"
     timeout = 5
+    format = "<span foreground='#cacdd2'>%s ></span> %b"
 
-[urgency_normal]
-    background = "#1e1f29cc"
-    foreground = "#f8f8f2"
-    frame_color = "#6272a4"
+ [urgency_normal]
+    background = "#4C566Acc"
+    foreground = "#ECEFF4"
     timeout = 10
+    format = "<span foreground='#cacdd2'>%s ></span> %b"
 
-[urgency_critical]
-    background = "#ff5555cc"
-    foreground = "#f8f8f2"
-    frame_color = "#ff5555"
+ [urgency_critical]
+    background = "#e3d533cc"
+    foreground = "#9f6a05"
+    frame_color = "#9f6a05"
     timeout = 0
+    format = "<b>%s ></b> %b"
 
 # custom styles
 # icons from iconfinder.com
 #kill $(pgrep dunst) ; dunstify -u low "low" "this is a low urgency notification" ; dunstify -u normal "normal" "this is a normal urgency notification" ; dunstify -u critical "critical" "this is a critical urgency notification"
 
+# slack notifications
 [browser-slack-ignore]
     desktop_entry="brave-browser"
-    body = *Typing...*
+    body = *(bot)*
     skip_display = true
     history_ignore = true
 
@@ -114,12 +115,15 @@
     new_icon = "~/.config/dunst/icons/slack.png"
     body = *slack.com*
     set_stack_tag = "slack"
-    timeout = 10
 
+# discord notifications
 [browser-discord]
     desktop_entry="brave-browser"
     body = *discord.com*
+    set_stack_tag = "discord"
+    new_icon = "~/.config/dunst/icons/discord.png"
 
+# desktop notifications
 [rss-gpt]
     appname = rss-gpt
     new_icon = "~/.config/dunst/icons/news.png"
