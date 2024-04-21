@@ -10,8 +10,8 @@
         set $background     --randomize ~/pictures/wallpapers/*
         set $lockscreen     ~/pictures/wallpapers/lockscreen.png
     # window appearance
-        set $font           mono 2
-        set $title          "[%title]"
+        set $font           minecraft 12
+        set $title          "> [%title]"
         set $border_px      1
     # window behaviour
         set $float_class    Pavucontrol|Gnome-tweaks|Lxappearance
@@ -27,7 +27,7 @@
         bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && exec pkill -RTMIN+1 i3blocks
         bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && exec pkill -RTMIN+1 i3blocks
     # screenshots
-        bindsym Print exec --no-startup-id ~/.config/rofi/bin/screenshot
+        bindsym Print exec --no-startup-id ~/.config/rofi/scripts/screenshot
     # apps
         bindsym $mod+Return exec i3-sensible-terminal
         bindsym $mod+mod2+KP_1 exec --no-startup-id brave; workspace $ws1; focus
@@ -37,9 +37,9 @@
         bindsym $mod+mod2+KP_Decimal exec --no-startup-id dunstctl history-pop
         bindsym $mod+mod2+KP_Enter exec --no-startup-id dunstctl close-all
     # powermenu
-        bindsym $mod+l exec --no-startup-id ~/.config/rofi/bin/powermenu
+        bindsym $mod+l exec --no-startup-id ~/.config/rofi/scripts/powermenu
     # select i3 container type
-        bindsym $mod+mod2+KP_0 exec --no-startup-id ~/.config/rofi/bin/i3-container-mode
+        bindsym $mod+mod2+KP_0 exec --no-startup-id ~/.config/rofi/scripts/i3-container-mode
 
 # containers/windows
     # appearance
@@ -135,10 +135,10 @@
         set $orange             #ffa500
     # windows
         # class                 border      backgr.     text        indicator   child_border
-        client.focused          $black      $blue       $blue       $orange     $blue
-        client.focused_inactive #222222     $darkblue   $darkblue   $orange     $darkblue
-        client.unfocused        #222222     $darkblue   $darkblue   $orange     $darkblue
-        client.urgent           #9f6a05     #e3d533     #e3d533     $orange     $orange 
+        client.focused          $black      $black      $cyan       $orange     $blue
+        client.focused_inactive $black      $black      $blue       $orange     $black
+        client.unfocused        $black      $black      $blue       $orange     $black
+        client.urgent           $black      $blue       $darkblue   $orange     $orange 
         client.placeholder      $black      $black      $darkgrey
         client.background       $black
         
@@ -159,7 +159,7 @@
             # class             border      backgr.     text
             focused_workspace   $white      $darkgrey   $white
             inactive_workspace  $darkgrey   $black      $lightgrey
-            urgent_workspace    #9f6a05     #e3d533     #9f6a05
+            urgent_workspace    $black      $blue       $darkblue
             binding_mode        $black      $black      $orange
         }
     }
