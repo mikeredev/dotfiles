@@ -1,21 +1,20 @@
 #!/bin/bash
 
-# define any custom colors
-foreground="#9f6a05"
-background="#e3d533"
+# read foreground-color from rofi theme
+fg_color=$(grep 'foreground-color:' "$HOME/.config/rofi/themes/icon-bar.rasi" | awk '{sub(/;/, "", $2); print $2}')
+glyphs="Font Awesome 6 Free Regular"
 
 # define available options
-cycle="cycle\0icon\x1f<span font='Font Awesome 6 Free Regular' color='$foreground'></span>"
-split="split\0icon\x1f<span font='Font Awesome 6 Free Regular' color='$foreground'></span>"
-stacking="stacking\0icon\x1f<span font='Font Awesome 6 Free Regular' color='$foreground'></span>"
-tabbed="tabbed\0icon\x1f<span font='Font Awesome 6 Free Regular' color='$foreground'></span>"
+cycle="cycle\0icon\x1f<span font='$glyphs' color='$fg_color'></span>"
+split="split\0icon\x1f<span font='$glyphs' color='$fg_color'></span>"
+stacking="stacking\0icon\x1f<span font='$glyphs' color='$fg_color'></span>"
+tabbed="tabbed\0icon\x1f<span font='$glyphs' color='$fg_color'></span>"
 
 # main function
 rofi_main() {
     options_string="$cycle\n$split\n$stacking\n$tabbed"
     choice=$(echo -e "$options_string" | rofi -dmenu -theme "icon-bar" \
-        -theme-str 'listview {columns: 1; lines: 4;}' \
-        -theme-str 'element {background-color: '$background';}')
+        -theme-str 'listview {columns: 1; lines: 4;}')
 
     case 1 in
         $(echo "$choice" | grep -q "cycle" && echo 1) )

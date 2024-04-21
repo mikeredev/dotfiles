@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# read fgcolor from rofi theme. only necessary if using icons instead of text
+# read foreground-color from rofi theme
 fg_color=$(grep 'foreground-color:' "$HOME/.config/rofi/themes/icon-bar.rasi" | awk '{sub(/;/, "", $2); print $2}')
 glyphs="Font Awesome 6 Free Regular"
 

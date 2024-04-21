@@ -1,6 +1,10 @@
 #!/bin/bash
 # requires: rofi, dunst, scrot, xclip
 
+# read foreground-color from rofi theme
+fg_color=$(grep 'foreground-color:' "$HOME/.config/rofi/themes/icon-bar.rasi" | awk '{sub(/;/, "", $2); print $2}')
+glyphs="Font Awesome 6 Free Regular"
+
 # define the directory for saved images
 screenshot_directory=~/pictures/screenshots
 
@@ -10,21 +14,16 @@ timestamp=$(date +"%Y%m%d-%H%M%S")
 # define in seconds how long to wait before taking screenshot in `wait` option
 wait_secs=3
 
-# define any custom colors
-foreground="#9f6a05"
-background="#e3d533"
-
 # define available options
-copy="copy\0icon\x1f<span font='Font Awesome 6 Free Regular' color='$foreground'></span>"
-save="save\0icon\x1f<span font='Font Awesome 6 Free Regular' color='$foreground'></span>"
-wait="wait "$wait_secs""s"\0icon\x1f<span font='Font Awesome 6 Free Regular' color='$foreground'></span>"
+copy="copy\0icon\x1f<span font='$glyphs' color='$fg_color'></span>"
+save="save\0icon\x1f<span font='$glyphs' color='$fg_color'></span>"
+wait="wait "$wait_secs""s"\0icon\x1f<span font='$glyphs' color='$fg_color'></span>"
 
 # load rofi with available options
 main() {
     options_string="$copy\n$save\n$wait"
     choice=$(echo -e "$options_string" | rofi -dmenu -theme "icon-bar" \
-    -theme-str 'listview {columns: 1; lines: 3;}' \
-    -theme-str 'element {background-color: '$background';}')
+    -theme-str 'listview {columns: 1; lines: 3;}')
 
     case 1 in
         $(echo "$choice" | grep -q "copy" && echo 1) )
@@ -47,7 +46,7 @@ copy() {
     if scrot -s /tmp/screenshot.png; then
         xclip -selection clipboard -t image/png /tmp/screenshot.png
         rm /tmp/screenshot.png
-        dunstify -a manage-screenshot "Screenshot taken" "Area copied to clipboard"
+        dunstify -a manage-screenshot "screenshot taken" "selected area copied to clipboard"
     else
         exit 0
     fi
@@ -58,7 +57,7 @@ save() {
     if scrot -s /tmp/screenshot.png; then
         xclip -selection clipboard -t image/png /tmp/screenshot.png
         mv /tmp/screenshot.png "$screenshot_directory/screenshot_${timestamp}.png"
-        dunstify -a manage-screenshot "Screenshot saved" "$screenshot_directory/screenshot_${timestamp}.png"
+        dunstify -a manage-screenshot "screenshot saved" "$screenshot_directory/screenshot_${timestamp}.png"
     else
         exit 0
     fi
@@ -66,12 +65,12 @@ save() {
 
 # function to wait n seconds and copy the full screen
 wait() {
-    dunstify -a manage-screenshot "Capturing full screen" "in $wait_secs seconds..." -t 1000
+    dunstify -a manage-screenshot "capturing full screen" "in $wait_secs seconds..." -t 1000
     sleep "$wait_secs"
     if scrot /tmp/screenshot.png; then
         xclip -selection clipboard -t image/png /tmp/screenshot.png
         rm /tmp/screenshot.png
-        dunstify -a manage-screenshot "Screenshot taken" "Fullscreen copied to clipboard"
+        dunstify -a manage-screenshot "screenshot taken" "full screen copied to clipboard"
     else
         exit 0
     fi
