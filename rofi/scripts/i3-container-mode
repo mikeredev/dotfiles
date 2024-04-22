@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # read foreground-color from rofi theme
-fg_color=$(grep 'foreground-color:' "$HOME/.config/rofi/themes/icon-bar.rasi" | awk '{sub(/;/, "", $2); print $2}')
+fg_color=$(grep 'foreground-color:' "$HOME/.config/rofi/themes/icons.rasi" | awk '{sub(/;/, "", $2); print $2}')
 glyphs="Font Awesome 6 Free Regular"
 
 # define available options
@@ -13,7 +13,7 @@ tabbed="tabbed\0icon\x1f<span font='$glyphs' color='$fg_color'></span>"
 # main function
 rofi_main() {
     options_string="$cycle\n$split\n$stacking\n$tabbed"
-    choice=$(echo -e "$options_string" | rofi -dmenu -theme "icon-bar" \
+    choice=$(echo -e "$options_string" | rofi -dmenu -theme "icons" \
         -theme-str 'listview {columns: 1; lines: 4;}')
 
     case 1 in

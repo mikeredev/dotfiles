@@ -2,7 +2,7 @@
 # requires: rofi, dunst, scrot, xclip
 
 # read foreground-color from rofi theme
-fg_color=$(grep 'foreground-color:' "$HOME/.config/rofi/themes/icon-bar.rasi" | awk '{sub(/;/, "", $2); print $2}')
+fg_color=$(grep 'foreground-color:' "$HOME/.config/rofi/themes/icons.rasi" | awk '{sub(/;/, "", $2); print $2}')
 glyphs="Font Awesome 6 Free Regular"
 
 # define the directory for saved images
@@ -11,7 +11,7 @@ screenshot_directory=~/pictures/screenshots
 # define the timestamp string for filenames
 timestamp=$(date +"%Y%m%d-%H%M%S")
 
-# define in seconds how long to wait before taking screenshot in `wait` option
+# define how many seconds to wait before taking screenshot in `wait` option
 wait_secs=3
 
 # define available options
@@ -19,29 +19,7 @@ copy="copy\0icon\x1f<span font='$glyphs' color='$fg_color'></span>"
 save="save\0icon\x1f<span font='$glyphs' color='$fg_color'></span>"
 wait="wait "$wait_secs""s"\0icon\x1f<span font='$glyphs' color='$fg_color'></span>"
 
-# load rofi with available options
-main() {
-    options_string="$copy\n$save\n$wait"
-    choice=$(echo -e "$options_string" | rofi -dmenu -theme "icon-bar" \
-    -theme-str 'listview {columns: 1; lines: 3;}')
-
-    case 1 in
-        $(echo "$choice" | grep -q "copy" && echo 1) )
-            copy
-            ;;
-        $(echo "$choice" | grep -q "save" && echo 1) )
-            save
-            ;;
-        $(echo "$choice" | grep -q "wait" && echo 1) )
-            wait
-            ;;
-        *)
-            exit 0
-            ;;
-    esac
-}
-
-# function to copy an area of the screen
+# function to select and copy an area of the screen to the clipboard
 copy() {
     if scrot -s /tmp/screenshot.png; then
         xclip -selection clipboard -t image/png /tmp/screenshot.png
@@ -52,7 +30,7 @@ copy() {
     fi
 }
 
-# function to save an area of the screen
+# function to select and save an area of the screen to $screenshot_directory
 save() {
     if scrot -s /tmp/screenshot.png; then
         xclip -selection clipboard -t image/png /tmp/screenshot.png
@@ -65,15 +43,44 @@ save() {
 
 # function to wait n seconds and copy the full screen
 wait() {
-    dunstify -a manage-screenshot "capturing full screen" "in $wait_secs seconds..." -t 1000
-    sleep "$wait_secs"
+    for (( i = 1; i < $wait_secs ; i++ )); do
+        dunstify -a manage-screenshot "capturing full screen" "in $((wait_secs + 1 - i)) seconds..." -r 4502
+        sleep 1
+    done
+
+    dunstctl close-all
+    sleep 1
+
     if scrot /tmp/screenshot.png; then
         xclip -selection clipboard -t image/png /tmp/screenshot.png
         rm /tmp/screenshot.png
-        dunstify -a manage-screenshot "screenshot taken" "full screen copied to clipboard"
+        dunstify -a manage-screenshot "screenshot taken" "full screen copied to clipboard" -r 4502
     else
         exit 0
     fi
 }
 
-main
+# load rofi with available options
+rofi_main() {
+    options_string="$copy\n$save\n$wait"
+    selected=$(echo -e "$options_string" | rofi -dmenu -theme "icons" \
+    -theme-str 'listview {columns: 1; lines: 3;}')
+
+    case $selected in
+        "copy")
+            copy
+            ;;
+        "save")
+            save
+            ;;
+        "wait"*)
+            wait
+            ;;
+        *)
+            exit 0
+            ;;
+    esac
+}
+
+# main entry point to script
+rofi_main

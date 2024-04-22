@@ -10,7 +10,7 @@
         set $background     --randomize ~/pictures/wallpapers/*
         set $lockscreen     ~/pictures/wallpapers/lockscreen.png
     # window appearance
-        set $font           minecraft 12
+        set $font           JetBrains Mono Bold 9
         set $title          "> [%title]"
         set $border_px      1
     # window behaviour

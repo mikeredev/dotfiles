@@ -1,10 +1,11 @@
 # See dunst(5) for all configuration options
+# v2
 [global]
 # display
     follow = none               # {mouse, keyboard, none}
     monitor = 0
     width = 600
-    height = 150
+    height = 96
     origin = top-right
     offset = 15x35
     scale = 0
@@ -18,26 +19,27 @@
     progress_bar_corner_radius = 0
 
 # padding
-    padding = 10                # padding between text and separator
-    horizontal_padding = 20     # horizontal padding
-    text_icon_padding = 15      # padding between text and icon
+    padding = 5                # padding between text and separator
+    horizontal_padding = 10    # horizontal padding
+    text_icon_padding = 0      # padding between text and icon
 
 # icon
     enable_recursive_icon_lookup = true
-    icon_theme = Papirus         # set multiple themes with left-most one used first
-    icon_position = right        # {left, right, top, off}
+    icon_theme = Papirus-Dark   # set multiple themes with left-most one used first
+    icon_position = right       # {left, right, top, off}
     icon_corner_radius = 0      # 0 to disable
-    min_icon_size = 32          # scale up to this size
-    max_icon_size = 48          # scale down to this size, 0 to disable
+    min_icon_size = 24          # scale down to this size
+    max_icon_size = 48          # scale up to this size, 0 to disable
 
 # style
-    font = minecraft 12
+    #font = ArcadeClassic 16
+    font = JetBrains Mono Regular 10
     alignment = left            # message text, {left, center, right}
-    vertical_alignment = center    # {top, center, bottom}
+    vertical_alignment = center # {top, center, bottom}
     ellipsize = end             # {start, middle, end}
-    line_height = 3
+    line_height = 1
     markup = full               # (%a)ppname, (%s)ummary, (%b)ody, (%i)conname w/path, (%%) literal %,
-    format = "%s > %b"    # (%I)conname w/o path, (%p)rogress value, (%n) progess value no whitespace
+    format = "%s > %b"          # (%I)conname w/o path, (%p)rogress value, (%n) progess value no whitespace
                                 
 # frame
     corner_radius = 3          # 0 to disable. beware clipping
@@ -52,7 +54,7 @@
     hide_duplicate_count = false
     history_length = 10
     idle_threshold = 10          # remove message after n seconds, 0 to disable
-    ignore_newline = no         # ignore new lines in messages
+    ignore_newline = yes         # ignore new lines in messages
     indicate_hidden = yes
     notification_limit = 10     # max notifications to display
     show_age_threshold = -1     # show message age if older than n seconds, -1 to disable
@@ -85,12 +87,14 @@
     foreground = "#ECEFF4"
     timeout = 5
     format = "<span foreground='#cacdd2'>%s ></span> %b"
+    new_icon = "icon_details"
 
  [urgency_normal]
     background = "#4C566Acc"
     foreground = "#ECEFF4"
     timeout = 10
     format = "<span foreground='#cacdd2'>%s ></span> %b"
+    new_icon = "icon_details"
 
  [urgency_critical]
     background = "#e3d533cc"
@@ -98,9 +102,9 @@
     frame_color = "#9f6a05"
     timeout = 0
     format = "<b>%s ></b> %b"
+    new_icon = "add-placemark"
 
 # custom styles
-# icons from iconfinder.com
 #kill $(pgrep dunst) ; dunstify -u low "low" "this is a low urgency notification" ; dunstify -u normal "normal" "this is a normal urgency notification" ; dunstify -u critical "critical" "this is a critical urgency notification"
 
 # slack notifications
@@ -112,27 +116,29 @@
 
 [browser-slack]
     desktop_entry="brave-browser"
-    new_icon = "~/.config/dunst/icons/slack.png"
     body = *slack.com*
     set_stack_tag = "slack"
+    new_icon = "slack"
+    history_ignore = true
 
 # discord notifications
 [browser-discord]
     desktop_entry="brave-browser"
     body = *discord.com*
-    set_stack_tag = "discord"
-    new_icon = "~/.config/dunst/icons/discord.png"
+    new_icon = "discord"
 
 # desktop notifications
 [rss-gpt]
     appname = rss-gpt
-    new_icon = "~/.config/dunst/icons/news.png"
     timeout = 30
+    format = "%b"
+    icon_position = off
 
 [manage-screenshot]
     appname = manage-screenshot
-    new_icon = "camera-photo-symbolic"
+    new_icon = "viewimage"
     timeout = 3
+    history_ignore = true
 
 [manage-wifi]
     appname = manage-wifi
@@ -141,7 +147,6 @@
 
 [rofi-gpt]
     appname = rofi-gpt
-    new_icon = "~/.config/dunst/icons/robot.png"
     format = "%s"
 
     # * none: Don't do anything.
