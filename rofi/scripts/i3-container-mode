@@ -1,14 +1,16 @@
 #!/bin/bash
+# requires: rofi, i3
 
-# read foreground-color from rofi theme
-fg_color=$(grep 'foreground-color:' "$HOME/.config/rofi/themes/icons.rasi" | awk '{sub(/;/, "", $2); print $2}')
-glyphs="Font Awesome 6 Free Regular"
+# read theming from rasi file
+# only necessary when using icons instead of text
+foreground=$(grep 'foreground-color:' "$HOME/.config/rofi/themes/icons.rasi" | awk '{sub(/;/, "", $2); print $2}')
+font_glyph=$(grep 'glyphs:' "$HOME/.config/rofi/themes/icons.rasi" | sed 's/.*"\([^"]*\)".*/\1/')
 
 # define available options
-cycle="cycle\0icon\x1f<span font='$glyphs' color='$fg_color'></span>"
-split="split\0icon\x1f<span font='$glyphs' color='$fg_color'></span>"
-stacking="stacking\0icon\x1f<span font='$glyphs' color='$fg_color'></span>"
-tabbed="tabbed\0icon\x1f<span font='$glyphs' color='$fg_color'></span>"
+cycle="cycle\0icon\x1f<span font='$font_glyph' color='$foreground'></span>"
+split="split\0icon\x1f<span font='$font_glyph' color='$foreground'></span>"
+stacking="stacking\0icon\x1f<span font='$font_glyph' color='$foreground'></span>"
+tabbed="tabbed\0icon\x1f<span font='$font_glyph' color='$foreground'></span>"
 
 # main function
 rofi_main() {
@@ -16,18 +18,18 @@ rofi_main() {
     choice=$(echo -e "$options_string" | rofi -dmenu -theme "icons" \
         -theme-str 'listview {columns: 1; lines: 4;}')
 
-    case 1 in
-        $(echo "$choice" | grep -q "cycle" && echo 1) )
+    case $choice in
+        "cycle")
             i3-msg layout toggle
             rofi_main
             ;;
-        $(echo "$choice" | grep -q "split" && echo 1) )
+        "split")
             i3-msg layout toggle split
             ;;
-        $(echo "$choice" | grep -q "stacking" && echo 1) )
+        "stacking")
             i3-msg layout stacking
             ;;
-        $(echo "$choice" | grep -q "tabbed" && echo 1) )
+        "tabbed")
             i3-msg layout tabbed
             ;;
         *)

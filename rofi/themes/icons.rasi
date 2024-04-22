@@ -3,6 +3,7 @@
     foreground-color:   #9f6a05;
     selected-color:     #ffffff;
     font:               "JetBrains Mono Regular 9";
+    glyphs:             "Font Awesome 6 Free Regular";
 }
 
 window {

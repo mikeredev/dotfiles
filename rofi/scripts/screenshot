@@ -1,9 +1,10 @@
 #!/bin/bash
 # requires: rofi, dunst, scrot, xclip
 
-# read foreground-color from rofi theme
-fg_color=$(grep 'foreground-color:' "$HOME/.config/rofi/themes/icons.rasi" | awk '{sub(/;/, "", $2); print $2}')
-glyphs="Font Awesome 6 Free Regular"
+# read theming from rasi file
+# only necessary when using icons instead of text
+foreground=$(grep 'foreground-color:' "$HOME/.config/rofi/themes/icons.rasi" | awk '{sub(/;/, "", $2); print $2}')
+font_glyph=$(grep 'glyphs:' "$HOME/.config/rofi/themes/icons.rasi" | sed 's/.*"\([^"]*\)".*/\1/')
 
 # define the directory for saved images
 screenshot_directory=~/pictures/screenshots
@@ -15,9 +16,9 @@ timestamp=$(date +"%Y%m%d-%H%M%S")
 wait_secs=3
 
 # define available options
-copy="copy\0icon\x1f<span font='$glyphs' color='$fg_color'></span>"
-save="save\0icon\x1f<span font='$glyphs' color='$fg_color'></span>"
-wait="wait "$wait_secs""s"\0icon\x1f<span font='$glyphs' color='$fg_color'></span>"
+copy="copy\0icon\x1f<span font='$font_glyph' color='$foreground'></span>"
+save="save\0icon\x1f<span font='$font_glyph' color='$foreground'></span>"
+wait="wait "$wait_secs""s"\0icon\x1f<span font='$font_glyph' color='$foreground'></span>"
 
 # function to select and copy an area of the screen to the clipboard
 copy() {

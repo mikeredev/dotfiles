@@ -1,20 +1,22 @@
 #!/bin/bash
+# requires: rofi, i3
 
-# read foreground-color from rofi theme
-fg_color=$(grep 'foreground-color:' "$HOME/.config/rofi/themes/icons.rasi" | awk '{sub(/;/, "", $2); print $2}')
-glyphs="Font Awesome 6 Free Regular"
+# read theming from rasi file
+# only necessary when using icons instead of text
+foreground=$(grep 'foreground-color:' "$HOME/.config/rofi/themes/icons.rasi" | awk '{sub(/;/, "", $2); print $2}')
+font_glyph=$(grep 'glyphs:' "$HOME/.config/rofi/themes/icons.rasi" | sed 's/.*"\([^"]*\)".*/\1/')
 
 # define available options
-lock="lock\0icon\x1f<span font='$glyphs' color='$fg_color'></span>"
-suspend="suspend\0icon\x1f<span font='$glyphs' color='$fg_color'>󰤄</span>"
-reboot="reboot\0icon\x1f<span font='$glyphs' color='$fg_color'></span>"
-i3_reload="i3 reload\0icon\x1f<span font='$glyphs' color='$fg_color'></span>"
-i3_restart="i3 restart\0icon\x1f<span font='$glyphs' color='$fg_color'></span>"
-poweroff="poweroff\0icon\x1f<span font='$glyphs' color='$fg_color'></span>"
+lock="lock\0icon\x1f<span font='$font_glyph' color='$foreground'></span>"
+suspend="suspend\0icon\x1f<span font='$font_glyph' color='$foreground'>󰤄</span>"
+reboot="reboot\0icon\x1f<span font='$font_glyph' color='$foreground'></span>"
+i3_reload="i3 reload\0icon\x1f<span font='$font_glyph' color='$foreground'></span>"
+i3_restart="i3 restart\0icon\x1f<span font='$font_glyph' color='$foreground'></span>"
+poweroff="poweroff\0icon\x1f<span font='$font_glyph' color='$foreground'></span>"
 
 # function to confirm user action
 rofi_confirm(){
-    echo -e "ok\0icon\x1f<span font='$glyphs' color='$fg_color'></span>\ncancel\0icon\x1f<span font='$glyphs' color='$fg_color'></span>" |
+    echo -e "ok\0icon\x1f<span font='$font_glyph' color='$foreground'></span>\ncancel\0icon\x1f<span font='$font_glyph' color='$foreground'></span>" |
     rofi -dmenu -mesg "$selected?" -theme "icons" \
         -theme-str 'listview {columns: 1; lines: 2;}' \
         -theme-str 'textbox-current-entry {enabled: false;}';
