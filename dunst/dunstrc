@@ -61,7 +61,7 @@
     show_indicators = no
     sort = yes                  # sort messages by urgency
     stack_duplicates = true
-    sticky_history = no         # sticky or timeout as normal for popped notifs
+    sticky_history = yes         # sticky or timeout as normal for popped notifs
 
 # window
     title = Dunst               # title of the windows spawned by dunst
@@ -97,7 +97,7 @@
     new_icon = "icon_details"
 
  [urgency_critical]
-    background = "#e3d533cc"
+    background = "#e3d533"
     foreground = "#9f6a05"
     frame_color = "#9f6a05"
     timeout = 0
