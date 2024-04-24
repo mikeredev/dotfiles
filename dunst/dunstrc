@@ -1,5 +1,5 @@
 # See dunst(5) for all configuration options
-# v2
+
 [global]
 # display
     follow = none               # {mouse, keyboard, none}
@@ -7,7 +7,7 @@
     width = 600
     height = 96
     origin = top-right
-    offset = 15x35
+    offset = 18x34
     scale = 0
 
 # progress bar
@@ -59,7 +59,7 @@
     notification_limit = 10     # max notifications to display
     show_age_threshold = -1     # show message age if older than n seconds, -1 to disable
     show_indicators = no
-    sort = yes                  # sort messages by urgency
+    sort = no                  # sort messages by urgency
     stack_duplicates = true
     sticky_history = yes         # sticky or timeout as normal for popped notifs
 
@@ -101,7 +101,7 @@
     foreground = "#9f6a05"
     frame_color = "#9f6a05"
     timeout = 0
-    format = "<b>%s ></b> %b"
+    format = "<b>%s > %b</b>"
     new_icon = "add-placemark"
 
 # custom styles
@@ -120,19 +120,21 @@
     set_stack_tag = "slack"
     new_icon = "slack"
     history_ignore = true
+    timeout = 10
 
 # discord notifications
 [browser-discord]
     desktop_entry="brave-browser"
     body = *discord.com*
     new_icon = "discord"
+    timeout = 10
 
 # desktop notifications
-[rss-gpt]
+[rss-reader]
     appname = rss-gpt
     timeout = 30
     format = "%b"
-    icon_position = off
+    new_icon = "rss"
 
 [manage-screenshot]
     appname = manage-screenshot
@@ -145,9 +147,11 @@
     set_stack_tag = "manage-wifi"
     new_icon = "network-wireless-symbolic"
 
-[rofi-gpt]
-    appname = rofi-gpt
-    format = "%s"
+[rofibot]
+    appname = rofibot
+    format = "%b"
+    timeout = 10
+    new_icon = "applications-chat-panel"
 
     # * none: Don't do anything.
     # * do_action: Invoke the action determined by the action_name rule. If there is no

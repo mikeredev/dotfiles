@@ -1,0 +1,4 @@
+#!/bin/bash
+
+# define LLMVENV in bashrc
+$LLMVENV/bin/python "$@"

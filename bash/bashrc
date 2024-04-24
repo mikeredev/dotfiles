@@ -18,6 +18,7 @@ export ANTHROPIC_API_KEY=$(cat ~/documents/auth/anthropic/anthropic_api_key.txt)
 
 # environment variables
 export PATH=$PATH:$HOME/.local/bin:$HOME/.config/bash/scripts/
+export LLMVENV=/home/mishi/.config/llm/venv/
 export EDITOR=vim
 export VISUAL=vim
 
@@ -63,3 +64,10 @@ export LESSHISTFILE="${XDG_CONFIG_HOME}/less/history"
 export LESSKEY="${XDG_CONFIG_HOME}/less/keys"
 export VIMINIT='let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc" | source $MYVIMRC'
 export VIMDOTDIR="$XDG_CONFIG_HOME/vim"
+
+# language model endpoints
+export OPENAI_GPT35="gpt-3.5-turbo"
+export OPENAI_GPT4="gpt-4"
+export CLAUDE_HAIKU="claude-3-haiku-20240307"
+export CLAUDE_SONNET="claude-3-sonnet-20240229"
+export CLAUDE_OPUS="claude-3-opus-20240229"
