@@ -1,5 +1,5 @@
 #!/bin/bash
-# requires: rofi, i3
+# uses: rofi i3wm
 
 # read theming from rasi file
 # only necessary when using icons instead of text

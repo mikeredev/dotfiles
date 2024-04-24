@@ -1,16 +1,15 @@
 #!/bin/bash
-# requires: rofi, dunst, scrot, xclip
+# uses: rofi scrot xclip dunst
 
 # read theming from rasi file
 # only necessary when using icons instead of text
 foreground=$(grep 'foreground-color:' "$HOME/.config/rofi/themes/icons.rasi" | awk '{sub(/;/, "", $2); print $2}')
 font_glyph=$(grep 'glyphs:' "$HOME/.config/rofi/themes/icons.rasi" | sed 's/.*"\([^"]*\)".*/\1/')
 
-# define the directory for saved images
+# define the directory and filename for saved images
+screenshot_timestamp=$(date +"%Y%m%d-%H%M%S")
 screenshot_directory=~/pictures/screenshots
-
-# define the timestamp string for filenames
-timestamp=$(date +"%Y%m%d-%H%M%S")
+screenshot_save_path=$screenshot_directory/screenshot_${screenshot_timestamp}.png
 
 # define how many seconds to wait before taking screenshot in `wait` option
 wait_secs=3
@@ -23,20 +22,19 @@ wait="wait "$wait_secs""s"\0icon\x1f<span font='$font_glyph' color='$foreground'
 # function to select and copy an area of the screen to the clipboard
 copy() {
     if scrot -s /tmp/screenshot.png; then
-        xclip -selection clipboard -t image/png /tmp/screenshot.png
-        rm /tmp/screenshot.png
+        xclip -selection clipboard -t image/png /tmp/screenshot.png && rm /tmp/screenshot.png
         dunstify -a manage-screenshot "screenshot taken" "selected area copied to clipboard"
     else
+        # notif if failed
         exit 0
     fi
 }
 
 # function to select and save an area of the screen to $screenshot_directory
 save() {
-    if scrot -s /tmp/screenshot.png; then
-        xclip -selection clipboard -t image/png /tmp/screenshot.png
-        mv /tmp/screenshot.png "$screenshot_directory/screenshot_${timestamp}.png"
-        dunstify -a manage-screenshot "screenshot saved" "$screenshot_directory/screenshot_${timestamp}.png"
+    if scrot -s $screenshot_save_path; then
+        xclip -selection clipboard -t image/png $screenshot_save_path
+        dunstify -a manage-screenshot "screenshot saved" $screenshot_save_path
     else
         exit 0
     fi
@@ -53,8 +51,7 @@ wait() {
     sleep 1
 
     if scrot /tmp/screenshot.png; then
-        xclip -selection clipboard -t image/png /tmp/screenshot.png
-        rm /tmp/screenshot.png
+        xclip -selection clipboard -t image/png /tmp/screenshot.png && rm /tmp/screenshot.png
         dunstify -a manage-screenshot "screenshot taken" "full screen copied to clipboard" -r 4502
     else
         exit 0

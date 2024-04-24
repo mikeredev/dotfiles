@@ -130,12 +130,6 @@
     timeout = 10
 
 # desktop notifications
-[rss-reader]
-    appname = rss-gpt
-    timeout = 30
-    format = "%b"
-    new_icon = "rss"
-
 [manage-screenshot]
     appname = manage-screenshot
     new_icon = "viewimage"
