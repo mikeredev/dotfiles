@@ -1,5 +1,0 @@
-#!/bin/bash
-
-if [ $? -ne 0 ]; then
-    echo -e "\[$(tput setaf 196)\]"
-fi

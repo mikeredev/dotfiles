@@ -8,7 +8,7 @@ alias gs='git status'
 alias gac='git add . && git commit -m'
 alias gp='git push -u origin'
 alias ls='ls -lA --color=auto --block-size=M'
-alias q='~/.config/openai/bin/console-gpt'
+alias q='~/.config/llm/scripts/bots/gpt'
 alias rr='ranger'
 
 # api keys
@@ -17,7 +17,7 @@ export PINECONE_API_KEY=$(cat ~/documents/auth/pinecone/pinecone_api_key.txt)
 export ANTHROPIC_API_KEY=$(cat ~/documents/auth/anthropic/anthropic_api_key.txt)
 
 # environment variables
-export PATH=$PATH:$HOME/.local/bin:$HOME/.config/bash/bin/
+export PATH=$PATH:$HOME/.local/bin:$HOME/.config/bash/scripts/
 export EDITOR=vim
 export VISUAL=vim
 
@@ -32,13 +32,11 @@ PS1='\w -> '
 
 # detailed prompt
 function _update_ps1() {
-    local is_venv=$(source ps1-is-venv)
-    local git_info=$(source ps1-git-info)
-    local last_status=$(source ps1-last-exit-code)
+    local ps1_venv=$(source ps1-venv)
+    local ps1_git=$(source ps1-git)
     tput smam
-    PS1="${is_venv}\[$(tput setaf 214)\]\w \[$(tput sgr0)\]"
-    [ -n "${git_info}" ] && PS1+="${git_info}"
-    PS1+="${last_status}$\[$(tput sgr0)\] "
+    PS1="${ps1_venv}\[$(tput setaf 214)\]\w \[$(tput sgr0)\]"
+    [ -n "${ps1_git}" ] && PS1+="${ps1_git}"
 }
 if [[ $TERM != linux && ! $PROMPT_COMMAND =~ _update_ps1 ]]; then
     PROMPT_COMMAND='_update_ps1;'"$PROMPT_COMMAND"

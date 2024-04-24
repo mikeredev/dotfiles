@@ -15,13 +15,7 @@ get_repo_name() {
 
 # Function to count unstaged files
 get_changes() {
-    count_changes=$(git status --porcelain | grep -c "^[ MDARCU??]")
-
-    if [ $count_changes -gt 0 ]; then
-        echo -n "\[$(tput setaf 242)\]$count_changes"
-    else
-        echo -n "\[$(tput setaf 242)\]OK"
-    fi
+    echo -n "$(git status --porcelain | grep -c "^[ MDARCU??]")"
 }
 
 # Main script
@@ -30,5 +24,5 @@ repo=$(get_repo_name)
 
 if [ -n "$repo" ]; then
     changes=$(get_changes)
-    echo -e "🔀${repo} ${changes}\[$(tput sgr0)\] "
+    echo -e "🔀${repo} \[$(tput setaf 242)\]${changes}\[$(tput sgr0)\] "
 fi
