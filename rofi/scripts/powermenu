@@ -6,7 +6,7 @@
 foreground=$(grep 'foreground-color:' "$HOME/.config/rofi/themes/icons.rasi" | awk '{sub(/;/, "", $2); print $2}')
 font_glyph=$(grep 'glyphs:' "$HOME/.config/rofi/themes/icons.rasi" | sed 's/.*"\([^"]*\)".*/\1/')
 
-# define available options
+# define available actions
 lock="lock\0icon\x1f<span font='$font_glyph' color='$foreground'></span>"
 suspend="suspend\0icon\x1f<span font='$font_glyph' color='$foreground'>󰤄</span>"
 reboot="reboot\0icon\x1f<span font='$font_glyph' color='$foreground'></span>"

@@ -15,7 +15,7 @@ timestamp=$(date +"%Y%m%d-%H%M%S")
 # define how many seconds to wait before taking screenshot in `wait` option
 wait_secs=3
 
-# define available options
+# define available actions
 copy="copy\0icon\x1f<span font='$font_glyph' color='$foreground'></span>"
 save="save\0icon\x1f<span font='$font_glyph' color='$foreground'></span>"
 wait="wait "$wait_secs""s"\0icon\x1f<span font='$font_glyph' color='$foreground'></span>"

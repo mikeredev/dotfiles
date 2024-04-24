@@ -6,7 +6,7 @@
 foreground=$(grep 'foreground-color:' "$HOME/.config/rofi/themes/icons.rasi" | awk '{sub(/;/, "", $2); print $2}')
 font_glyph=$(grep 'glyphs:' "$HOME/.config/rofi/themes/icons.rasi" | sed 's/.*"\([^"]*\)".*/\1/')
 
-# define available options
+# define available actions
 cycle="cycle\0icon\x1f<span font='$font_glyph' color='$foreground'></span>"
 split="split\0icon\x1f<span font='$font_glyph' color='$foreground'></span>"
 stacking="stacking\0icon\x1f<span font='$font_glyph' color='$foreground'></span>"
@@ -15,10 +15,10 @@ tabbed="tabbed\0icon\x1f<span font='$font_glyph' color='$foreground'></span>"
 # main function
 rofi_main() {
     options_string="$cycle\n$split\n$stacking\n$tabbed"
-    choice=$(echo -e "$options_string" | rofi -dmenu -theme "icons" \
+    selection=$(echo -e "$options_string" | rofi -dmenu -theme "icons" \
         -theme-str 'listview {columns: 1; lines: 4;}')
 
-    case $choice in
+    case $selection in
         "cycle")
             i3-msg layout toggle
             rofi_main
