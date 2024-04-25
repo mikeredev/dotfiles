@@ -11,6 +11,7 @@
     "editor.fontLigatures": true,
     "editor.formatOnType": true,
     "editor.formatOnSave": false,
+    "editor.hover.enabled": false,
     "editor.insertSpaces": true,
     "editor.indentSize": 4,
     "editor.letterSpacing": 0,
