@@ -12,9 +12,10 @@ alias q='~/.config/llm/scripts/bots/console.py'
 alias rr='ranger'
 
 # api keys
+export ANTHROPIC_API_KEY=$(cat ~/documents/auth/anthropic/anthropic_api_key.txt)
+export COHERE_API_KEY=$(cat ~/documents/auth/cohere/cohere_api_key.txt)
 export OPENAI_API_KEY=$(cat ~/documents/auth/openai/openai_api_key.txt)
 export PINECONE_API_KEY=$(cat ~/documents/auth/pinecone/pinecone_api_key.txt)
-export ANTHROPIC_API_KEY=$(cat ~/documents/auth/anthropic/anthropic_api_key.txt)
 
 # environment variables
 export PATH=$PATH:$HOME/.local/bin:$HOME/.config/bash/scripts/
@@ -71,3 +72,4 @@ export GPT_4="gpt-4"
 export CLAUDE_HAIKU="claude-3-haiku-20240307"
 export CLAUDE_SONNET="claude-3-sonnet-20240229"
 export CLAUDE_OPUS="claude-3-opus-20240229"
+export COHERE_CMDR_PLUS="command-r-plus"
