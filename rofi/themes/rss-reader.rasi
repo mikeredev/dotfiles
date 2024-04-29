@@ -1,0 +1,70 @@
+* {
+    header-light:       #b4bbf1;
+    header-dark:        #4b0082;
+    header-font:        "Minecraft 9";
+    item-light:         #4c566a;
+    item-dark:          #eceff4;
+    item-border:        #5e81ac;
+    item-selected:      #3498db;
+    item-font:          "JetBrains Mono Regular 9";
+}
+
+window {
+    location:           southeast;
+    anchor:             southeast;
+    background-color:   transparent;
+    font:               @item-font;
+    width:              607px;
+    children:           [mainbox];
+    orientation:        vertical;
+    //x-offset:           18px;
+    //y-offset:           34px;
+}
+
+mainbox {
+    background-color:   inherit;
+    orientation:        vertical;
+    children:           [listview, message];
+    padding:            5px;
+}
+
+message {
+    children:           [textbox];
+    border:             2px;
+    border-radius:      3px;
+    border-color:       @header-dark;
+    background-color:   @header-light;
+    text-color:         @header-dark;
+    padding:            11px;
+}
+
+textbox {
+    background-color:   inherit;
+    text-color:         inherit;
+    horizontal-align:   1;
+    font:               @header-font;
+}
+
+listview {
+    children:           [element];
+    background-color:   transparent;
+    spacing:            4px;
+}
+
+element {
+    border:             2px;
+    border-radius:      3px;
+    border-color:       @item-border;
+    background-color:   @item-light;
+    text-color:         @item-dark;
+    padding:            8px;
+}
+/*
+element selected {
+   border-color:       @item-selected;
+}
+*/
+element-text {
+    background-color:   inherit;
+    text-color:         inherit;
+}
