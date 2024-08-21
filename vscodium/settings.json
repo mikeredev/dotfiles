@@ -6,7 +6,7 @@
     "editor.cursorSmoothCaretAnimation": "on",
     "editor.detectIndentation": false,
     "editor.fontFamily": "'Fira Code Retina', monospace, 'Inconsolata Nerd Font', 'Font Awesome 6 Brands', 'Font Awesome 6 Free Solid'",
-    "editor.fontSize": 14,
+    "editor.fontSize": 13,
     "editor.fontWeight": "normal",
     "editor.fontLigatures": true,
     "editor.formatOnType": true,

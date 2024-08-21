@@ -46,7 +46,7 @@
         font pango:$font
         for_window [class=".*"] title_format $title
         for_window [class=".*"] border pixel $border_px
-        gaps inner 0
+        gaps inner 5
         gaps outer 0
     # behaviour
         smart_borders on
