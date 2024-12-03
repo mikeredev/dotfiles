@@ -14,7 +14,7 @@
         set $title          "> [%title]"
         set $border_px      1
     # window behavioui3
-        set $float_class    pavucontrol|Gnome-tweaks|Lxappearance
+        set $float_class    pavucontrol|Gnome-tweaks|Lxappearance|trader*
 
 # desktop
     # rofi
@@ -83,7 +83,7 @@
         set $ws0 "0:<span font='Font Awesome 6 Free Regular 11'></span>"
         set $ws1 "1:<span font='Font Awesome 6 Free Regular 11'></span>"
         set $ws2 "2:<span font='Font Awesome 6 Free Regular 11'></span>"
-        set $ws9 "9:<span font='Font Awesome 6 Free Regular 11'></span>"
+        set $ws3 "3:<span font='Font Awesome 6 Free Regular 11'></span>"
     # keybindings
         # switch to workspace
             bindsym $mod+comma workspace prev
@@ -91,12 +91,12 @@
             bindsym $mod+0 workspace number $ws0
             bindsym $mod+1 workspace number $ws1
             bindsym $mod+2 workspace number $ws2
-            bindsym $mod+9 workspace number $ws3
+            bindsym $mod+3 workspace number $ws3
         # move focused container to workspace
             bindsym $mod+Shift+0 move container to workspace number $ws0
             bindsym $mod+Shift+1 move container to workspace number $ws1
             bindsym $mod+Shift+2 move container to workspace number $ws2
-            bindsym $mod+Shift+9 move container to workspace number $ws39
+            bindsym $mod+Shift+3 move container to workspace number $ws3
 
 # display configuration
     exec_always xrandr --output $monitor --mode $resolution
