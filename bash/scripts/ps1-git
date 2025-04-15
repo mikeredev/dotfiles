@@ -8,10 +8,10 @@ get_repo_name() {
 }
 
 # Function to get the current Git branch name
-#get_branch_name() {
-#    branch=$(git symbolic-ref --short HEAD 2>/dev/null) || echo ""
-#    echo "$branch"
-#}
+get_branch_name() {
+    branch=$(git symbolic-ref --short HEAD 2>/dev/null) || echo ""
+    echo "$branch"
+}
 
 # Function to count unstaged files
 get_changes() {
@@ -20,9 +20,9 @@ get_changes() {
 
 # Main script
 repo=$(get_repo_name)
-#branch=$(get_branch_name)
+branch=$(get_branch_name)
 
 if [ -n "$repo" ]; then
     changes=$(get_changes)
-    echo -e "🔀${repo} \[$(tput setaf 242)\]${changes}\[$(tput sgr0)\] "
+    echo -e "🔀${repo}:${branch} \[$(tput setaf 242)\]${changes}\[$(tput sgr0)\] "
 fi
