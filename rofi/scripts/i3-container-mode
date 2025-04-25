@@ -16,7 +16,7 @@ tabbed="tabbed\0icon\x1f<span font='$font_glyph' color='$foreground'></span>"
 rofi_main() {
     options_string="$cycle\n$split\n$stacking\n$tabbed"
     selection=$(echo -e "$options_string" | rofi -dmenu -theme "icons" \
-        -theme-str 'listview {columns: 1; lines: 4;}')
+        -theme-str 'listview {columns: 1; lines: 5;}')
 
     case $selection in
         "cycle")

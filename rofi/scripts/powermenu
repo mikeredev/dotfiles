@@ -26,7 +26,7 @@ rofi_confirm(){
 rofi_main() {
     options="$lock\n$suspend\n$reboot\n$i3_reload\n$i3_restart\n$poweroff"
     selected=$(echo -e "$options" | rofi -dmenu -theme "icons" \
-        -theme-str 'listview {columns: 1; lines: 6;}')
+        -theme-str 'listview {columns: 1; lines: 7;}')
 
     case "$selected" in
         "lock")

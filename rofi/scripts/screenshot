@@ -62,7 +62,7 @@ wait() {
 rofi_main() {
     options_string="$copy\n$save\n$wait"
     selected=$(echo -e "$options_string" | rofi -dmenu -theme "icons" \
-    -theme-str 'listview {columns: 1; lines: 3;}')
+    -theme-str 'listview {columns: 1; lines: 4;}')
 
     case $selected in
         "copy")
