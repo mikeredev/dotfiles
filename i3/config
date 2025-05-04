@@ -84,6 +84,7 @@
         set $ws1 "1:<span font='Font Awesome 6 Free Regular 11'></span>"
         set $ws2 "2:<span font='Font Awesome 6 Free Regular 11'></span>"
         set $ws3 "3:<span font='Font Awesome 6 Free Regular 11'></span>"
+        set $ws4 "4:<span font='Font Awesome 6 Free Regular 11'></span>"
     # keybindings
         # switch to workspace
             bindsym $mod+comma workspace prev
@@ -92,11 +93,13 @@
             bindsym $mod+1 workspace number $ws1
             bindsym $mod+2 workspace number $ws2
             bindsym $mod+3 workspace number $ws3
+            bindsym $mod+4 workspace number $ws4
         # move focused container to workspace
             bindsym $mod+Shift+0 move container to workspace number $ws0
             bindsym $mod+Shift+1 move container to workspace number $ws1
             bindsym $mod+Shift+2 move container to workspace number $ws2
             bindsym $mod+Shift+3 move container to workspace number $ws3
+            bindsym $mod+Shift+4 move container to workspace number $ws4
 
 # display configuration
     exec_always xrandr --output $monitor --mode $resolution
@@ -107,6 +110,8 @@
     for_window [class="VSCodium"] move to workspace $ws2
     for_window [class="steam"] move to workspace $ws3
     for_window [class="Godot"] move to workspace $ws2
+    for_window [class="Aseprite"] move to workspace $ws4
+    for_window [class="Gimp-3.0"] move to workspace $ws4
 
 # autostart
     exec --no-startup-id dunst &
