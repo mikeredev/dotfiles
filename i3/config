@@ -13,7 +13,7 @@
         set $font           JetBrains Mono Bold 9
         set $title          "> [%title]"
         set $border_px      1
-    # window behavioui3
+    # window behaviour
         set $float_class    pavucontrol|Gnome-tweaks|Lxappearance|trader*
 
 # desktop
@@ -81,10 +81,10 @@
 # workspaces
     # labels
         set $ws0 "0:<span font='Font Awesome 6 Free Regular 11'></span>"
-        set $ws1 "1:<span font='Font Awesome 6 Free Regular 11'></span>"
+        set $ws1 "1:<span font='Font Awesome 6 Free Regular 11'></span>"
         set $ws2 "2:<span font='Font Awesome 6 Free Regular 11'></span>"
-        set $ws3 "3:<span font='Font Awesome 6 Free Regular 11'></span>"
-        set $ws4 "4:<span font='Font Awesome 6 Free Regular 11'></span>"
+        set $ws3 "3:<span font='Font Awesome 6 Free Regular 11'>󰊴</span>"
+        set $ws4 "4:<span font='Font Awesome 6 Free Regular 11'></span>"
     # keybindings
         # switch to workspace
             bindsym $mod+comma workspace prev
@@ -107,15 +107,15 @@
 # application rules
     #for_window [class=KeePass2|Gimp*] move to workspace $ws0
     for_window [class="Brave-browser"] move to workspace $ws1
+    for_window [class="Godot"] move to workspace $ws2
     for_window [class="VSCodium"] move to workspace $ws2
     for_window [class="steam"] move to workspace $ws3
-    for_window [class="Godot"] move to workspace $ws2
     for_window [class="Aseprite"] move to workspace $ws4
     for_window [class="Gimp-3.0"] move to workspace $ws4
 
 # autostart
     exec --no-startup-id dunst &
-    exec --no-startup-id picom -b
+    #exec --no-startup-id picom -b
     exec_always --no-startup-id feh --bg-fill --no-fehbg $background &
     exec --no-startup-id setxkbmap ie
     exec --no-startup-id redshift &
