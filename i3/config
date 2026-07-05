@@ -14,7 +14,7 @@
         set $title          "> [%title]"
         set $border_px      1
     # window behaviour
-        set $float_class    pavucontrol|Gnome-tweaks|Lxappearance|trader*
+        set $float_class    pavucontrol|Gnome-tweaks|Lxappearance
 
 # desktop
     # rofi
@@ -31,7 +31,7 @@
     # apps
         bindsym $mod+Return exec i3-sensible-terminal
         bindsym $mod+mod2+KP_1 exec --no-startup-id brave; workspace $ws1; focus
-        bindsym $mod+mod2+KP_2 exec --no-startup-id vscodium; workspace $ws2; focus
+        bindsym $mod+mod2+KP_2 exec --no-startup-id godot; workspace $ws2; focus
         bindsym $mod+mod2+KP_3 exec --no-startup-id thunar
     # notifications
         bindsym $mod+mod2+KP_Decimal exec --no-startup-id dunstctl history-pop
