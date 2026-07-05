@@ -29,9 +29,9 @@ get_status_color() {
 
 # get fan status
 get_fan_color() {
-    if [ "$fan" -ge 30 ]; then
-        echo $color_warning     # on/high
-    elif [ "$fan" -ge 20 ]; then
+    if [ "$fan" -gt 45 ]; then
+        echo $color_warn          # on/high
+    elif [ "$fan" -gt 35 ]; then
         echo $color_active      # on/normal
     elif [ "$fan" -gt 0 ]; then
         echo $color_inactive    # on/low

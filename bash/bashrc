@@ -11,6 +11,7 @@ alias ls='ls -lA --color=auto --block-size=M'
 alias q='~/.config/llm/scripts/bots/console.py'
 alias rr='ranger'
 alias gg='cd ~/documents/godot/trader-3.5'
+alias gd='git diff'
 
 # api keys
 export ANTHROPIC_API_KEY=$(cat ~/documents/auth/anthropic/anthropic_api_key.txt)
